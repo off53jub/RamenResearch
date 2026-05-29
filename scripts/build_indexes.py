@@ -46,7 +46,12 @@ def score(ev: str) -> float:
 
 def url_of(src: str) -> str:
     m = re.search(r"\((https?://[^)]+)\)", src)
-    return m.group(1) if m else ""
+    if not m:
+        return ""
+    u = m.group(1)
+    # tabelog の言語別URL(/en/)や末尾スラッシュ差で同一店が二重登録されるのを防ぐ
+    u = u.replace("tabelog.com/en/", "tabelog.com/").rstrip("/")
+    return u
 
 
 GENRE_RULES = [
@@ -146,14 +151,18 @@ def main() -> None:
             f.write("\n")
 
     # ---- 百名店・ミシュラン ----
-    star = [r for r in records if any(k in r["ev"] for k in ("一つ星", "二つ星", "三つ星"))]
-    bib = [r for r in records if "ビブグルマン" in r["ev"]]
-    hyaku = [r for r in records if "百名店" in r["ev"]]
+    # 認定の記載は「評価の目安」列だけでなく「看板・特徴」列にある場合もあるため両方を走査
+    def tag(r):
+        return r["ev"] + " " + r["feat"]
+
+    star = [r for r in records if any(k in tag(r) for k in ("一つ星", "二つ星", "三つ星"))]
+    bib = [r for r in records if "ビブグルマン" in tag(r)]
+    hyaku = [r for r in records if "百名店" in tag(r)]
 
     # 自己検証: 各カテゴリのキーワード整合性を保証
-    assert all(any(k in r["ev"] for k in ("一つ星", "二つ星", "三つ星")) for r in star)
-    assert all("ビブグルマン" in r["ev"] for r in bib), [r["shop"] for r in bib if "ビブグルマン" not in r["ev"]]
-    assert all("百名店" in r["ev"] for r in hyaku)
+    assert all(any(k in tag(r) for k in ("一つ星", "二つ星", "三つ星")) for r in star)
+    assert all("ビブグルマン" in tag(r) for r in bib)
+    assert all("百名店" in tag(r) for r in hyaku)
 
     with open(os.path.join(OUT, "hyakumeiten-michelin.md"), "w", encoding="utf-8") as f:
         f.write("# ラーメン百名店・ミシュラン 一覧\n\n")
