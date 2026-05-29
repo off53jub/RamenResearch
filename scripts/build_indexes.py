@@ -1,17 +1,22 @@
 #!/usr/bin/env python3
-"""wards/*.md を解析して横断インデックスを生成する。
+"""wards/*.md を解析して横断インデックス・データ出力を生成する。
 
 生成物:
-  indexes/by-genre.md            … ジャンル別(家系/煮干し/二郎系 …)の店一覧
-  indexes/hyakumeiten-michelin.md … ラーメン百名店・ミシュラン(星/ビブグルマン)一覧
+  indexes/by-genre.md             … ジャンル別の店一覧
+  indexes/hyakumeiten-michelin.md … 百名店・ミシュラン(星/ビブグルマン)
+  indexes/practical.md            … 実用インデックス(深夜/朝・予約/行列・殿堂3.7+・区別TOP)
+  indexes/lineage.md              … 系譜マップ(出身店・のれん分け・系列)
+  data/ramen.csv / data/ramen.json … 全店の構造化データ
 
 各区ファイルの駅見出し配下のテーブル
   | 店名 | ジャンル | 看板・特徴 | 評価の目安 | 出典 |
-を読み取り、(区, 最寄駅, 店名, ジャンル, 評価, 出典) を抽出する。
-同一店(店名＋出典URLが一致)は名寄せし、所在地をまとめる。
+を読み取り、(区, 最寄駅, 店名, ジャンル, 特徴, 評価, 出典) を抽出する。
+同一店(店名＋出典URL)は名寄せし、所在地をまとめる。
 """
 from __future__ import annotations
 import re
+import csv
+import json
 import glob
 import os
 from collections import defaultdict
@@ -19,8 +24,10 @@ from collections import defaultdict
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WARDS = os.path.join(ROOT, "wards")
 OUT = os.path.join(ROOT, "indexes")
+DATA = os.path.join(ROOT, "data")
+UPDATED = "2026-05-29"
 
-NON_STATION = ("🚉", "⭐", "🔎", "📝", "❌", "📂", "🧭", "✅", "⚠️", "🅱️", "💯")
+NON_STATION = ("🚉", "⭐", "🔎", "📝", "❌", "📂", "🧭", "✅", "⚠️", "🅱️", "💯", "🍜", "🗺️")
 
 
 def is_station_heading(text: str) -> bool:
@@ -54,6 +61,7 @@ def url_of(src: str) -> str:
     return u
 
 
+# ---- ジャンル分類 ----
 GENRE_RULES = [
     ("家系", ["家系"]),
     ("二郎・二郎系", ["二郎"]),
@@ -77,6 +85,30 @@ GENRE_ORDER = [label for label, _ in GENRE_RULES] + ["その他・創作"]
 def classify(genre: str) -> list[str]:
     hits = [label for label, kws in GENRE_RULES if any(k in genre for k in kws)]
     return hits or ["その他・創作"]
+
+
+# ---- 系譜マップ: 親(本店/系統) → 検出キーワード ----
+# 各レコードの「特徴」テキストにキーワードがあれば、その系統のメンバーとする。
+LINEAGE = [
+    ("ラーメン二郎・二郎インスパイア", ["二郎"]),
+    ("家系（横浜家系・武蔵家系統 ほか）", ["家系", "武蔵家", "王道家", "武道家"]),
+    ("「一燈」グループ・系譜", ["一燈"]),
+    ("「たんたん亭」系", ["たんたん亭"]),
+    ("「ほん田」出身・系列", ["ほん田"]),
+    ("「かづ屋」出身", ["かづ屋"]),
+    ("「七彩」出身", ["七彩"]),
+    ("「麺壁九年」系列", ["麺壁九年"]),
+    ("「井の庄」系", ["井の庄"]),
+    ("「和渦」グループ", ["和渦"]),
+    ("「春木屋」出身", ["春木屋"]),
+    ("一風堂 出身", ["一風堂"]),
+    ("札幌「すみれ」出身・純すみ系", ["すみれ", "純すみ"]),
+    ("「はやし田」系列", ["はやし田"]),
+    ("「大勝軒」系（東池袋ほか）", ["大勝軒"]),
+    ("中目黒「Jazzy Beats」出身", ["Jazzy Beats", "ジャジー"]),
+    ("「竹末」系", ["竹末"]),
+    ("「富士丸」系（二郎系）", ["富士丸"]),
+]
 
 
 def parse_records() -> list[dict]:
@@ -108,8 +140,25 @@ def parse_records() -> list[dict]:
                     rec["locs"].append(loc)
                 continue
             bykey[key] = dict(ward=ward, station=station, shop=shop, genre=genre,
-                              feat=feat, ev=ev, src=src, locs=[loc])
+                              feat=feat, ev=ev, src=src, url=url, locs=[loc])
     return list(bykey.values())
+
+
+def tag(r: dict) -> str:
+    """認定・特徴の判定に使う結合テキスト(評価＋特徴)。"""
+    return r["ev"] + " " + r["feat"]
+
+
+def awards_of(r: dict) -> list[str]:
+    t = tag(r)
+    a = []
+    if any(k in t for k in ("一つ星", "二つ星", "三つ星")):
+        a.append("ミシュラン星")
+    if "ビブグルマン" in t:
+        a.append("ビブグルマン")
+    if "百名店" in t:
+        a.append("百名店")
+    return a
 
 
 def loc_str(r: dict) -> str:
@@ -123,19 +172,18 @@ def table(rows: list[dict]) -> str:
     return "\n".join(out) + "\n"
 
 
-def main() -> None:
-    records = parse_records()
-    os.makedirs(OUT, exist_ok=True)
+def header(title: str) -> str:
+    return (f"# {title}\n\n"
+            f"**最終更新:** {UPDATED} / 自動生成(`scripts/build_indexes.py`) / [← 全体に戻る](../README.md)\n\n")
 
-    # ---- ジャンル別 ----
+
+def write_genre(records):
     by_genre = defaultdict(list)
     for r in records:
         for label in classify(r["genre"]):
             by_genre[label].append(r)
-
     with open(os.path.join(OUT, "by-genre.md"), "w", encoding="utf-8") as f:
-        f.write("# ジャンル別 ラーメン横断インデックス\n\n")
-        f.write("**最終更新:** 2026-05-29 / 自動生成(`scripts/build_indexes.py`) / [← 全体に戻る](../README.md)\n\n")
+        f.write(header("ジャンル別 ラーメン横断インデックス"))
         f.write(f"> `wards/*.md` から自動抽出した **全{len(records)}店**(同一店は出典URLで名寄せ)。1店が複数ジャンルに登場することがあります。評価の目安は食べログ点数等(掲載時点)。\n\n")
         f.write("## 目次\n")
         for label in GENRE_ORDER:
@@ -147,35 +195,138 @@ def main() -> None:
             if not rows:
                 continue
             f.write(f'<h2 id="{label.replace("・", "").replace("／", "")}">{label}（{len(rows)}店）</h2>\n\n')
-            f.write(table(rows))
-            f.write("\n")
+            f.write(table(rows) + "\n")
+    return by_genre
 
-    # ---- 百名店・ミシュラン ----
-    # 認定の記載は「評価の目安」列だけでなく「看板・特徴」列にある場合もあるため両方を走査
-    def tag(r):
-        return r["ev"] + " " + r["feat"]
 
-    star = [r for r in records if any(k in tag(r) for k in ("一つ星", "二つ星", "三つ星"))]
-    bib = [r for r in records if "ビブグルマン" in tag(r)]
-    hyaku = [r for r in records if "百名店" in tag(r)]
-
-    # 自己検証: 各カテゴリのキーワード整合性を保証
-    assert all(any(k in tag(r) for k in ("一つ星", "二つ星", "三つ星")) for r in star)
-    assert all("ビブグルマン" in tag(r) for r in bib)
-    assert all("百名店" in tag(r) for r in hyaku)
-
+def write_awards(records):
+    star = [r for r in records if "ミシュラン星" in awards_of(r)]
+    bib = [r for r in records if "ビブグルマン" in awards_of(r)]
+    hyaku = [r for r in records if "百名店" in awards_of(r)]
+    assert all("ミシュラン星" in awards_of(r) for r in star)
+    assert all("ビブグルマン" in awards_of(r) for r in bib)
+    assert all("百名店" in awards_of(r) for r in hyaku)
     with open(os.path.join(OUT, "hyakumeiten-michelin.md"), "w", encoding="utf-8") as f:
-        f.write("# ラーメン百名店・ミシュラン 一覧\n\n")
-        f.write("**最終更新:** 2026-05-29 / 自動生成(`scripts/build_indexes.py`) / [← 全体に戻る](../README.md)\n\n")
-        f.write("> `wards/*.md` の「評価の目安」に百名店/ミシュラン/ビブグルマンの記載がある店を抽出(出典URLで名寄せ)。同一店が複数カテゴリに入ることがあります。選出年は各区ファイル参照。\n\n")
+        f.write(header("ラーメン百名店・ミシュラン 一覧"))
+        f.write("> `wards/*.md` の「評価の目安」「看板・特徴」に百名店/ミシュラン/ビブグルマンの記載がある店を抽出(出典URLで名寄せ)。同一店が複数カテゴリに入ることがあります。選出年は各区ファイル参照。\n\n")
         f.write(f"## ⭐ ミシュラン 星（{len(star)}店）\n\n")
         f.write(table(star) if star else "（該当なし）\n")
         f.write(f"\n## 🅱️ ミシュラン ビブグルマン（{len(bib)}店）\n\n")
         f.write(table(bib) if bib else "（該当なし）\n")
         f.write(f"\n## 💯 食べログ ラーメン百名店（{len(hyaku)}店）\n\n")
         f.write(table(hyaku) if hyaku else "（該当なし）\n")
+    return star, bib, hyaku
 
-    print(f"OK records={len(records)} star={len(star)} bib={len(bib)} hyaku={len(hyaku)}")
+
+def write_practical(records):
+    late = [r for r in records if any(k in r["feat"] for k in ("深夜", "翌1", "翌2", "翌3", "翌4", "24時間", "〜24", "1時まで", "2時まで"))]
+    morning = [r for r in records if any(k in r["feat"] for k in ("朝ラー", "朝6", "朝5", "朝7", "早朝", "朝営業", "6:30", "7:00から", "朝〜"))]
+    reserve = [r for r in records if any(k in r["feat"] for k in ("予約", "整理券", "オンライン順番", "電子チケット"))]
+    queue = [r for r in records if any(k in r["feat"] for k in ("行列", "連日行列", "売切", "売り切れ", "スープ切れ", "仕舞い", "終了"))]
+    hall = [r for r in records if score(r["ev"]) >= 3.75]
+
+    # 区別TOP3(食べログ点数が取れた店のみ)
+    byward = defaultdict(list)
+    for r in records:
+        if score(r["ev"]) > 0:
+            byward[r["ward"]].append(r)
+
+    def ward_no(w):
+        # 区コード順に並べるため wards ファイル名から番号を引く
+        return w
+
+    with open(os.path.join(OUT, "practical.md"), "w", encoding="utf-8") as f:
+        f.write(header("実用インデックス（深夜・朝 / 予約・行列 / 殿堂 / 区別TOP）"))
+        f.write("> `wards/*.md` の「看板・特徴」「評価の目安」から自動抽出。深夜/朝・予約/行列はメモに該当語がある店のみ(網羅ではない)。点数は掲載時点の目安。\n\n")
+
+        f.write(f"## 🌙 深夜まで営業（{len(late)}店）\n\n")
+        f.write(table(late) if late else "（該当なし）\n")
+        f.write(f"\n## 🌅 朝ラー・早朝営業（{len(morning)}店）\n\n")
+        f.write(table(morning) if morning else "（該当なし）\n")
+        f.write(f"\n## 📝 予約制・整理券（{len(reserve)}店）\n\n")
+        f.write(table(reserve) if reserve else "（該当なし）\n")
+        f.write(f"\n## 🚶 行列・売り切れ仕舞い（{len(queue)}店）\n\n")
+        f.write(table(queue) if queue else "（該当なし）\n")
+        f.write(f"\n## 🏆 殿堂（食べログ3.75以上 / {len(hall)}店）\n\n")
+        f.write(table(hall) if hall else "（該当なし）\n")
+
+        f.write("\n## 📍 区別おすすめTOP3（食べログ点数順）\n\n")
+        for w in sorted(byward, key=ward_no):
+            rows = sorted(byward[w], key=lambda r: score(r["ev"]), reverse=True)[:3]
+            picks = "／".join(f'{r["shop"]}（{r["ev"].split("／")[0].replace("食べログ", "").strip()}）' for r in rows)
+            f.write(f"- **{w}**: {picks}\n")
+    return late, morning, reserve, queue, hall
+
+
+def write_lineage(records):
+    fams = []
+    for name, kws in LINEAGE:
+        members = [r for r in records if any(k in (r["feat"] + " " + r["shop"]) for k in kws)]
+        # 二郎/家系はジャンル列にも強く出るので補完
+        if name.startswith("ラーメン二郎"):
+            members = [r for r in records if "二郎" in (r["feat"] + " " + r["genre"] + " " + r["shop"])]
+        if name.startswith("家系"):
+            members = [r for r in records if ("家系" in (r["feat"] + " " + r["genre"] + " " + r["shop"]))
+                       or any(k in r["feat"] for k in ("武蔵家", "王道家", "武道家"))]
+        # 重複除去
+        uniq, seen = [], set()
+        for r in sorted(members, key=lambda r: score(r["ev"]), reverse=True):
+            k = (r["shop"], r["url"])
+            if k in seen:
+                continue
+            seen.add(k)
+            uniq.append(r)
+        if uniq:
+            fams.append((name, uniq))
+
+    with open(os.path.join(OUT, "lineage.md"), "w", encoding="utf-8") as f:
+        f.write(header("系譜マップ（出身店・のれん分け・系列）"))
+        f.write("> `wards/*.md` の「看板・特徴」テキストから系統キーワードで自動抽出。**根拠**列にDB内の記述を併記しています(各店の正確な師弟・資本関係は出典先で確認のこと)。同一店が複数系統に現れることがあります。\n\n")
+        f.write("## 目次\n")
+        for name, uniq in fams:
+            f.write(f"- {name}（{len(uniq)}店）\n")
+        f.write("\n")
+        for name, uniq in fams:
+            f.write(f"### {name}（{len(uniq)}店）\n\n")
+            f.write("| 店名 | 区・最寄駅 | 評価の目安 | 根拠（DB内の記述） | 出典 |\n|---|---|---|---|---|\n")
+            for r in uniq:
+                f.write(f'| {r["shop"]} | {loc_str(r)} | {r["ev"]} | {r["feat"]} | {r["src"]} |\n')
+            f.write("\n")
+    return fams
+
+
+def write_data(records):
+    os.makedirs(DATA, exist_ok=True)
+    rows = sorted(records, key=lambda r: (-score(r["ev"]), r["ward"]))
+    cols = ["shop", "ward", "stations", "genre", "tabelog_score", "awards", "feature", "source_url"]
+    with open(os.path.join(DATA, "ramen.csv"), "w", encoding="utf-8", newline="") as f:
+        w = csv.writer(f)
+        w.writerow(cols)
+        for r in rows:
+            w.writerow([r["shop"], r["ward"], " / ".join(r["locs"]), r["genre"],
+                        score(r["ev"]) or "", ";".join(awards_of(r)), r["feat"], r["url"]])
+    arr = [dict(shop=r["shop"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
+               tabelog_score=(score(r["ev"]) or None), awards=awards_of(r),
+               feature=r["feat"], source_url=r["url"]) for r in rows]
+    with open(os.path.join(DATA, "ramen.json"), "w", encoding="utf-8") as f:
+        json.dump(arr, f, ensure_ascii=False, indent=2)
+    return len(rows)
+
+
+def main() -> None:
+    records = parse_records()
+    os.makedirs(OUT, exist_ok=True)
+    by_genre = write_genre(records)
+    star, bib, hyaku = write_awards(records)
+    late, morning, reserve, queue, hall = write_practical(records)
+    fams = write_lineage(records)
+    n = write_data(records)
+    print(f"records={len(records)} csv/json={n}")
+    print(f"awards: star={len(star)} bib={len(bib)} hyaku={len(hyaku)}")
+    print(f"practical: late={len(late)} morning={len(morning)} reserve={len(reserve)} queue={len(queue)} hall={len(hall)}")
+    print("lineage families:")
+    for name, uniq in fams:
+        print(f"  {name}: {len(uniq)}")
 
 
 if __name__ == "__main__":
