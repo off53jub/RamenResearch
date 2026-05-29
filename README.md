@@ -82,8 +82,20 @@ wards/01_chiyoda.md  02_chuo.md     03_minato.md    04_shinjuku.md
 
 - **[ジャンル別一覧](indexes/by-genre.md)** — 家系・二郎系・煮干し・つけ麺・味噌・塩・鶏白湯・担々麺・貝/魚介・鴨・ワンタン・油そば ほかで横断(全704店、同一店は出典URLで名寄せ)
 - **[百名店・ミシュラン一覧](indexes/hyakumeiten-michelin.md)** — 食べログ ラーメン百名店(77)/ ミシュラン ビブグルマン(24)/ 星(3)
+- **[実用インデックス](indexes/practical.md)** — 深夜営業・朝ラー・予約制/整理券・行列/売り切れ仕舞い・殿堂(3.75↑)・区別おすすめTOP3
+- **[系譜マップ](indexes/lineage.md)** — 二郎系・家系・一燈系・大勝軒系・富士丸系・ほん田系 ほか出身店/のれん分け/系列で整理
 
-再生成: `python3 scripts/build_indexes.py`(店名＋出典URLで名寄せし、カテゴリのキーワード整合性を自己検証)
+（補足: ⭐の星3＝鳴龍/金色不如帰/蔦、ビブグルマン上位＝麦苗4.03・八五3.96・五感3.96・多賀野3.90 など）
+
+### 📦 データ(機械可読)
+
+アプリ連携・スプレッドシート用に全店を構造化出力(`scripts/build_indexes.py` が生成):
+
+- **[data/ramen.csv](data/ramen.csv)** — `shop, ward, stations, genre, tabelog_score, awards, feature, source_url`
+- **[data/ramen.json](data/ramen.json)** — 同項目の配列(`stations`/`awards` は配列)
+
+### 🔄 再生成
+`python3 scripts/build_indexes.py` で全インデックスとデータを一括再生成します。店名＋出典URL(言語別 `/en/` は正規化)で名寄せし、認定カテゴリのキーワード整合性を `assert` で自己検証します。
 
 ---
 
