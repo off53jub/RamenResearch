@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東京23区 駅別ラーメンDB ビューア 🍜</title>
+<style>
+  :root{
+    --bg:#faf7f2; --card:#fff; --ink:#26201a; --sub:#7a6f63; --line:#e7ddd0;
+    --accent:#c0392b; --accent2:#e67e22; --chip:#f1e8da; --hit:#fff7ed;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+    line-height:1.5;}
+  header{background:linear-gradient(135deg,#c0392b,#e67e22);color:#fff;padding:18px 16px;}
+  header h1{margin:0;font-size:20px;}
+  header p{margin:4px 0 0;font-size:12px;opacity:.92;}
+  .wrap{max-width:1100px;margin:0 auto;padding:14px 12px 60px;}
+  .controls{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:12px;margin:14px 0;display:grid;gap:10px;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:end;}
+  .controls .full{grid-column:1/-1;}
+  label{font-size:12px;color:var(--sub);display:block;margin-bottom:3px;font-weight:600;}
+  input[type=search],select,input[type=number]{width:100%;padding:8px 9px;font-size:14px;
+    border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);}
+  .checks{display:flex;gap:12px;flex-wrap:wrap;align-items:center;}
+  .checks label{display:inline-flex;gap:5px;align-items:center;margin:0;font-size:13px;color:var(--ink);font-weight:500;cursor:pointer;}
+  .bar{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;margin:6px 2px;}
+  .count{font-size:13px;color:var(--sub);}
+  .count b{color:var(--accent);font-size:16px;}
+  .reset{font-size:12px;background:none;border:1px solid var(--line);border-radius:8px;
+    padding:6px 10px;cursor:pointer;color:var(--sub);}
+  .reset:hover{background:var(--chip);}
+  table{width:100%;border-collapse:collapse;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px;}
+  thead th{background:#f3ece0;text-align:left;padding:9px 10px;font-size:12px;color:var(--sub);
+    cursor:pointer;white-space:nowrap;user-select:none;position:sticky;top:0;}
+  thead th:hover{color:var(--accent);}
+  tbody td{padding:9px 10px;border-top:1px solid var(--line);vertical-align:top;}
+  tbody tr:hover{background:var(--hit);}
+  .shop a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .shop a:hover{text-decoration:underline;}
+  .shop .nourl{font-weight:600;}
+  .score{font-variant-numeric:tabular-nums;font-weight:700;}
+  .loc,.feat{color:var(--sub);}
+  .feat{font-size:12px;}
+  .chips{display:flex;gap:4px;flex-wrap:wrap;}
+  .chip{background:var(--chip);border-radius:999px;padding:1px 8px;font-size:11px;color:#6b5d4b;white-space:nowrap;}
+  .badge{display:inline-block;border-radius:999px;padding:1px 7px;font-size:11px;font-weight:700;margin-right:3px;}
+  .b-star{background:#fde2e0;color:#b03227;}
+  .b-bib{background:#fdebd6;color:#a85b12;}
+  .b-hyaku{background:#e6efe0;color:#3f6b2f;}
+  .empty{padding:30px;text-align:center;color:var(--sub);}
+  footer{color:var(--sub);font-size:11.5px;margin-top:18px;text-align:center;}
+  footer a{color:var(--sub);}
+  @media(max-width:680px){
+    .hide-sp{display:none;}
+    .wrap{padding:10px 8px 50px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🍜 東京23区 駅別ラーメンDB ビューア</h1>
+  <p>区・ジャンル・認定・点数・キーワードで絞り込み（食べログ点数は掲載時点の目安 / 出典は各行のリンク）</p>
+</header>
+
+<div class="wrap">
+  <div class="controls">
+    <div class="full">
+      <label for="q">キーワード（店名・駅・特徴）</label>
+      <input type="search" id="q" placeholder="例: 煮干し / 二郎 / 高田馬場 / 鳴龍">
+    </div>
+    <div>
+      <label for="ward">区</label>
+      <select id="ward"><option value="">すべての区</option></select>
+    </div>
+    <div>
+      <label for="genre">ジャンル</label>
+      <select id="genre"><option value="">すべてのジャンル</option></select>
+    </div>
+    <div>
+      <label for="minscore">食べログ点数（以上）</label>
+      <select id="minscore">
+        <option value="0">指定なし</option>
+        <option value="3.5">3.5+</option>
+        <option value="3.6">3.6+</option>
+        <option value="3.7">3.7+</option>
+        <option value="3.75">3.75+</option>
+        <option value="3.8">3.8+</option>
+      </select>
+    </div>
+    <div>
+      <label for="sort">並び替え</label>
+      <select id="sort">
+        <option value="score">点数が高い順</option>
+        <option value="ward">区順</option>
+        <option value="shop">店名順</option>
+      </select>
+    </div>
+    <div class="full">
+      <label>認定（チェックでAND絞り込み）</label>
+      <div class="checks">
+        <label><input type="checkbox" id="c-star"> ⭐ ミシュラン星</label>
+        <label><input type="checkbox" id="c-bib"> 🅱️ ビブグルマン</label>
+        <label><input type="checkbox" id="c-hyaku"> 💯 百名店</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="count"><b id="n">–</b> 店 / 全 <span id="total">–</span> 店</div>
+    <button class="reset" id="reset">条件をクリア</button>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-k="shop">店名</th>
+        <th data-k="ward">区・最寄駅</th>
+        <th data-k="genre" class="hide-sp">ジャンル</th>
+        <th data-k="score">点数</th>
+        <th data-k="awards" class="hide-sp">認定</th>
+        <th class="hide-sp">特徴</th>
+      </tr>
+    </thead>
+    <tbody id="rows"><tr><td colspan="6" class="empty">読み込み中…</td></tr></tbody>
+  </table>
+
+  <footer>
+    データ: <a href="data/ramen.json">ramen.json</a>（<code>scripts/build_indexes.py</code> 自動生成） /
+    全店「実在・営業中」を確認した掲載。閉店・時間変更があり得るため訪問前に各店の最新情報をご確認ください。
+  </footer>
+</div>
+
+<script>
+const WARD_ORDER = ["千代田区","中央区","港区","新宿区","文京区","台東区","墨田区","江東区","品川区","目黒区","大田区","世田谷区","渋谷区","中野区","杉並区","豊島区","北区","荒川区","板橋区","練馬区","足立区","葛飾区","江戸川区"];
+let DATA = [];
+
+const $ = s => document.querySelector(s);
+const els = {
+  q:$("#q"), ward:$("#ward"), genre:$("#genre"), min:$("#minscore"), sort:$("#sort"),
+  star:$("#c-star"), bib:$("#c-bib"), hyaku:$("#c-hyaku"),
+  rows:$("#rows"), n:$("#n"), total:$("#total"), reset:$("#reset"),
+};
+
+function esc(s){return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function badges(aw){
+  return (aw||[]).map(a=>{
+    if(a==="ミシュラン星") return '<span class="badge b-star">⭐星</span>';
+    if(a==="ビブグルマン") return '<span class="badge b-bib">🅱️ビブ</span>';
+    if(a==="百名店") return '<span class="badge b-hyaku">💯百</span>';
+    return "";
+  }).join("");
+}
+
+function passes(r){
+  const q = els.q.value.trim().toLowerCase();
+  if(q){
+    const hay = (r.shop+" "+(r.stations||[]).join(" ")+" "+r.ward+" "+r.genre+" "+(r.feature||"")).toLowerCase();
+    if(!hay.includes(q)) return false;
+  }
+  if(els.ward.value && r.ward !== els.ward.value) return false;
+  if(els.genre.value && !(r.genres||[]).includes(els.genre.value)) return false;
+  const min = parseFloat(els.min.value);
+  if(min>0 && !(r.tabelog_score && r.tabelog_score>=min)) return false;
+  if(els.star.checked && !(r.awards||[]).includes("ミシュラン星")) return false;
+  if(els.bib.checked && !(r.awards||[]).includes("ビブグルマン")) return false;
+  if(els.hyaku.checked && !(r.awards||[]).includes("百名店")) return false;
+  return true;
+}
+
+function sortRows(rows){
+  const k = els.sort.value;
+  const sc = r => (r.tabelog_score||0);
+  if(k==="score") rows.sort((a,b)=>sc(b)-sc(a) || a.shop.localeCompare(b.shop,"ja"));
+  else if(k==="shop") rows.sort((a,b)=>a.shop.localeCompare(b.shop,"ja"));
+  else if(k==="ward") rows.sort((a,b)=>(WARD_ORDER.indexOf(a.ward)-WARD_ORDER.indexOf(b.ward)) || sc(b)-sc(a));
+  return rows;
+}
+
+function render(){
+  const rows = sortRows(DATA.filter(passes));
+  els.n.textContent = rows.length;
+  if(!rows.length){
+    els.rows.innerHTML = '<tr><td colspan="6" class="empty">条件に合う店が見つかりませんでした。</td></tr>';
+    return;
+  }
+  const html = rows.map(r=>{
+    const name = r.source_url
+      ? `<a href="${esc(r.source_url)}" target="_blank" rel="noopener">${esc(r.shop)}</a>`
+      : `<span class="nourl">${esc(r.shop)}</span>`;
+    const loc = `${esc(r.ward)}<br><span class="loc">${esc((r.stations||[]).join(" / "))}</span>`;
+    const score = r.tabelog_score ? r.tabelog_score.toFixed(2) : "–";
+    const chips = `<div class="chips">${(r.genres||[]).map(g=>`<span class="chip">${esc(g)}</span>`).join("")}</div>`;
+    return `<tr>
+      <td class="shop">${name}${ (r.awards&&r.awards.length)?("<br>"+badges(r.awards)) : "" }</td>
+      <td>${loc}</td>
+      <td class="hide-sp">${chips}</td>
+      <td class="score">${score}</td>
+      <td class="hide-sp">${badges(r.awards)||"–"}</td>
+      <td class="feat hide-sp">${esc(r.feature||"")}</td>
+    </tr>`;
+  }).join("");
+  els.rows.innerHTML = html;
+}
+
+function initFilters(){
+  // 区: 固定順
+  const wards = WARD_ORDER.filter(w=>DATA.some(r=>r.ward===w));
+  for(const w of wards){ const o=document.createElement("option"); o.value=w; o.textContent=w; els.ward.appendChild(o); }
+  // ジャンル: データ内ラベルを出現頻度順
+  const gc = {};
+  for(const r of DATA) for(const g of (r.genres||[])) gc[g]=(gc[g]||0)+1;
+  for(const g of Object.keys(gc).sort((a,b)=>gc[b]-gc[a])){
+    const o=document.createElement("option"); o.value=g; o.textContent=`${g}（${gc[g]}）`; els.genre.appendChild(o);
+  }
+}
+
+function bind(){
+  for(const el of [els.q,els.ward,els.genre,els.min,els.sort,els.star,els.bib,els.hyaku]){
+    el.addEventListener("input", render);
+  }
+  // ヘッダクリックでソート切替
+  document.querySelectorAll("thead th[data-k]").forEach(th=>{
+    th.addEventListener("click", ()=>{
+      const k = th.dataset.k;
+      els.sort.value = (k==="score"||k==="ward"||k==="shop") ? k : "score";
+      render();
+    });
+  });
+  els.reset.addEventListener("click", ()=>{
+    els.q.value=""; els.ward.value=""; els.genre.value=""; els.min.value="0"; els.sort.value="score";
+    els.star.checked=els.bib.checked=els.hyaku.checked=false; render();
+  });
+}
+
+fetch("data/ramen.json")
+  .then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d=>{ DATA=d; els.total.textContent=d.length; initFilters(); bind(); render(); })
+  .catch(e=>{ els.rows.innerHTML = `<tr><td colspan="6" class="empty">データの読み込みに失敗しました（${esc(String(e))}）。<br>GitHub Pages 上では正しく表示されます。</td></tr>`; });
+</script>
+</body>
+</html>

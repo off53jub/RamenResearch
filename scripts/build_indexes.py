@@ -25,6 +25,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 WARDS = os.path.join(ROOT, "wards")
 OUT = os.path.join(ROOT, "indexes")
 DATA = os.path.join(ROOT, "data")
+DOCS = os.path.join(ROOT, "docs")
 UPDATED = "2026-05-29"
 
 NON_STATION = ("🚉", "⭐", "🔎", "📝", "❌", "📂", "🧭", "✅", "⚠️", "🅱️", "💯", "🍜", "🗺️")
@@ -297,19 +298,25 @@ def write_lineage(records):
 
 def write_data(records):
     os.makedirs(DATA, exist_ok=True)
+    os.makedirs(os.path.join(DOCS, "data"), exist_ok=True)
     rows = sorted(records, key=lambda r: (-score(r["ev"]), r["ward"]))
-    cols = ["shop", "ward", "stations", "genre", "tabelog_score", "awards", "feature", "source_url"]
+    cols = ["shop", "ward", "stations", "genre", "genres", "tabelog_score", "awards", "feature", "source_url"]
     with open(os.path.join(DATA, "ramen.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
         for r in rows:
             w.writerow([r["shop"], r["ward"], " / ".join(r["locs"]), r["genre"],
-                        score(r["ev"]) or "", ";".join(awards_of(r)), r["feat"], r["url"]])
+                        "/".join(classify(r["genre"])), score(r["ev"]) or "",
+                        ";".join(awards_of(r)), r["feat"], r["url"]])
     arr = [dict(shop=r["shop"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
-               tabelog_score=(score(r["ev"]) or None), awards=awards_of(r),
-               feature=r["feat"], source_url=r["url"]) for r in rows]
+               genres=classify(r["genre"]), tabelog_score=(score(r["ev"]) or None),
+               awards=awards_of(r), feature=r["feat"], source_url=r["url"]) for r in rows]
+    payload = json.dumps(arr, ensure_ascii=False, indent=2)
     with open(os.path.join(DATA, "ramen.json"), "w", encoding="utf-8") as f:
-        json.dump(arr, f, ensure_ascii=False, indent=2)
+        f.write(payload)
+    # GitHub Pages のビューア(docs/index.html)から相対参照するため docs/data にも複製
+    with open(os.path.join(DOCS, "data", "ramen.json"), "w", encoding="utf-8") as f:
+        f.write(payload)
     return len(rows)
 
 

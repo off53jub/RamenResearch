@@ -76,6 +76,23 @@ wards/01_chiyoda.md  02_chuo.md     03_minato.md    04_shinjuku.md
 
 ---
 
+## 🌐 Web版（GitHub Pages）
+
+ブラウザで **区・ジャンル・認定・点数・キーワード**で絞り込めるビューアを `docs/` に用意しています(依存ライブラリなしの単一HTML + `docs/data/ramen.json`)。
+
+- 公開URL（Pages有効化後）: **https://off53jub.github.io/RamenResearch/**
+- ソース: [`docs/index.html`](docs/index.html)
+
+**有効化手順**（リポジトリ設定が必要。1回だけ）:
+1. GitHub の **Settings → Pages** を開く
+2. **Source** = "Deploy from a branch"
+3. **Branch** = `main`（PRマージ後）または `claude/sharp-tesla-Nhqmg`、**Folder** = `/docs` を選んで Save
+4. 数分後に上記URLで公開されます
+
+> ローカル確認: `python3 -m http.server -d docs 8000` → http://localhost:8000/ （`file://` 直開きは fetch がCORSで失敗します）
+
+---
+
 ## 🔎 横断インデックス
 
 駅・区をまたいで店を探せる自動生成インデックス(`wards/*.md` から生成。DB更新後は再生成で同期):
