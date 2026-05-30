@@ -75,6 +75,10 @@
   .tb2{background:#e3eefb;color:#2c5aa0;}
   .tb3{background:#fdecdb;color:#b3650f;}
   .tb4{background:#f2e4e2;color:#a23b2c;}
+  .hours-today{display:inline-block;border-radius:6px;padding:1px 7px;margin-top:3px;
+    font-size:11px;font-weight:600;white-space:nowrap;margin-left:3px;}
+  .hours-open{background:#e8f5e9;color:#2e7d32;}
+  .hours-closed{background:#fdecea;color:#c0392b;}
   .empty{padding:30px;text-align:center;color:var(--sub);}
   .td-stamp{white-space:nowrap;padding:6px 7px;}
   .s-btn{border:none;cursor:pointer;border-radius:6px;padding:2px 7px;
@@ -231,7 +235,7 @@
   <footer>
     データ: <a href="data/ramen.json">ramen.json</a> / <a href="data/lines.json">lines.json</a>（<code>scripts/build_indexes.py</code> 自動生成） /
     全店「実在・営業中」確認済。営業日・定休日は変更があり得るため訪問前に最新情報を確認ください。
-    🚊 所要時間は<strong>西新宿</strong>または<strong>虎ノ門ヒルズ</strong>からの目安（路線・距離からの推定で実経路ではありません）。⏰ 今すぐ行けるは定休日チェック＋時間帯（10〜17時：通常営業・17〜22時：夜営業・22時〜：深夜営業）で絞り込み（目安）。
+    🚊 所要時間は<strong>西新宿</strong>または<strong>虎ノ門ヒルズ</strong>からの目安（路線・距離からの推定で実経路ではありません）。⏰ 営業時間マスタ（食べログ取得）がある店は正確な時刻で判定。マスタ未収録の店は時間帯目安（10〜17時：昼・17〜22時：夜・22時〜：深夜）で判定。今日の営業時間が緑チップで表示されます。
     🌙 深夜＝23時以降まで／🍜 夜も営業＝「昼のみ」店を除いた夜営業見込み（個別の営業時間は未検証）。
     🏆 TRY＝講談社「TRYラーメン大賞」の大賞・新店大賞・殿堂入り（年度表記2025-2026＝第26回）。
     曜日/日曜/深夜フィルタは特徴テキストに手がかりのある店のみ反映。スタンプはブラウザのローカルに保存されます。
@@ -245,6 +249,7 @@ const WEEK_JP  = ["日","月","火","水","木","金","土"];
 const TODAY_IDX = new Date().getDay();
 const TODAY_ENG = DAY_ENG[TODAY_IDX];
 const NOW_HOUR = new Date().getHours();
+const NOW_MIN_OF_DAY = NOW_HOUR * 60 + new Date().getMinutes();
 
 document.getElementById("today-day").textContent = WEEK_JP[TODAY_IDX];
 const _nb = NOW_HOUR>=22?"深夜":NOW_HOUR>=17?"夜時間":NOW_HOUR>=10?"昼〜夕":"早朝";
@@ -272,12 +277,24 @@ function departKey(){ return els.depart && els.depart.value==="toranomon" ? "tor
 function departLabel(){ return departKey()==="toranomon" ? "虎ノ門ヒルズ" : "西新宿"; }
 function travelBandOf(r){ return departKey()==="toranomon" ? (r.travel_band_toranomon||r.travel_band||0) : (r.travel_band||0); }
 function travelMinOf(r){ return departKey()==="toranomon" ? (r.travel_min_toranomon!=null?r.travel_min_toranomon:999) : (r.travel_min!=null?r.travel_min:999); }
-function isOpenNow(r){
+function _parseMin(s){const[h,m]=s.split(':').map(Number);return h*60+m;}
+function _inSession(sess,t){return(sess||[]).some(s=>{const[a,b]=s.split('-');return t>=_parseMin(a)&&t<_parseMin(b);});}
+function _heuristic(r){
   if((r.closed_days||[]).includes(TODAY_ENG)) return false;
   if(NOW_HOUR>=22) return r.late_night;
   if(NOW_HOUR>=17) return !!r.evening;
   if(NOW_HOUR>=10) return true;
   return false;
+}
+function isOpenNow(r){
+  const hi=r.hours_info;
+  if(hi&&TODAY_ENG in hi){
+    const s=hi[TODAY_ENG];
+    if(s===null) return _heuristic(r);  // その日は未確認 → ヒューリスティック
+    if(!s||s.length===0) return false;  // 定休確定
+    return _inSession(s,NOW_MIN_OF_DAY);
+  }
+  return _heuristic(r);
 }
 function updateDepartLabels(){
   const lbl = departLabel();
@@ -313,6 +330,14 @@ function travelChip(r){
   const lbl = departLabel();
   return `<span class="tband tb${band}" title="${lbl}からの目安所要時間（路線・距離からの推定）">`
        + `🚊${lbl} ${TBAND[band]}</span>`;
+}
+function todayHoursChip(r){
+  const hi=r.hours_info;
+  if(!hi||!(TODAY_ENG in hi)) return "";
+  const s=hi[TODAY_ENG];
+  if(s===null) return "";
+  if(!s||s.length===0) return '<span class="hours-today hours-closed">本日休</span>';
+  return `<span class="hours-today hours-open">⏰${s.map(x=>x.replace('-','〜')).join(' / ')}</span>`;
 }
 
 function passes(r){
@@ -382,7 +407,7 @@ function render(){
     const aw = badges(r.awards);
     const sub = (aw+mk) ? ("<br>"+aw+mk) : "";
     const linesTxt = (r.lines||[]).length ? `<div class="lines">🚃 ${esc(r.lines.join(" / "))}</div>` : "";
-    const loc = `${esc(r.pref||"")} ${esc(r.ward)}<br><span class="loc">${esc((r.stations||[]).join(" / "))}</span>${linesTxt}<div>${travelChip(r)}</div>`;
+    const loc = `${esc(r.pref||"")} ${esc(r.ward)}<br><span class="loc">${esc((r.stations||[]).join(" / "))}</span>${linesTxt}<div>${travelChip(r)}${todayHoursChip(r)}</div>`;
     const score = r.tabelog_score ? r.tabelog_score.toFixed(2) : "–";
     const chips = `<div class="chips">${(r.genres||[]).map(g=>`<span class="chip">${esc(g)}</span>`).join("")}</div>`;
     const vBtn = `<button class="s-btn${sv?" sv":""}" data-action="visited" data-key="${esc(key)}" title="行った">✓</button>`;

@@ -27,7 +27,22 @@ REGIONS = os.path.join(ROOT, "regions")
 OUT = os.path.join(ROOT, "indexes")
 DATA = os.path.join(ROOT, "data")
 DOCS = os.path.join(ROOT, "docs")
+HOURS_FILE = os.path.join(DATA, "shop-hours.json")
 UPDATED = "2026-05-30"
+
+_HOURS_MASTER: dict | None = None
+
+
+def _get_hours_master() -> dict:
+    """data/shop-hours.json を一度だけ読み込んでキャッシュする。"""
+    global _HOURS_MASTER
+    if _HOURS_MASTER is None:
+        if os.path.exists(HOURS_FILE):
+            with open(HOURS_FILE, encoding="utf-8") as f:
+                _HOURS_MASTER = json.load(f)
+        else:
+            _HOURS_MASTER = {}
+    return _HOURS_MASTER
 
 # 地域ディレクトリ → 表示名(出力順)。多摩は東京都だが23区と区別するため別ラベル。
 PREFS = [
@@ -544,8 +559,12 @@ def travel_minutes_toranomon(ward: str, locs: list[str]) -> int:
     return best
 
 
+_HOURS_DAYS = ("Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun")
+
+
 def annotate(records: list[dict]) -> None:
-    """夜営業フラグと各起点からの所要時間バンドを各レコードに付与する。"""
+    """夜営業フラグ・所要時間・営業時間マスタを各レコードに付与する。"""
+    hours_master = _get_hours_master()
     for r in records:
         r["lunch_only"] = bool(r.get("lunch_only"))
         r["evening"] = not r["lunch_only"]
@@ -556,6 +575,12 @@ def annotate(records: list[dict]) -> None:
         r["travel_min_toranomon"] = mt
         r["travel_band_toranomon"] = travel_band(mt)
         r["try_awards"] = try_awards_of(r)
+        # 営業時間マスタ: URL でルックアップ
+        entry = hours_master.get(r.get("url", ""))
+        if entry:
+            r["hours_info"] = {d: entry.get(d) for d in _HOURS_DAYS if d in entry}
+        else:
+            r["hours_info"] = None
 
 
 def parse_records() -> list[dict]:
@@ -855,6 +880,7 @@ def write_data(records):
                travel_band=r.get("travel_band"),
                travel_min_toranomon=r.get("travel_min_toranomon"),
                travel_band_toranomon=r.get("travel_band_toranomon"),
+               hours_info=r.get("hours_info"),
                try_awards=r.get("try_awards", [])) for r in rows]
     payload = json.dumps(arr, ensure_ascii=False, indent=2)
     with open(os.path.join(DATA, "ramen.json"), "w", encoding="utf-8") as f:
