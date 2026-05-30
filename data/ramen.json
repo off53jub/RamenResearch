@@ -16,6 +16,24 @@
     "source_url": "https://tabelog.com/ramen/kanagawa/A1401/A140101/rank"
   },
   {
+    "shop": "中華蕎麦 とみ田",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・松戸駅"
+    ],
+    "genre": "つけ麺・ラーメン",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 4.07,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "全国区の濃厚魚介豚骨つけ麺、早朝整理券の超有名店、東口4分",
+    "source_url": "https://tabelog.com/chiba/A1203/A120302/12000422"
+  },
+  {
     "shop": "Homemade Ramen 麦苗",
     "pref": "東京都",
     "ward": "大田区",
@@ -32,6 +50,22 @@
     ],
     "feature": "全国区の行列名店、丸鶏・魚介・昆布の繊細スープ",
     "source_url": "https://tabelog.com/tokyo/A1315/A131502/R1901/rstLst/ramen"
+  },
+  {
+    "shop": "中華そば しば田",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・狛江駅 / 和泉多摩川駅"
+    ],
+    "genre": "淡麗〜濃いめ醤油中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.98,
+    "awards": [],
+    "feature": "2024年9月仙川から移転、狛江北口1分・日/第1・3月休",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132603/13300645"
   },
   {
     "shop": "銀座 八五",
@@ -327,6 +361,46 @@
     "source_url": "https://tabelog.com/tokyo/A1317/A131701/13267329"
   },
   {
+    "shop": "入鹿TOKYO（IRUCA-Tokyo-）",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・東久留米駅"
+    ],
+    "genre": "鶏清湯（柚子塩・醤油塩）",
+    "genres": [
+      "塩",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.86,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "麗しい鶏清湯、東久留米1位、西口2分（店内飲食は限定的・要確認）",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132802/13234223"
+  },
+  {
+    "shop": "支那ソバ 小むろ",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・行徳駅 / 南行徳駅 / 妙典駅"
+    ],
+    "genre": "醤油・塩・ワンタンメン",
+    "genres": [
+      "ワンタン麺",
+      "塩",
+      "醤油・中華そば",
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.84,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "塩ワンタンメンが名物の行列店、市川市最高点、行徳5分・〜16時・火休",
+    "source_url": "https://tabelog.com/chiba/A1202/A120202/12035648"
+  },
+  {
     "shop": "麺 みつヰ（みつい）",
     "pref": "東京都",
     "ward": "台東区",
@@ -383,6 +457,24 @@
     "source_url": "https://tabelog.com/ramen/tokyo/A1305/A130504/rank"
   },
   {
+    "shop": "手打ち 陰日向（かげひなた）",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・分倍河原駅"
+    ],
+    "genre": "手打ち極太・生姜醤油",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.84,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "川崎「日陰」出身、駅6〜7分",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132602/13297403"
+  },
+  {
     "shop": "麺処 懐や（ふところや）",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -399,6 +491,25 @@
     ],
     "feature": "中村屋出身、駅2分、北部最高評価。8年連続百名店・ミシュラン掲載歴",
     "source_url": "https://tabelog.com/kanagawa/A1405/A140507/14049709"
+  },
+  {
+    "shop": "濃麺 海月（こいめん くらげ）",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・東千葉駅"
+    ],
+    "genre": "煮干し・鶏白湯",
+    "genres": [
+      "煮干し",
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.83,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "EAST百名店常連の超人気店、駅5分（営業不定期・要確認）",
+    "source_url": "https://tabelog.com/chiba/A1201/A120101/12033982"
   },
   {
     "shop": "麺処 ほん田 秋葉原本店",
@@ -492,6 +603,41 @@
     "awards": [],
     "feature": "駒込トップの評価",
     "source_url": "https://tabelog.com/tokyo/A1323/A132301/13308596"
+  },
+  {
+    "shop": "元祖スタミナ満点らーめん すず鬼",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・三鷹駅"
+    ],
+    "genre": "ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.83,
+    "awards": [],
+    "feature": "三毛作営業の話題店、濃厚スタミナ系、エリア最高評価",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1320/A132002/rank"
+  },
+  {
+    "shop": "一番いちばん",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・町田駅"
+    ],
+    "genre": "白河系手打ち中華そば",
+    "genres": [
+      "醤油・中華そば",
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.83,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "「とら食堂」系譜の手打ち麺＋端正な醤油、町田1位、小田急町田10分",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132701/13001469"
   },
   {
     "shop": "ラーメン二郎 横浜関内店",
@@ -768,6 +914,24 @@
     "source_url": "https://tabelog.com/ramen/tokyo/A1322/A132204/rank"
   },
   {
+    "shop": "タンタン",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・八王子駅"
+    ],
+    "genre": "八王子ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.81,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "1980年創業、八王子ラーメンの頂点、南口5分・土日祝休",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132904/13046007"
+  },
+  {
     "shop": "ラーメン フリーバーズ",
     "pref": "神奈川県",
     "ward": "横浜南西部",
@@ -784,6 +948,22 @@
     ],
     "feature": "百名店2025、コスパも良好",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1401/A140309/rank"
+  },
+  {
+    "shop": "ラーメン 杉田家 千葉祐光店",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・東千葉駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.8,
+    "awards": [],
+    "feature": "吉村家直系、早朝営業で朝ラー可、中央区最高峰",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120101/rank"
   },
   {
     "shop": "純手打ち だるま",
@@ -1163,6 +1343,58 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132403/13094595"
   },
   {
+    "shop": "麺笑 巧真（こうしん）",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・八王子駅"
+    ],
+    "genre": "ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.79,
+    "awards": [],
+    "feature": "素材の旨味を丁寧に引き出す高完成度、エリア2位",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132904/rank"
+  },
+  {
+    "shop": "迂直（うちょく）",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・吉祥寺駅"
+    ],
+    "genre": "つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.79,
+    "awards": [],
+    "feature": "荻窪の伝説店が2025年4月コピス吉祥寺で復活、昆布水つけ麺、駅3分",
+    "source_url": "https://tabelog.com/tokyo/A1320/A132001/13309093"
+  },
+  {
+    "shop": "柴崎亭 つつじヶ丘本店",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・つつじヶ丘駅 / 仙川駅"
+    ],
+    "genre": "鶏清湯・醤油/塩（ワンタン）",
+    "genres": [
+      "ワンタン麺",
+      "塩",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.79,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "澄んだ旨味濃密スープ、駅2分",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132601/13135162"
+  },
+  {
     "shop": "日陰（ひかげ）",
     "pref": "神奈川県",
     "ward": "川崎市南部",
@@ -1179,6 +1411,24 @@
     ],
     "feature": "幸区最高評価、極太麺が主役、連日行列（南加瀬、駅から約15分）",
     "source_url": "https://tabelog.com/kanagawa/A1405/A140503/14081996"
+  },
+  {
+    "shop": "つけソバ いしい",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・市川駅 / 市川真間駅"
+    ],
+    "genre": "つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.78,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "千葉つけ麺名店出身＋蕎麦修行、昼のみ（市川真間/国府台）",
+    "source_url": "https://tabelog.com/chiba/A1202/A120202/12055768"
   },
   {
     "shop": "八雲（やくも）",
@@ -1559,6 +1809,38 @@
     "source_url": "https://tabelog.com/tokyo/A1321/A132101/13261549"
   },
   {
+    "shop": "煮干鰮らーめん 圓（えん）八王子本店",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・八王子駅"
+    ],
+    "genre": "煮干し",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.78,
+    "awards": [],
+    "feature": "濃厚煮干しの行列店、北口10分・無休",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132904/13091258"
+  },
+  {
+    "shop": "ラーメン 健やか",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・三鷹駅"
+    ],
+    "genre": "ラーメン（無化調）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.78,
+    "awards": [],
+    "feature": "大山鶏・ホンビノス貝の自家製麺、北口5分",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1320/A132002/rank"
+  },
+  {
     "shop": "丿貫 福富町本店",
     "pref": "神奈川県",
     "ward": "横浜中心部",
@@ -1614,6 +1896,25 @@
     ],
     "feature": "「ラーメンの鬼」佐野実創業の聖地、駅5分・水休",
     "source_url": "https://tabelog.com/kanagawa/A1401/A140305/14014445"
+  },
+  {
+    "shop": "兎に角 松戸本店",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・松戸駅"
+    ],
+    "genre": "油そば・つけ麺",
+    "genres": [
+      "つけ麺",
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.77,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "進化系油そば＆魚介豚骨つけ麺",
+    "source_url": "https://tabelog.com/chiba/A1203/A120302/12001198"
   },
   {
     "shop": "麺処 有彩（ありさ）",
@@ -2057,6 +2358,43 @@
     "source_url": "https://tabelog.com/kanagawa/A1407/A140702/14057313"
   },
   {
+    "shop": "中華ソバ 篤々（TOKU-TOKU）",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・勝田台駅・東葉勝田台駅"
+    ],
+    "genre": "煮干し系中華そば",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.76,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "煮干しソバ＋和え玉、習志野・八千代1位、勝田台2分・月火休",
+    "source_url": "https://tabelog.com/chiba/A1202/A120204/12040080"
+  },
+  {
+    "shop": "豚骨醤油ラーメン 王道家 柏店",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・柏駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.76,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "家系の超有力店、キレのある豚骨醤油、柏1位・月休",
+    "source_url": "https://tabelog.com/chiba/A1203/A120301/12047768"
+  },
+  {
     "shop": "次念序（じねんじょ）",
     "pref": "埼玉県",
     "ward": "埼玉",
@@ -2299,6 +2637,39 @@
     "source_url": "https://tabelog.com/tokyo/A1323/A132301/13248342"
   },
   {
+    "shop": "鴨中華そば 楓（かえで）",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・八王子駅"
+    ],
+    "genre": "鴨・煮干し",
+    "genres": [
+      "煮干し",
+      "鴨"
+    ],
+    "tabelog_score": 3.76,
+    "awards": [],
+    "feature": "鴨と動物系・煮干しの旨味",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132904/rank"
+  },
+  {
+    "shop": "ラーメン二郎 ひばりヶ丘駅前店",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・ひばりヶ丘駅 / 保谷駅"
+    ],
+    "genre": "二郎系（直系）",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.76,
+    "awards": [],
+    "feature": "乳化スープ＋野菜タワー、直系屈指、駅3分・日休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132801/13024745"
+  },
+  {
     "shop": "地球の中華そば",
     "pref": "神奈川県",
     "ward": "横浜中心部",
@@ -2388,6 +2759,42 @@
     ],
     "feature": "「多賀野」出身、エリア最高評価",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1401/A140204/rank"
+  },
+  {
+    "shop": "松戸中華そば 富田食堂",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・松戸駅"
+    ],
+    "genre": "ラーメン・つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.75,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "とみ田の姉妹ブランド、並び少なめでとみ田系の味",
+    "source_url": "https://tabelog.com/chiba/A1203/A120302/12042171"
+  },
+  {
+    "shop": "麺処 にし尾",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・柏駅"
+    ],
+    "genre": "ラーメン（手揉み麺）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.75,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "手揉み麺×醤油/塩/煮干し、2022年開店の新鋭名店",
+    "source_url": "https://tabelog.com/chiba/A1203/A120301/12054858"
   },
   {
     "shop": "麺処 はら田",
@@ -2696,6 +3103,22 @@
     "awards": [],
     "feature": "恵比寿1位、行列必至の実力店",
     "source_url": "https://tabelog.com/tokyo/A1303/A130302/13253970"
+  },
+  {
+    "shop": "鶏こく中華 すず喜",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・三鷹駅"
+    ],
+    "genre": "鶏白湯（濃厚）",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.75,
+    "awards": [],
+    "feature": "「すず鬼」系列、濃厚鶏こく",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1320/A132002/rank"
   },
   {
     "shop": "麺や でこ",
@@ -3107,6 +3530,54 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/13206995"
   },
   {
+    "shop": "中華そば 吾衛門（ごえもん）",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・西八王子駅"
+    ],
+    "genre": "八王子ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.74,
+    "awards": [],
+    "feature": "老舗の行列店、刻み玉ねぎが看板、北口3分・日祝休",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132904/13019588"
+  },
+  {
+    "shop": "東京味噌らーめん 鶉（うずら）",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・武蔵境駅"
+    ],
+    "genre": "味噌",
+    "genres": [
+      "味噌"
+    ],
+    "tabelog_score": 3.74,
+    "awards": [],
+    "feature": "「七彩」出身、6種味噌＋自家製手揉み麺、北口5分",
+    "source_url": "https://tabelog.com/tokyo/A1320/A132003/13177636"
+  },
+  {
+    "shop": "鶏そば ムタヒロ 2号店",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・国分寺駅"
+    ],
+    "genre": "濃厚鶏白湯",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.74,
+    "awards": [],
+    "feature": "国分寺発「ムタヒロ」グループ、エリア1位",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132502/rank"
+  },
+  {
     "shop": "啜磨専科（すするません）",
     "pref": "神奈川県",
     "ward": "横浜中心部",
@@ -3225,6 +3696,42 @@
     "awards": [],
     "feature": "辻堂エリア最高評価クラスの人気店",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1404/A140404/rank"
+  },
+  {
+    "shop": "麺や 福一",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・成田駅・京成成田駅"
+    ],
+    "genre": "鶏白湯",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.73,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "特製鶏白湯＋名物半チャーハン、成田1位、両駅徒歩圏",
+    "source_url": "https://tabelog.com/chiba/A1204/A120401/12004272"
+  },
+  {
+    "shop": "長男、もんたいちお",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・本八幡駅"
+    ],
+    "genre": "つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.73,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "超極太麺×濃厚魚介豚骨、市川市最高評価級",
+    "source_url": "https://tabelog.com/chiba/A1202/A120202/12045569"
   },
   {
     "shop": "柳麺 呉田（ごでん）",
@@ -3529,6 +4036,38 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/R5919/rstLst/ramen"
   },
   {
+    "shop": "Tombo（トンボ）",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・吉祥寺駅"
+    ],
+    "genre": "ラーメン（創作）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.73,
+    "awards": [],
+    "feature": "鶏豚魚介のトリプルスープ、TRY新人賞",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1320/A132001/rank"
+  },
+  {
+    "shop": "くじら食堂 nonowa 東小金井店",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・東小金井駅"
+    ],
+    "genre": "ラーメン（自家製麺）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.73,
+    "awards": [],
+    "feature": "打ち立て手揉み太麺×清湯、行列必至、駅直結",
+    "source_url": "https://tabelog.com/tokyo/A1325/A132501/13226407"
+  },
+  {
     "shop": "ヌードルズキッチン ガナーズ",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -3666,6 +4205,54 @@
     "awards": [],
     "feature": "エリア最高評価の家系人気店、駅447m",
     "source_url": "https://tabelog.com/kanagawa/A1407/A140701/R4256/rstLst/ramen"
+  },
+  {
+    "shop": "ラーメン二郎 松戸駅前店",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・松戸駅"
+    ],
+    "genre": "二郎系",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.72,
+    "awards": [],
+    "feature": "松戸駅近の二郎",
+    "source_url": "https://tabelog.com/ramen/chiba/A1203/A120302/rank"
+  },
+  {
+    "shop": "中華そば榮田",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・柏駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.72,
+    "awards": [],
+    "feature": "上品な醤油中華そばの実力店、柏3位",
+    "source_url": "https://tabelog.com/ramen/chiba/A1203/A120301/rank"
+  },
+  {
+    "shop": "赤坂味一",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・船橋駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.72,
+    "awards": [],
+    "feature": "京成船橋の老舗・地元定番、あっさり醤油、エリア最上位級",
+    "source_url": "https://tabelog.com/chiba/A1202/A120201/12000108"
   },
   {
     "shop": "麺屋 永太（えいた）",
@@ -3960,6 +4547,54 @@
     "source_url": "https://tabelog.com/tokyo/A1323/A132302/13113229"
   },
   {
+    "shop": "中華そば みたか",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・三鷹駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.72,
+    "awards": [],
+    "feature": "地元で愛される正統派",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1320/A132002/rank"
+  },
+  {
+    "shop": "中華そば 一清（いっせい）",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・武蔵小金井駅"
+    ],
+    "genre": "鶏清湯",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.72,
+    "awards": [],
+    "feature": "鶏＋昆布鰹の繊細スープ、塩/醤油、武蔵小金井最高評価級",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132501/rank"
+  },
+  {
+    "shop": "町田汁場 しおらーめん進化 町田駅前店",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・町田駅"
+    ],
+    "genre": "塩ラーメン",
+    "genres": [
+      "塩"
+    ],
+    "tabelog_score": 3.72,
+    "awards": [],
+    "feature": "鶏・魚介・昆布・貝の上品な塩＋自家製麺、JR町田5分",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132701/13245319"
+  },
+  {
     "shop": "麺小屋 てち",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -4098,6 +4733,22 @@
     "awards": [],
     "feature": "言わずと知れた二郎、駅504m",
     "source_url": "https://tabelog.com/kanagawa/A1407/A140701/R4256/rstLst/ramen"
+  },
+  {
+    "shop": "ラーメン二郎 千葉店",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・千葉駅"
+    ],
+    "genre": "二郎系",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.71,
+    "awards": [],
+    "feature": "千葉の二郎、ボリューム満点（葭川公園寄り・千葉駅圏）",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120101/rank"
   },
   {
     "shop": "狼煙 本店",
@@ -4414,6 +5065,57 @@
     "awards": [],
     "feature": "キレのある非乳化醤油＋デロ麺／駅29m・昼のみ/木土日祝休",
     "source_url": "https://tabelog.com/tokyo/A1324/A132402/R5560/rstLst/ramen"
+  },
+  {
+    "shop": "みんみんラーメン 本店",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・西八王子駅"
+    ],
+    "genre": "八王子ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.71,
+    "awards": [],
+    "feature": "1982年創業、八王子ラーメンの代名詞、刻み玉ねぎの真髄",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132904/rank"
+  },
+  {
+    "shop": "らぁめん 信",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・町田駅"
+    ],
+    "genre": "醤油・塩",
+    "genres": [
+      "塩",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.71,
+    "awards": [],
+    "feature": "評価の高い人気店（町田・古淵）",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1327/A132701/rank"
+  },
+  {
+    "shop": "元祖一条流 がんこラーメン 立川たま館分店",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・立川駅"
+    ],
+    "genre": "こってり煮干し豚骨魚介",
+    "genres": [
+      "煮干し",
+      "豚骨・博多",
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.71,
+    "awards": [],
+    "feature": "「がんこ総本家」直系、駅至近「らーめんたま館」内",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132901/13263959"
   },
   {
     "shop": "横濱家系ラーメン 勝鬨家",
@@ -4939,6 +5641,137 @@
     "source_url": "https://tabelog.com/tokyo/A1321/A132102/13153294"
   },
   {
+    "shop": "珍々亭（ちんちんてい）",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・武蔵境駅"
+    ],
+    "genre": "油そば",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.7,
+    "awards": [],
+    "feature": "1957年創業、「武蔵野系油そば」発祥の老舗",
+    "source_url": "https://tabelog.com/tokyo/A1320/A132003/13005922"
+  },
+  {
+    "shop": "らーめん愉悦処 鏡花（きょうか）",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・立川駅"
+    ],
+    "genre": "ラーメン・つけ麺（無化調）",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.7,
+    "awards": [],
+    "feature": "72時間炊いた贅沢スープ、立川No.1の声",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132901/13005986"
+  },
+  {
+    "shop": "麺食堂くにを",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・国分寺駅"
+    ],
+    "genre": "ラーメン（清湯系）",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.7,
+    "awards": [],
+    "feature": "国分寺の高評価店",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132502/rank"
+  },
+  {
+    "shop": "めだかタンタン",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・昭島駅"
+    ],
+    "genre": "担々麺",
+    "genres": [
+      "担々麺・四川・麻婆"
+    ],
+    "tabelog_score": 3.7,
+    "awards": [],
+    "feature": "昭島・拝島エリア1位の担々麺専門（東中神・中神・西立川）",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132902/rank"
+  },
+  {
+    "shop": "麺屋 瑞風（みずかぜ）",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・田無駅"
+    ],
+    "genre": "鶏白湯",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.7,
+    "awards": [],
+    "feature": "とろみのあるまろやか鶏白湯、田無トップ、5席・木金休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132801/13194366"
+  },
+  {
+    "shop": "ラーメン二郎 一橋学園店",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・花小金井駅"
+    ],
+    "genre": "二郎系（直系）",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.7,
+    "awards": [],
+    "feature": "乳化豚骨＋極太ゴワ麺、駅79m・木休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132804/R8475/rstLst/ramen"
+  },
+  {
+    "shop": "麺匠 いしかわや",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・調布駅"
+    ],
+    "genre": "清湯醤油・塩",
+    "genres": [
+      "塩",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.7,
+    "awards": [],
+    "feature": "「柴崎亭」系列の洗練された一杯、国領3分",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132601/13224781"
+  },
+  {
+    "shop": "中華そば ふくみみ",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・分倍河原駅"
+    ],
+    "genre": "クラシカル醤油",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.7,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "旧店で百名店4年連続、昼のみ・行列（現店は駅15分）",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132602/13266199"
+  },
+  {
     "shop": "ラーメン丸仙",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -5027,6 +5860,70 @@
     ],
     "feature": "鶏白湯と醤油の二枚看板",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1401/A140101/rank"
+  },
+  {
+    "shop": "SCLabo（エスシーラボ）",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・千葉駅"
+    ],
+    "genre": "煮干し系",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.69,
+    "awards": [],
+    "feature": "煮干しを軸にした実力派（千葉中央圏）",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120101/rank"
+  },
+  {
+    "shop": "ラーメン 杉田家 千葉駅前店",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・千葉駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.69,
+    "awards": [],
+    "feature": "吉村家直系の本格横浜家系",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120101/rank"
+  },
+  {
+    "shop": "ラーメン BooBoo太郎。",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・本千葉駅"
+    ],
+    "genre": "ラーメン・油そば",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.69,
+    "awards": [],
+    "feature": "地元定番、油そば・まぜそばも人気（本千葉）",
+    "source_url": "https://tabelog.com/chiba/A1201/A120101/R9121/rstLst/ramen"
+  },
+  {
+    "shop": "ラーメン二郎 柏店",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・柏の葉キャンパス駅"
+    ],
+    "genre": "二郎系",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.69,
+    "awards": [],
+    "feature": "守谷店が移転、複合施設アピエ内で並びやすい",
+    "source_url": "https://tabelog.com/chiba/A1203/A120301/12056350"
   },
   {
     "shop": "勢得（せいとく）",
@@ -5323,6 +6220,38 @@
     "awards": [],
     "feature": "上品な塩そば（池袋寄り）",
     "source_url": "https://tabelog.com/tokyo/A1305/A130501/13022925"
+  },
+  {
+    "shop": "ラーメン 洞くつ家",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・吉祥寺駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.69,
+    "awards": [],
+    "feature": "吉祥寺の家系老舗、濃厚豚骨醤油＋ライス",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1320/A132001/rank"
+  },
+  {
+    "shop": "ラーメン二郎 立川店",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・立川駅"
+    ],
+    "genre": "二郎系",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.69,
+    "awards": [],
+    "feature": "多摩地区の二郎直系、立川南至近の行列店",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132901/rank"
   },
   {
     "shop": "煮干中華そば専門 煮干丸",
@@ -5714,6 +6643,104 @@
     "awards": [],
     "feature": "端正な醤油中華そば",
     "source_url": "https://tabelog.com/tokyo/A1323/A132302/13285496"
+  },
+  {
+    "shop": "ラーメン二郎 めじろ台店",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・めじろ台駅"
+    ],
+    "genre": "二郎系",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.68,
+    "awards": [],
+    "feature": "二郎系の人気店",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132904/rank"
+  },
+  {
+    "shop": "中華つけ蕎麦 でき心",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・吉祥寺駅"
+    ],
+    "genre": "つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.68,
+    "awards": [],
+    "feature": "上品な和出汁系つけ麺",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1320/A132001/rank"
+  },
+  {
+    "shop": "たかのちゅめ",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・花小金井駅"
+    ],
+    "genre": "創作淡麗ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.68,
+    "awards": [],
+    "feature": "鶏主体に魚介を重ねた香り構成、花小金井トップ、駅323m・水休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132804/13279819"
+  },
+  {
+    "shop": "たけちゃんにぼしらーめん",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・調布駅"
+    ],
+    "genre": "煮干し中華そば",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.68,
+    "awards": [],
+    "feature": "調布のソウルフード、化調不使用、東口1分",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132601/13005969"
+  },
+  {
+    "shop": "松戸富田麺業",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・千葉駅"
+    ],
+    "genre": "つけ麺・中華そば",
+    "genres": [
+      "つけ麺",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.67,
+    "awards": [],
+    "feature": "「とみ田」系列、濃厚魚介豚骨、ペリエ千葉内",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120101/rank"
+  },
+  {
+    "shop": "三つ由（みつよし）",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・北松戸駅 / 馬橋駅 / 新松戸駅"
+    ],
+    "genre": "中華そば（清湯醤油）",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.67,
+    "awards": [],
+    "feature": "大井町「ajito」店主、鶏・煮干し・あさりの清湯、馬橋7分・火金休",
+    "source_url": "https://tabelog.com/chiba/A1203/A120302/12057090"
   },
   {
     "shop": "麺屋 幸生（こうせい）",
@@ -6158,6 +7185,155 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/R5670/rstLst/ramen"
   },
   {
+    "shop": "81番（はちじゅういちばん）",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・町田駅"
+    ],
+    "genre": "塩ラーメン",
+    "genres": [
+      "塩"
+    ],
+    "tabelog_score": 3.67,
+    "awards": [],
+    "feature": "パパパパパイン店主の「No Pine」、鶏＋3種煮干しの黄金清湯、ターミナル口3分",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132701/13191765"
+  },
+  {
+    "shop": "中華そば ムタヒロ 1号店",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・国分寺駅"
+    ],
+    "genre": "煮干し中華そば・まぜそば",
+    "genres": [
+      "煮干し",
+      "油そば・まぜそば・汁なし",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.67,
+    "awards": [],
+    "feature": "2011年開業のムタヒロ本店、駅2分",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132502/rank"
+  },
+  {
+    "shop": "麺創研 紅（くれない）",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・府中駅"
+    ],
+    "genre": "旨辛豚骨味噌",
+    "genres": [
+      "味噌",
+      "豚骨・博多"
+    ],
+    "tabelog_score": 3.67,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "乱切り自家製麺、名物の辛うま味噌、府中駅直結",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132602/13114072"
+  },
+  {
+    "shop": "ラーメン二郎 府中店",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・府中駅"
+    ],
+    "genre": "二郎系",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.67,
+    "awards": [],
+    "feature": "比較的ライトで初心者向け、駅5分",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132602/13022272"
+  },
+  {
+    "shop": "末広家",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・本千葉駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "「県内ナンバーワン」と評される本牧家系、本千葉8分",
+    "source_url": "https://tabelog.com/chiba/A1201/A120101/R9121/rstLst/ramen"
+  },
+  {
+    "shop": "らー麺屋 バリバリジョニー",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・行徳駅 / 南行徳駅 / 妙典駅"
+    ],
+    "genre": "鶏白湯",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "4種地鶏の濃厚鶏白湯、行徳",
+    "source_url": "https://tabelog.com/chiba/A1202/A120202/R3320/rstLst/ramen"
+  },
+  {
+    "shop": "中華蕎麦 きよし",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・船橋駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "「赤坂味一」系列、京成船橋5分の正統派",
+    "source_url": "https://tabelog.com/chiba/A1202/A120201/12057056"
+  },
+  {
+    "shop": "自家製麺ご藤",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・船橋駅"
+    ],
+    "genre": "ラーメン（魚介×動物系）",
+    "genres": [
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "自家製ストレート麺＋ブレンドスープ",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120201/rank"
+  },
+  {
+    "shop": "栄昇らーめん",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・津田沼駅"
+    ],
+    "genre": "煮干し・あご出汁",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "「津田沼の宝」、2025年1月復活、1日100食限定、京成津田沼4分",
+    "source_url": "https://tabelog.com/chiba/A1202/A120204/12001613"
+  },
+  {
     "shop": "大宮大勝軒",
     "pref": "埼玉県",
     "ward": "さいたま市北部",
@@ -6540,6 +7716,107 @@
     "source_url": "https://tabelog.com/tokyo/A1323/A132301/13224621"
   },
   {
+    "shop": "らぁめん 大安",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・八王子駅"
+    ],
+    "genre": "自家製麺・醤油",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "新宿「萬来」系、平打ち縮れ自家製麺、南口2分",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132904/13114440"
+  },
+  {
+    "shop": "つけ麺 えん寺 吉祥寺総本店",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・吉祥寺駅"
+    ],
+    "genre": "つけ麺（ベジポタ）",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "「ベジポタつけ麺」発祥の総本店、極太胚芽麺、無休",
+    "source_url": "https://tabelog.com/tokyo/A1320/A132001/13104794"
+  },
+  {
+    "shop": "燕三条 豊潤亭",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・武蔵小金井駅"
+    ],
+    "genre": "燕三条系",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "背脂たっぷり、煮干し魚介醤油、北口3分",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132501/rank"
+  },
+  {
+    "shop": "麺尊RAGE RENEGADES",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・花小金井駅"
+    ],
+    "genre": "醤油・つけ麺・油そば",
+    "genres": [
+      "つけ麺",
+      "油そば・まぜそば・汁なし",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "新宿「麺尊RAGE」系、花小金井北口11分",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132804/R7976/rstLst/ramen"
+  },
+  {
+    "shop": "中華そばや 和凡",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・清瀬駅"
+    ],
+    "genre": "煮干し中華そば",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "九十九里産煮干し＋和え玉、清瀬最高評価、南口5分・日休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132803/13234420"
+  },
+  {
+    "shop": "いつみ屋",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・分倍河原駅"
+    ],
+    "genre": "煮干し系上品醤油（ワンタン麺）",
+    "genres": [
+      "煮干し",
+      "ワンタン麺",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.66,
+    "awards": [],
+    "feature": "行列の地元名店、府中本町2分・昼のみ",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132602/13022027"
+  },
+  {
     "shop": "灼味噌らーめん 八堂八",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -6571,6 +7848,42 @@
     "awards": [],
     "feature": "何度でも通える定番",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1401/A140204/rank"
+  },
+  {
+    "shop": "らー麺 あけどや",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・市川駅 / 市川真間駅"
+    ],
+    "genre": "鶏白湯・味噌・つけ麺",
+    "genres": [
+      "つけ麺",
+      "味噌",
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.65,
+    "awards": [],
+    "feature": "TRY味噌部門上位常連、市川・市川真間",
+    "source_url": "https://tabelog.com/chiba/A1202/A120202/12032028"
+  },
+  {
+    "shop": "松戸富田製麺 ららぽーとTOKYO-BAY店",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・東船橋駅 / 南船橋駅"
+    ],
+    "genre": "つけ麺（豚骨魚介）",
+    "genres": [
+      "つけ麺",
+      "豚骨・博多",
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.65,
+    "awards": [],
+    "feature": "「とみ田」系列、濃厚豚骨魚介、南船橋・ららぽーと内",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120201/rank"
   },
   {
     "shop": "鶏そば 一瑳（いっさ）",
@@ -7000,6 +8313,72 @@
     "source_url": "https://tabelog.com/tokyo/A1305/A130501/13171114"
   },
   {
+    "shop": "龍聖軒（りゅうせいけん）",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・鶴川駅"
+    ],
+    "genre": "中華そば（牛脂×豚魚介清湯）",
+    "genres": [
+      "貝・魚介系",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.65,
+    "awards": [],
+    "feature": "牛の甘い香りとコク、ワンタン麺が店主推し、駅7〜10分・無休",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132701/13240442"
+  },
+  {
+    "shop": "自家製麺つけ麺 紅葉（くれは）",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・国分寺駅"
+    ],
+    "genre": "自家製麺つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.65,
+    "awards": [],
+    "feature": "北口2〜3分、麺の種類が豊富",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132502/rank"
+  },
+  {
+    "shop": "アンタイNOODLES",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・昭島駅"
+    ],
+    "genre": "つけ麺・中華そば",
+    "genres": [
+      "つけ麺",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.65,
+    "awards": [],
+    "feature": "中神・東中神エリアの高評価実力店",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132902/rank"
+  },
+  {
+    "shop": "自家製麺つけそば 九六（くろく）",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・狛江駅 / 和泉多摩川駅"
+    ],
+    "genre": "濃厚つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.65,
+    "awards": [],
+    "feature": "魚粉炸裂、和泉多摩川3分・月火休・売切仕舞い",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132603/13129898"
+  },
+  {
     "shop": "RAMEN TSUKEMEN YAMATO",
     "pref": "神奈川県",
     "ward": "県央・相模原",
@@ -7014,6 +8393,71 @@
     "awards": [],
     "feature": "魚介×動物系・極太麺、エリア最高、駅192m",
     "source_url": "https://tabelog.com/kanagawa/C14213/C39592/rstLst/ramen"
+  },
+  {
+    "shop": "ラーメン 野良裏家",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・本千葉駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.64,
+    "awards": [],
+    "feature": "蘇我の人気家系",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120101/rank"
+  },
+  {
+    "shop": "ラーメン ニュー松戸",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・八柱駅"
+    ],
+    "genre": "醤油（老舗）",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.64,
+    "awards": [],
+    "feature": "澄んだスープに旨味のある定番（みのり台寄り・八柱徒歩圏）",
+    "source_url": "https://tabelog.com/chiba/A1203/A120302/R10225/rstLst/MC0101"
+  },
+  {
+    "shop": "中華蕎麦 萌芽（ほうが）",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・北柏駅 / 南柏駅"
+    ],
+    "genre": "濃厚煮干し豚骨",
+    "genres": [
+      "煮干し",
+      "豚骨・博多"
+    ],
+    "tabelog_score": 3.64,
+    "awards": [],
+    "feature": "豚骨＋大量煮干し＋自家製中太麺、TRY新人煮干部門受賞、北柏3分",
+    "source_url": "https://tabelog.com/chiba/A1203/A120301/12048286"
+  },
+  {
+    "shop": "中華そば温故知新",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・船橋駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.64,
+    "awards": [],
+    "feature": "船橋駅徒歩1分の人気店",
+    "source_url": "https://tabelog.com/chiba/A1202/A120201/12053619"
   },
   {
     "shop": "白河手打中華 賀乃屋",
@@ -7305,6 +8749,70 @@
     "awards": [],
     "feature": "臥龍(醤油)・蒼龍(塩)＋日替り限定／谷在家6分・昼中心",
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/13253735"
+  },
+  {
+    "shop": "中華そば 弥栄（やさか）",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・西八王子駅"
+    ],
+    "genre": "鶏×魚介",
+    "genres": [
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.64,
+    "awards": [],
+    "feature": "鶏と魚介の出汁でコクと後味の良さ",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132904/rank"
+  },
+  {
+    "shop": "中華蕎麦 麺ノ歌",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・武蔵小金井駅"
+    ],
+    "genre": "濃厚煮干し",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.64,
+    "awards": [],
+    "feature": "動物系×魚介Wスープ＋自家製麺",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132501/rank"
+  },
+  {
+    "shop": "ラーメン二郎 仙川店",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・つつじヶ丘駅 / 仙川駅"
+    ],
+    "genre": "二郎系",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.64,
+    "awards": [],
+    "feature": "非乳化「仙川ブラック」、駅2分・夜のみ",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132601/13000699"
+  },
+  {
+    "shop": "菜（さい）",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・本八幡駅"
+    ],
+    "genre": "中華そば（あっさり）",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.63,
+    "awards": [],
+    "feature": "本八幡の高評価あっさり系",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120202/rank"
   },
   {
     "shop": "濃厚鶏そば 葵",
@@ -7691,6 +9199,72 @@
     "source_url": "https://tabelog.com/tokyo/A1323/A132301/13147756"
   },
   {
+    "shop": "こえもん",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・日野駅 / 豊田駅"
+    ],
+    "genre": "八王子ラーメン（醤油）",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.63,
+    "awards": [],
+    "feature": "「吾衛門」暖簾分け、\"完璧な八王子ラーメン\"、日野4分・日祝休",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132903/13126400"
+  },
+  {
+    "shop": "一平ソバ",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・東小金井駅"
+    ],
+    "genre": "油そば・まぜそば",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.63,
+    "awards": [],
+    "feature": "武蔵野系油そばの人気店",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132501/rank"
+  },
+  {
+    "shop": "らーめん チキント",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・立川駅"
+    ],
+    "genre": "鶏白湯（無化調）",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.63,
+    "awards": [],
+    "feature": "立川で10年以上愛される濃厚鶏白湯",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132901/13125378"
+  },
+  {
+    "shop": "柳麺 かいと",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・狛江駅 / 和泉多摩川駅"
+    ],
+    "genre": "長岡生姜醤油・塩",
+    "genres": [
+      "塩",
+      "醤油・中華そば",
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.63,
+    "awards": [],
+    "feature": "四万十の生姜＆ゲランド塩、狛江3分・月休",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132603/13227994"
+  },
+  {
     "shop": "自家製麺 麺屋 利八",
     "pref": "神奈川県",
     "ward": "川崎市南部",
@@ -7787,6 +9361,87 @@
     "awards": [],
     "feature": "小田原エリア最高評価（緑町・小田原圏）",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1409/A140901/rank"
+  },
+  {
+    "shop": "麺屋真星（シンセイ）",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・行徳駅 / 南行徳駅 / 妙典駅",
+      "市川・浦安・浦安駅"
+    ],
+    "genre": "鶏白湯",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.62,
+    "awards": [],
+    "feature": "濃厚鶏白湯の評判店、南行徳/浦安寄り",
+    "source_url": "https://tabelog.com/chiba/A1202/A120203/12048417"
+  },
+  {
+    "shop": "雷 本店（かみなり）",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・北松戸駅 / 馬橋駅 / 新松戸駅"
+    ],
+    "genre": "二郎インスパイア",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.62,
+    "awards": [],
+    "feature": "とみ田系列、極太麺・濃厚醤油、北松戸3分",
+    "source_url": "https://tabelog.com/chiba/A1203/A120302/12020862"
+  },
+  {
+    "shop": "ラーメン ししょう",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・柏の葉キャンパス駅"
+    ],
+    "genre": "つけ麺・ラーメン",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.62,
+    "awards": [],
+    "feature": "柏の葉エリアの人気店",
+    "source_url": "https://tabelog.com/chiba/A1203/A120301/12047815"
+  },
+  {
+    "shop": "麺屋 青（あお）",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・鎌ヶ谷駅"
+    ],
+    "genre": "塩ラーメン",
+    "genres": [
+      "塩"
+    ],
+    "tabelog_score": 3.62,
+    "awards": [],
+    "feature": "豚＋魚介の塩が看板、市内最高評価クラス、鎌ヶ谷4分・水休",
+    "source_url": "https://tabelog.com/chiba/A1203/A120303/12061387"
+  },
+  {
+    "shop": "かいざん 西船橋店",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・西船橋駅"
+    ],
+    "genre": "豚骨",
+    "genres": [
+      "豚骨・博多"
+    ],
+    "tabelog_score": 3.62,
+    "awards": [],
+    "feature": "西船橋ラーメンの代表格、クリアな豚骨＋中太麺、行列の定番",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120201/rank"
   },
   {
     "shop": "葱次郎",
@@ -8151,6 +9806,39 @@
     "source_url": "https://tabelog.com/tokyo/A1312/A131204/13171070"
   },
   {
+    "shop": "平右衛門",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・東小金井駅"
+    ],
+    "genre": "ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.62,
+    "awards": [],
+    "feature": "地元定番の実力店",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132501/rank"
+  },
+  {
+    "shop": "宝華らぁめん 立川店",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・立川駅"
+    ],
+    "genre": "油そば・醤油",
+    "genres": [
+      "油そば・まぜそば・汁なし",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.62,
+    "awards": [],
+    "feature": "南口/立川南すぐの老舗、名物「油そば」",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132901/13021243"
+  },
+  {
     "shop": "たまがった 横浜西口店",
     "pref": "神奈川県",
     "ward": "横浜中心部",
@@ -8245,6 +9933,55 @@
     "awards": [],
     "feature": "鶏ガラ×魚介の上品な「和のラーメン」、東口5分",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1409/A140901/rank"
+  },
+  {
+    "shop": "ラーメン ヨシトミ",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・稲毛駅 / 西千葉駅"
+    ],
+    "genre": "醤油",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.61,
+    "awards": [],
+    "feature": "稲毛区1位、深みのある醤油＋中太麺",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120104/rank"
+  },
+  {
+    "shop": "二九八家 いわせ",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・本八幡駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.61,
+    "awards": [],
+    "feature": "とろけるチャーシュー、朝ラー可、市川屈指の家系",
+    "source_url": "https://tabelog.com/chiba/A1202/A120202/12041492"
+  },
+  {
+    "shop": "なりたけ 津田沼店",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・津田沼駅"
+    ],
+    "genre": "背脂豚骨醤油",
+    "genres": [
+      "豚骨・博多",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.61,
+    "awards": [],
+    "feature": "津田沼ラーメンの象徴、背脂チャッチャ系、深夜まで行列",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120201/rank"
   },
   {
     "shop": "塩つけ麺 めいげんそ",
@@ -8506,6 +10243,41 @@
     "source_url": "https://tabelog.com/tokyo/A1305/A130501/13003927"
   },
   {
+    "shop": "らあめん クローバー（clover）",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・成田駅・京成成田駅"
+    ],
+    "genre": "醤油・塩・煮干し",
+    "genres": [
+      "煮干し",
+      "塩",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.6,
+    "awards": [],
+    "feature": "鶏ベースの端正な醤油らあめん、京成成田5分",
+    "source_url": "https://tabelog.com/chiba/A1204/A120401/12024179"
+  },
+  {
+    "shop": "豆でっぽう",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・我孫子駅"
+    ],
+    "genre": "担々麺・味噌ラーメン",
+    "genres": [
+      "味噌",
+      "担々麺・四川・麻婆"
+    ],
+    "tabelog_score": 3.6,
+    "awards": [],
+    "feature": "担々麺＆味噌の名物店、天王台3〜4分、エリア随一",
+    "source_url": "https://tabelog.com/chiba/A1203/A120304/R6540/rstLst/ramen"
+  },
+  {
     "shop": "中華そば 葵 本店",
     "pref": "埼玉県",
     "ward": "川口・蕨・戸田",
@@ -8749,6 +10521,55 @@
     "source_url": "https://tabelog.com/tokyo/A1321/A132102/13268533"
   },
   {
+    "shop": "ラーメン 町田家 町田本店",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・町田駅"
+    ],
+    "genre": "横浜家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.6,
+    "awards": [],
+    "feature": "1996年創業の家系、酒井製麺使用、ターミナル口2分",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132701/13010323"
+  },
+  {
+    "shop": "ラーメンくれは",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・田無駅"
+    ],
+    "genre": "豚骨（熊本・玉名系）",
+    "genres": [
+      "豚骨・博多"
+    ],
+    "tabelog_score": 3.6,
+    "awards": [],
+    "feature": "「田無の豚骨といえば」の定番、駅7〜8分・月火休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132801/13110328"
+  },
+  {
+    "shop": "保谷大勝軒",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・ひばりヶ丘駅 / 保谷駅"
+    ],
+    "genre": "永福町系煮干し醤油",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.6,
+    "awards": [],
+    "feature": "洗面器級の大盛り＋ラード膜、保谷150m・昼のみ・行列",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132801/13121402"
+  },
+  {
     "shop": "蓮爾（はすみ）登戸店",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -8779,6 +10600,38 @@
     "awards": [],
     "feature": "鹿島田・新川崎で根強い人気",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1405/A140503/rank"
+  },
+  {
+    "shop": "喜多方食堂 麺や 玄 佐倉分店",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・佐倉駅"
+    ],
+    "genre": "喜多方ラーメン",
+    "genres": [
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.59,
+    "awards": [],
+    "feature": "中太平打ち麺＋あっさり醤油、佐倉・印旛沼1位",
+    "source_url": "https://tabelog.com/ramen/chiba/A1204/A120402/rank"
+  },
+  {
+    "shop": "中華そば れもん",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・柏の葉キャンパス駅"
+    ],
+    "genre": "白河ラーメン",
+    "genres": [
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.59,
+    "awards": [],
+    "feature": "柏市公設市場内、手打ち縮れ麺の白河系",
+    "source_url": "https://tabelog.com/chiba/A1203/A120301/12044511"
   },
   {
     "shop": "まかない へきる",
@@ -9070,6 +10923,39 @@
     "source_url": "https://tabelog.com/ramen/kanagawa/A1404/A140401/rank"
   },
   {
+    "shop": "麺屋二代目 弘【HIRO】",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・船橋駅"
+    ],
+    "genre": "魚介豚骨",
+    "genres": [
+      "豚骨・博多",
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.58,
+    "awards": [],
+    "feature": "船橋随一の行列店、進化系の一杯",
+    "source_url": "https://tabelog.com/chiba/A1202/A120201/12035646"
+  },
+  {
+    "shop": "鶏そば 朱雀",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・西船橋駅"
+    ],
+    "genre": "鶏そば",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.58,
+    "awards": [],
+    "feature": "高評価の人気店（下総中山寄り）",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120201/rank"
+  },
+  {
     "shop": "川口トラちゃんラーメン",
     "pref": "埼玉県",
     "ward": "川口・蕨・戸田",
@@ -9347,6 +11233,38 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132403/13134181"
   },
   {
+    "shop": "たま家 本店",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・多摩センター駅"
+    ],
+    "genre": "横浜家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.58,
+    "awards": [],
+    "feature": "2002年開業の本牧家系、朝7時〜の朝ラーで行列、エリア1位・月火休",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132702/13010092"
+  },
+  {
+    "shop": "ラーメン 大國家",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・府中駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.58,
+    "awards": [],
+    "feature": "「武道家」出身店主が独立、駅1分・ライス無料",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132602/13288549"
+  },
+  {
     "shop": "ラーメン泪橋",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -9443,6 +11361,55 @@
     "awards": [],
     "feature": "辻堂の定番",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1404/A140404/rank"
+  },
+  {
+    "shop": "煮干し中華蕎麦 彩葉に（いろはに）",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・勝田台駅・東葉勝田台駅"
+    ],
+    "genre": "煮干し中華蕎麦",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.57,
+    "awards": [],
+    "feature": "煮干しを効かせた清湯、八千代台の現役トップ",
+    "source_url": "https://tabelog.com/chiba/A1202/A120204/12053974"
+  },
+  {
+    "shop": "ラーメン一兎",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・市川駅 / 市川真間駅"
+    ],
+    "genre": "煮干し系",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.57,
+    "awards": [],
+    "feature": "濃厚煮干しが評判（市川真間・市川）",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120202/rank"
+  },
+  {
+    "shop": "中華蕎麦 みやま",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・北柏駅 / 南柏駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.57,
+    "awards": [],
+    "feature": "北柏の実力店",
+    "source_url": "https://tabelog.com/ramen/chiba/A1203/A120301/rank"
   },
   {
     "shop": "トーフラーメン 幸楊（こうよう）",
@@ -9691,6 +11658,72 @@
     "source_url": "https://tabelog.com/ramen/tokyo/A1324/A132404/rank"
   },
   {
+    "shop": "丸幸",
+    "pref": "東京都(多摩)",
+    "ward": "吉祥寺・三鷹・小金井",
+    "stations": [
+      "吉祥寺・三鷹・小金井・武蔵境駅"
+    ],
+    "genre": "ラーメン（鶏ガラ）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.57,
+    "awards": [],
+    "feature": "リーズナブルな町中華系、北口2分",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1320/A132003/rank"
+  },
+  {
+    "shop": "麺処 井の庄 立川",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・立川駅"
+    ],
+    "genre": "濃厚豚骨魚介・激辛",
+    "genres": [
+      "豚骨・博多",
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.57,
+    "awards": [],
+    "feature": "カップ麺化された名物「辛辛魚」",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132901/13097330"
+  },
+  {
+    "shop": "味噌中華そば ムタヒロ",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・西国分寺駅"
+    ],
+    "genre": "味噌中華そば",
+    "genres": [
+      "味噌",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.57,
+    "awards": [],
+    "feature": "北海道味噌ベースの濃厚味噌、駅近",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132502/rank"
+  },
+  {
+    "shop": "熊王ラーメン",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・調布駅"
+    ],
+    "genre": "味噌",
+    "genres": [
+      "味噌"
+    ],
+    "tabelog_score": 3.57,
+    "awards": [],
+    "feature": "国領駅前で長く愛される味噌の人気店",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132601/13005976"
+  },
+  {
     "shop": "鴨だしらぁ麺 轟",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -9755,6 +11788,39 @@
     "awards": [],
     "feature": "手頃で満足度高い横浜家系",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1401/A140310/rank"
+  },
+  {
+    "shop": "松戸中華そば 富田食堂 東千葉",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・東千葉駅"
+    ],
+    "genre": "中華そば・つけ麺",
+    "genres": [
+      "つけ麺",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.56,
+    "awards": [],
+    "feature": "「とみ田」系の食堂業態",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120101/rank"
+  },
+  {
+    "shop": "スパイス・ラー麺 卍力 行徳店",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・行徳駅 / 南行徳駅 / 妙典駅"
+    ],
+    "genre": "スパイスラーメン",
+    "genres": [
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.56,
+    "awards": [],
+    "feature": "14種スパイスの個性派、駅直近",
+    "source_url": "https://tabelog.com/chiba/A1202/A120202/R3320/rstLst/ramen"
   },
   {
     "shop": "娘娘（にゃんにゃん）※中浦和系",
@@ -10099,6 +12165,54 @@
     "source_url": "https://tabelog.com/kanagawa/C14213/C39592/rstLst/ramen"
   },
   {
+    "shop": "中華そば たがや（京成幕張寄り）",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・海浜幕張駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.55,
+    "awards": [],
+    "feature": "上品な魚介＋醤油の隠れ家的名店、地元定番（幕張）",
+    "source_url": "https://tabelog.com/chiba/A1201/A120102/12052641"
+  },
+  {
+    "shop": "中華そば 金ちゃん ビヨンド店",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・勝田台駅・東葉勝田台駅"
+    ],
+    "genre": "山形ラーメン・竹岡式",
+    "genres": [
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.55,
+    "awards": [],
+    "feature": "ワンタンメン、火水は朝6時から、勝田台",
+    "source_url": "https://tabelog.com/chiba/A1202/A120204/12046333"
+  },
+  {
+    "shop": "魚骨ラーメン 鈴木さん",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・津田沼駅"
+    ],
+    "genre": "魚介・秋刀魚",
+    "genres": [
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.55,
+    "awards": [],
+    "feature": "「さんままぜそば」が看板",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120201/rank"
+  },
+  {
     "shop": "狼煙 浦和店",
     "pref": "埼玉県",
     "ward": "さいたま市",
@@ -10390,6 +12504,22 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/R1363/rstLst/ramen"
   },
   {
+    "shop": "白河中華そば 孫市（まごいち）",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・西国分寺駅"
+    ],
+    "genre": "白河ラーメン",
+    "genres": [
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.55,
+    "awards": [],
+    "feature": "鶏ガラ清湯＋炭火焼チャーシュー",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132502/rank"
+  },
+  {
     "shop": "手打ち中華そば 酒田 河原町店",
     "pref": "神奈川県",
     "ward": "川崎市南部",
@@ -10516,6 +12646,54 @@
     "awards": [],
     "feature": "北茅ケ崎・茅ケ崎圏の地元人気店",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1404/A140406/rank"
+  },
+  {
+    "shop": "笹本為次郎商店",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・稲毛駅 / 西千葉駅"
+    ],
+    "genre": "鶏白湯",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.54,
+    "awards": [],
+    "feature": "濃厚クリーミーな鶏白湯の専門店",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120104/rank"
+  },
+  {
+    "shop": "煮干らー麺 カネショウ 四街道",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・四街道駅"
+    ],
+    "genre": "煮干しラーメン",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.54,
+    "awards": [],
+    "feature": "煮干しの効いた一杯、佐倉・印旛沼2位（四街道）",
+    "source_url": "https://tabelog.com/ramen/chiba/A1204/A120402/rank"
+  },
+  {
+    "shop": "必勝軒",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・津田沼駅"
+    ],
+    "genre": "つけ麺・ラーメン",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.54,
+    "awards": [],
+    "feature": "「大勝軒」出身、打ちたて自家製麺、新津田沼1分・日休",
+    "source_url": "https://tabelog.com/chiba/A1202/A120204/12000158"
   },
   {
     "shop": "麺匠 むさし坊 武蔵浦和店",
@@ -10764,6 +12942,38 @@
     "source_url": "https://tabelog.com/tokyo/A1321/A132101/R8255/rstLst/ramen"
   },
   {
+    "shop": "麺や 谷口",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・ひばりヶ丘駅 / 保谷駅"
+    ],
+    "genre": "淡麗ラーメン・つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.54,
+    "awards": [],
+    "feature": "澄んだスープに旨味の層、ひばりヶ丘87m",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132801/13266241"
+  },
+  {
+    "shop": "焼きあご煮干しらぁめん 碧猫",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・分倍河原駅"
+    ],
+    "genre": "濃厚焼きあご煮干し",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.54,
+    "awards": [],
+    "feature": "分倍河原駅改札すぐ",
+    "source_url": "https://tabelog.com/tokyo/A1326/A132602/13248230"
+  },
+  {
     "shop": "中華そば光",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -10906,6 +13116,22 @@
     "awards": [],
     "feature": "「牡蠣しじみラーメン」、西口5分",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1404/A140404/rank"
+  },
+  {
+    "shop": "嘉祥（カショウ）",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・西船橋駅"
+    ],
+    "genre": "味噌",
+    "genres": [
+      "味噌"
+    ],
+    "tabelog_score": 3.53,
+    "awards": [],
+    "feature": "3種味噌＋野菜・10種スパイスの独特な味噌",
+    "source_url": "https://tabelog.com/ramen/chiba/A1202/A120201/rank"
   },
   {
     "shop": "らーめん・はやし",
@@ -11120,6 +13346,23 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/R4021/rstLst/ramen"
   },
   {
+    "shop": "田無 大勝軒",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・田無駅"
+    ],
+    "genre": "永福町系（中華そば・ワンタン麺）",
+    "genres": [
+      "ワンタン麺",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.53,
+    "awards": [],
+    "feature": "煮干し香るラードの効いた大盛り醤油、駅160m",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132801/13016167"
+  },
+  {
     "shop": "なぎちゃんラーメン 元住吉店",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -11150,6 +13393,89 @@
     "awards": [],
     "feature": "ちょい辛味噌ベースのタンメン専門、駅4分・区内1位",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1405/A140508/rank"
+  },
+  {
+    "shop": "こってりらーめん なりたけ 幕張店",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・海浜幕張駅"
+    ],
+    "genre": "背脂醤油",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.52,
+    "awards": [],
+    "feature": "背脂チャッチャ系の代表格、深夜営業",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120102/rank"
+  },
+  {
+    "shop": "麺ぽーかろぅ",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・北柏駅 / 南柏駅"
+    ],
+    "genre": "ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.52,
+    "awards": [],
+    "feature": "南柏駅1分の駅前トップ評価",
+    "source_url": "https://tabelog.com/chiba/A1203/A120301/R9593/rstLst/MC0101"
+  },
+  {
+    "shop": "ケンラボ",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・流山おおたかの森駅"
+    ],
+    "genre": "濃厚味噌・煮干しつけ麺",
+    "genres": [
+      "煮干し",
+      "つけ麺",
+      "味噌"
+    ],
+    "tabelog_score": 3.52,
+    "awards": [],
+    "feature": "「至高の一杯」と評され限定も人気、南流山北口5分",
+    "source_url": "https://tabelog.com/chiba/A1203/A120305/R10962"
+  },
+  {
+    "shop": "idouji（イドウジ）我孫子店",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・我孫子駅"
+    ],
+    "genre": "創作系ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.52,
+    "awards": [],
+    "feature": "完成度高く高評価、我孫子駅近",
+    "source_url": "https://tabelog.com/chiba/A1203/A120304/R366/rstLst/ramen"
+  },
+  {
+    "shop": "麺処 あみや",
+    "pref": "千葉県",
+    "ward": "船橋・習志野",
+    "stations": [
+      "船橋・習志野・東船橋駅 / 南船橋駅"
+    ],
+    "genre": "あご出汁・魚介醤油",
+    "genres": [
+      "貝・魚介系",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.52,
+    "awards": [],
+    "feature": "飛び魚出汁の上品な一杯、東船橋10分・木休（旧 喜左ェ門）",
+    "source_url": "https://tabelog.com/chiba/A1202/A120201/12007708"
   },
   {
     "shop": "麺処 ごまや 本店",
@@ -11383,6 +13709,22 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/R7318/rstLst/ramen"
   },
   {
+    "shop": "中国宮廷麺 なにや",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・花小金井駅"
+    ],
+    "genre": "翡翠麺（個性派）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.52,
+    "awards": [],
+    "feature": "中国宮廷由来の自家製翡翠麺の老舗、一橋学園5分・月休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132804/13016113"
+  },
+  {
     "shop": "手打ち中華そば 酒田 鹿島田店",
     "pref": "神奈川県",
     "ward": "川崎市南部",
@@ -11462,6 +13804,38 @@
     "awards": [],
     "feature": "大船つけ麺の人気店",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1404/A140401/rank"
+  },
+  {
+    "shop": "麺屋 空（くう）",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・流山おおたかの森駅"
+    ],
+    "genre": "鰹出汁の魚介系",
+    "genres": [
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.51,
+    "awards": [],
+    "feature": "特大炙りチャーシューつけ麺が名物、南流山西口10分・深夜営業",
+    "source_url": "https://tabelog.com/chiba/A1203/A120305/12003843"
+  },
+  {
+    "shop": "麺屋 勝天（しょうてん）",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・我孫子駅"
+    ],
+    "genre": "つけ麺（昼）",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.51,
+    "awards": [],
+    "feature": "安定の実力店、約3,000件のレビュー",
+    "source_url": "https://tabelog.com/chiba/A1203/A120304/R366/rstLst/ramen"
   },
   {
     "shop": "麺座 でん",
@@ -11642,6 +14016,38 @@
     "source_url": "https://tabelog.com/tokyo/A1321/A132101/R8255/rstLst/ramen"
   },
   {
+    "shop": "すごい煮干ラーメン 凪 多摩センター店",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・多摩センター駅"
+    ],
+    "genre": "煮干し",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.51,
+    "awards": [],
+    "feature": "クセ控えめの煮干しに太麺、駅直結圏",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1327/A132702/rank"
+  },
+  {
+    "shop": "麺処 かず屋",
+    "pref": "東京都(多摩)",
+    "ward": "調布・府中・狛江",
+    "stations": [
+      "調布・府中・狛江・つつじヶ丘駅 / 仙川駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.51,
+    "awards": [],
+    "feature": "仙川・つつじヶ丘圏の実力店",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1326/A132601/rank"
+  },
+  {
     "shop": "RAMEN FACTORY TORISETSU",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -11656,6 +14062,39 @@
     "awards": [],
     "feature": "エルミロード内、駅3分",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1405/A140508/rank"
+  },
+  {
+    "shop": "中華そば 麦家（ばくや）",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・成田駅・京成成田駅"
+    ],
+    "genre": "豚骨魚介Wスープ",
+    "genres": [
+      "豚骨・博多",
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.5,
+    "awards": [],
+    "feature": "動物系＋和出汁の濃厚つけ麺、公津の杜（駅14分）",
+    "source_url": "https://tabelog.com/chiba/A1204/A120401/12002449"
+  },
+  {
+    "shop": "13湯麺 集（とうめん しゅう）",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・鎌ヶ谷駅"
+    ],
+    "genre": "ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.5,
+    "awards": [],
+    "feature": "鎌ヶ谷の人気ラーメン、駅至近",
+    "source_url": "https://tabelog.com/ramen/chiba/A1203/A120303/rank"
   },
   {
     "shop": "らぁ麺 はやし田 岩槻店",
@@ -11939,6 +14378,23 @@
     "source_url": "https://tabelog.com/kanagawa/C14213/C39592/rstLst/ramen"
   },
   {
+    "shop": "魚介醤油らーめん 和屋（かずや）",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・佐倉駅"
+    ],
+    "genre": "無添加魚介醤油",
+    "genres": [
+      "貝・魚介系",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.49,
+    "awards": [],
+    "feature": "レアチャーシュー＋めかぶ、ユーカリが丘圏・昼のみ・火/第1第3月休",
+    "source_url": "https://tabelog.com/chiba/A1204/A120402/12024126"
+  },
+  {
     "shop": "麺屋 音 人形町店",
     "pref": "東京都",
     "ward": "中央区",
@@ -12166,6 +14622,22 @@
     "source_url": "https://tabelog.com/tokyo/A1321/A132103/R1631/rstLst/ramen"
   },
   {
+    "shop": "ラーメンショップ 成瀬が丘店",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・成瀬駅"
+    ],
+    "genre": "ラーショ系",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.49,
+    "awards": [],
+    "feature": "濃厚豚骨醤油＋ネギラーメン、成瀬4〜5分・水休",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132701/R7243/rstLst/ramen"
+  },
+  {
     "shop": "横浜ラーメン 新横家",
     "pref": "神奈川県",
     "ward": "横浜北部",
@@ -12196,6 +14668,22 @@
     "awards": [],
     "feature": "大船を代表する家系の一角",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1404/A140401/rank"
+  },
+  {
+    "shop": "横浜家系ラーメン 増田家 海浜幕張店",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・海浜幕張駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.48,
+    "awards": [],
+    "feature": "こってり豚骨醤油、当エリア上位",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120102/rank"
   },
   {
     "shop": "桑原亭 東川口店",
@@ -12311,6 +14799,22 @@
     "awards": [],
     "feature": "参道沿いの甘味処が出すラーメンが評判／駅172m",
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/R5670/rstLst/ramen"
+  },
+  {
+    "shop": "地鶏と金目鯛 中華そば 鶯（うぐいす）",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・聖蹟桜ヶ丘駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.48,
+    "awards": [],
+    "feature": "上州地鶏と金目鯛の淡麗中華そば、駅3分・無休",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132702/13276418"
   },
   {
     "shop": "一風堂 キュービックプラザ新横浜店",
@@ -12537,6 +15041,22 @@
     "source_url": "https://tabelog.com/tokyo/A1321/A132101/13021686"
   },
   {
+    "shop": "大山家 昭島店",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・昭島駅"
+    ],
+    "genre": "横浜家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.47,
+    "awards": [],
+    "feature": "南口2分、ガツンと豚骨感、「とき卵ラーメン」",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132902/rank"
+  },
+  {
     "shop": "町田家 新百合ヶ丘店",
     "pref": "神奈川県",
     "ward": "川崎市北部",
@@ -12617,6 +15137,22 @@
     "awards": [],
     "feature": "駅周辺最高評点の家系、駅441m",
     "source_url": "https://tabelog.com/kanagawa/A1407/A140702/R3801/rstLst/ramen"
+  },
+  {
+    "shop": "たかし屋 浦安店",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・浦安駅"
+    ],
+    "genre": "ラーメン・つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.46,
+    "awards": [],
+    "feature": "全部乗せが人気、浦安南口1分",
+    "source_url": "https://tabelog.com/chiba/A1202/A120203/12007740"
   },
   {
     "shop": "龍門瀑",
@@ -12795,6 +15331,23 @@
     "awards": [],
     "feature": "屋台風・背脂とんこつの定番",
     "source_url": "https://tabelog.com/ramen/tokyo/A1307/A130702/rank"
+  },
+  {
+    "shop": "ラーメン専門店 和 久米川店",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・東村山駅 / 久米川駅"
+    ],
+    "genre": "ラーメン・つけ麺・油そば",
+    "genres": [
+      "つけ麺",
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.46,
+    "awards": [],
+    "feature": "有料トッピングで迫力、久米川駅前の定番、駅133m",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132806/13040213"
   },
   {
     "shop": "ラーメン 豚んち",
@@ -12976,6 +15529,22 @@
     "source_url": "https://tabelog.com/kanagawa/A1401/A140304/14015739"
   },
   {
+    "shop": "どん きさろく 八柱店",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・八柱駅"
+    ],
+    "genre": "中華そば（老舗）",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.44,
+    "awards": [],
+    "feature": "昭和の雰囲気の地元老舗、八柱140m",
+    "source_url": "https://tabelog.com/chiba/A1203/A120302/R10225/rstLst/MC0101"
+  },
+  {
     "shop": "盛田軒",
     "pref": "埼玉県",
     "ward": "さいたま市北部",
@@ -13123,6 +15692,22 @@
     "source_url": "https://tabelog.com/tokyo/A1321/A132102/R7717/rstLst/ramen"
   },
   {
+    "shop": "麺将 松風",
+    "pref": "千葉県",
+    "ward": "千葉市",
+    "stations": [
+      "千葉市・稲毛駅 / 西千葉駅"
+    ],
+    "genre": "醤油",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.43,
+    "awards": [],
+    "feature": "鶏×魚介のバランス型、西千葉2分",
+    "source_url": "https://tabelog.com/ramen/chiba/A1201/A120104/rank"
+  },
+  {
     "shop": "バリバリラーメン",
     "pref": "埼玉県",
     "ward": "西武沿線エリア",
@@ -13252,6 +15837,23 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132401/13240202"
   },
   {
+    "shop": "たんたんめん Kai",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・東久留米駅"
+    ],
+    "genre": "塩担々麺",
+    "genres": [
+      "担々麺・四川・麻婆",
+      "塩"
+    ],
+    "tabelog_score": 3.43,
+    "awards": [],
+    "feature": "塩ベースのさっぱり担々麺、西口2分・11:30〜22:00",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132802/13245064"
+  },
+  {
     "shop": "鎌倉だし工房 絹と小麦",
     "pref": "神奈川県",
     "ward": "湘南・県西",
@@ -13364,6 +15966,22 @@
     "awards": [],
     "feature": "駅から約500m",
     "source_url": "https://tabelog.com/tokyo/A1305/A130501/13129017"
+  },
+  {
+    "shop": "麺屋 春風",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・清瀬駅"
+    ],
+    "genre": "鶏・魚介の淡麗",
+    "genres": [
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.42,
+    "awards": [],
+    "feature": "丁寧に設計された一杯、清瀬の旗艦、駅291m・月休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132803/R3343/rstLst/ramen"
   },
   {
     "shop": "半蔵 本店",
@@ -13528,6 +16146,22 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132402/13063009"
   },
   {
+    "shop": "らぁ麺はやし田 新浦安店",
+    "pref": "千葉県",
+    "ward": "市川・浦安",
+    "stations": [
+      "市川・浦安・浦安駅"
+    ],
+    "genre": "醤油",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.4,
+    "awards": [],
+    "feature": "鴨・大山鶏の上品な醤油、アトレ新浦安2F・駅直結",
+    "source_url": "https://tabelog.com/chiba/A1202/A120203/12062914"
+  },
+  {
     "shop": "中華そば よしかわ 熊谷店",
     "pref": "埼玉県",
     "ward": "埼玉",
@@ -13612,6 +16246,22 @@
     "source_url": "https://tabelog.com/tokyo/A1324/A132401/13241733"
   },
   {
+    "shop": "麺・DINING 毘沙門天",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・日野駅 / 豊田駅"
+    ],
+    "genre": "鶏そば",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.4,
+    "awards": [],
+    "feature": "鶏そばが看板の地元人気店、豊田7分・月日夜休",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132903/13104260"
+  },
+  {
     "shop": "横浜らーめん 峰の家",
     "pref": "神奈川県",
     "ward": "横浜南西部",
@@ -13626,6 +16276,22 @@
     "awards": [],
     "feature": "京急富岡・能見台最寄りの家系",
     "source_url": "https://tabelog.com/ramen/kanagawa/A1401/A140310/rank"
+  },
+  {
+    "shop": "盛楽（せいらく）",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・川間駅 / 愛宕駅・野田市駅"
+    ],
+    "genre": "中華・ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.39,
+    "awards": [],
+    "feature": "安定感のある味でコスパ良し、川間南口2分",
+    "source_url": "https://tabelog.com/chiba/A1203/A120305/12008195"
   },
   {
     "shop": "らーめん 玉彦",
@@ -13790,6 +16456,38 @@
     "source_url": "https://tabelog.com/kanagawa/A1408/A140801/rstLst/ramen"
   },
   {
+    "shop": "ラーメン豚39（ぶたきゅう）",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・四街道駅"
+    ],
+    "genre": "二郎インスパイア",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": 3.37,
+    "awards": [],
+    "feature": "極太麺＋豚チャーシュー、宮醤油使用、朝ラーも、木更津西口3〜5分",
+    "source_url": "https://tabelog.com/chiba/A1206/A120602/12051406"
+  },
+  {
+    "shop": "麺屋 黒澤／KUROSAWA STORE",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・流山おおたかの森駅"
+    ],
+    "genre": "鶏清湯・醤油",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.37,
+    "awards": [],
+    "feature": "2024年2月開店、丁寧な一杯、おおたかの森2〜3分",
+    "source_url": "https://tabelog.com/chiba/A1203/A120305/12059261"
+  },
+  {
     "shop": "中華そば 瀧壺（たきつぼ）",
     "pref": "東京都",
     "ward": "世田谷区",
@@ -13839,6 +16537,23 @@
     "awards": [],
     "feature": "ガード下、自家炊きスープ、ライス無料／駅すぐ",
     "source_url": "https://tabelog.com/tokyo/A1324/A132404/13259834"
+  },
+  {
+    "shop": "RA-MEN 3SO.",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・成瀬駅"
+    ],
+    "genre": "煮干し×味噌",
+    "genres": [
+      "煮干し",
+      "味噌"
+    ],
+    "tabelog_score": 3.37,
+    "awards": [],
+    "feature": "味噌のコクに煮干しの旨味、成瀬3分・日休",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132701/R7243/rstLst/ramen"
   },
   {
     "shop": "品の一",
@@ -13904,6 +16619,55 @@
     "awards": [],
     "feature": "teamLab Planets併設、動物性不使用／新豊洲1分",
     "source_url": "https://tabelog.com/tokyo/A1313/A131307/R10998/rstLst/ramen"
+  },
+  {
+    "shop": "らーめんつけ麺 びんびん亭 日野店",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・日野駅 / 豊田駅"
+    ],
+    "genre": "背脂醤油・つけ麺",
+    "genres": [
+      "つけ麺",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.36,
+    "awards": [],
+    "feature": "多摩の人気チェーン、背脂パンチ系",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132903/rank"
+  },
+  {
+    "shop": "横浜ラーメン 花笠家",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・国立駅"
+    ],
+    "genre": "横浜家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.36,
+    "awards": [],
+    "feature": "クリーミーでコクのある豚骨醤油、国立の家系上位",
+    "source_url": "https://tabelog.com/tokyo/A1325/A132503/13234844"
+  },
+  {
+    "shop": "一元ちゃん",
+    "pref": "東京都(多摩)",
+    "ward": "西東京・小平・東久留米・東村山・清瀬",
+    "stations": [
+      "西東京・小平・東久留米・東村山・清瀬・東村山駅 / 久米川駅"
+    ],
+    "genre": "とんこつ・町中華",
+    "genres": [
+      "豚骨・博多"
+    ],
+    "tabelog_score": 3.36,
+    "awards": [],
+    "feature": "チャーハン・定食も、東村山最寄り最高評価、月日休",
+    "source_url": "https://tabelog.com/tokyo/A1328/A132806/13247103"
   },
   {
     "shop": "美華飯店",
@@ -14101,6 +16865,22 @@
     "awards": [],
     "feature": "駅約330m",
     "source_url": "https://tabelog.com/tokyo/A1305/A130502/13213508"
+  },
+  {
+    "shop": "中華そば 初代 修（しょだい のぶ）",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・国立駅"
+    ],
+    "genre": "あっさり中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.33,
+    "awards": [],
+    "feature": "鶏ガラ＋魚介、「スペシャル中華そば」、カウンター10席",
+    "source_url": "https://tabelog.com/tokyo/A1325/A132503/13194134"
   },
   {
     "shop": "淳之助製麺食堂 入間総本店",
@@ -14397,6 +17177,22 @@
     "source_url": "https://tabelog.com/tokyo/A1312/A131204/13066091"
   },
   {
+    "shop": "支那そば 桜花爛漫（おうからんまん）",
+    "pref": "千葉県",
+    "ward": "千葉郊外",
+    "stations": [
+      "千葉郊外・四街道駅"
+    ],
+    "genre": "竹岡式ラーメン",
+    "genres": [
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.28,
+    "awards": [],
+    "feature": "「八雲」を彷彿のわんたんめん、2024年10月開店、木更津400m",
+    "source_url": "https://tabelog.com/chiba/A1206/A120602/12061208"
+  },
+  {
     "shop": "横濱家系ラーメン 馬場壱家 風の陣",
     "pref": "東京都",
     "ward": "荒川区",
@@ -14411,6 +17207,22 @@
     "awards": [],
     "feature": "マイルド豚骨醤油、深夜営業",
     "source_url": "https://tabelog.com/tokyo/A1311/A131105/13184208"
+  },
+  {
+    "shop": "自由が丘 蔭山樓 南町田店",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・成瀬駅"
+    ],
+    "genre": "鶏白湯",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.28,
+    "awards": [],
+    "feature": "「特選鶏白湯塩そば」、グランベリーパーク内・駅5分",
+    "source_url": "https://tabelog.com/tokyo/A1327/A132701/13241668"
   },
   {
     "shop": "一風堂 桶川店",
@@ -14561,6 +17373,22 @@
     "source_url": "https://tabelog.com/saitama/A1103/A110302/11043767"
   },
   {
+    "shop": "らぁ麺 えんの助",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・西立川駅"
+    ],
+    "genre": "豚骨（背脂・セルフ味変）",
+    "genres": [
+      "豚骨・博多"
+    ],
+    "tabelog_score": 3.25,
+    "awards": [],
+    "feature": "住宅街の隠れ家、味変自在（西立川・東中神）",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1329/A132902/rank"
+  },
+  {
     "shop": "飛騰ラーメン",
     "pref": "神奈川県",
     "ward": "横浜南西部",
@@ -14625,6 +17453,22 @@
     "source_url": "https://tabelog.com/tokyo/A1312/A131204/13277858"
   },
   {
+    "shop": "横浜家系ラーメン 大岡家 鶴川店",
+    "pref": "東京都(多摩)",
+    "ward": "町田",
+    "stations": [
+      "町田・鶴川駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.23,
+    "awards": [],
+    "feature": "濃厚豚骨醤油、駅2分",
+    "source_url": "https://tabelog.com/kanagawa/A1405/A140508/R6435/rstLst/ramen"
+  },
+  {
     "shop": "横浜家系ラーメン 黄金家 新町店",
     "pref": "神奈川県",
     "ward": "横浜中心部",
@@ -14655,6 +17499,22 @@
     "awards": [],
     "feature": "南口1〜5分、手もみ麺・餃子、深夜まで営業・月休",
     "source_url": "https://tabelog.com/saitama/A1105/A110504/11008947"
+  },
+  {
+    "shop": "元祖油堂 国立店",
+    "pref": "東京都(多摩)",
+    "ward": "立川・国立・国分寺・昭島",
+    "stations": [
+      "立川・国立・国分寺・昭島・国立駅"
+    ],
+    "genre": "油そば・まぜそば",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.21,
+    "awards": [],
+    "feature": "国立駅近くの油そば専門",
+    "source_url": "https://tabelog.com/ramen/tokyo/A1325/A132503/rank"
   },
   {
     "shop": "麺や天鳳 東中野店",
@@ -15017,6 +17877,38 @@
     "awards": [],
     "feature": "濃厚でコク深い豚骨／駅82m",
     "source_url": "https://tabelog.com/tokyo/A1324/A132403/R3674/rstLst/ramen"
+  },
+  {
+    "shop": "山勝角ふじ 総本店",
+    "pref": "千葉県",
+    "ward": "松戸・柏",
+    "stations": [
+      "松戸・柏・北松戸駅 / 馬橋駅 / 新松戸駅"
+    ],
+    "genre": "二郎系",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "極太麺＋山盛り野菜＋厚切りチャーシュー、新松戸名物",
+    "source_url": "https://tabelog.com/chiba/A1203/A120302/R5308/rstLst/ramen"
+  },
+  {
+    "shop": "正華楼（せいかろう）",
+    "pref": "千葉県",
+    "ward": "流山・我孫子・野田・鎌ヶ谷",
+    "stations": [
+      "流山・我孫子・野田・鎌ヶ谷・川間駅 / 愛宕駅・野田市駅"
+    ],
+    "genre": "町中華（自家製麺）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "1951年創業、赤白チャーシューが看板、愛宕8分",
+    "source_url": "https://tabelog.com/chiba/A1203/A120305/12008218"
   },
   {
     "shop": "ラーメンショップ大門 福大亭",
@@ -16313,6 +19205,41 @@
     "awards": [],
     "feature": "千川駅徒歩約1分、要町からも徒歩圏のエリア定番",
     "source_url": "https://cookpit.jp/station-ramen/station-ramen-108869"
+  },
+  {
+    "shop": "麺屋 いちむら",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・めじろ台駅"
+    ],
+    "genre": "醤油・塩・味噌・つけ麺",
+    "genres": [
+      "つけ麺",
+      "味噌",
+      "塩",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "こく旨で幅広いメニュー、めじろ台4分・月休",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132904/13289460"
+  },
+  {
+    "shop": "十八製麺",
+    "pref": "東京都(多摩)",
+    "ward": "八王子・日野・多摩",
+    "stations": [
+      "八王子・日野・多摩・めじろ台駅"
+    ],
+    "genre": "ラーメン・つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "ツルモチ自家製麺の塩つけ麺、北八王子8分・水休",
+    "source_url": "https://tabelog.com/tokyo/A1329/A132904/13145824"
   },
   {
     "shop": "ラーメン ミート",
