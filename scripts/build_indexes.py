@@ -41,12 +41,21 @@ PREF_LABEL = dict(PREFS)
 NON_STATION = ("🚉", "⭐", "🔎", "📝", "❌", "📂", "🧭", "✅", "⚠️", "🅱️", "💯", "🍜", "🗺️")
 
 
+_LINE_HINTS = ("JR", "線", "ライン", "市営地下鉄", "メトロ", "みなとみらい",
+               "京急", "東急", "相鉄", "京成", "小田急", "モノレール", "EX")
+
+
 def is_station_heading(text: str) -> bool:
     if any(m in text for m in NON_STATION):
         return False
     if "私鉄駅" in text or "おすすめ代表店" in text or "要調査" in text:
         return False
-    return ("駅" in text) or ("停留場" in text)
+    if ("駅" in text) or ("停留場" in text):
+        return True
+    # 「駅」字が省略されていても、括弧内に路線名があれば駅見出しとみなす
+    # （横浜中心部の「関内（JR / 市営地下鉄）」「馬車道（みなとみらい線）」等）
+    m = re.search(r"[（(]([^)）]+)[）)]", text)
+    return bool(m and any(k in m.group(1) for k in _LINE_HINTS))
 
 
 def short_station(text: str) -> str:
@@ -57,18 +66,226 @@ def short_station(text: str) -> str:
     return t.strip().strip("／/・")
 
 
-def extract_lines(heading: str) -> list[str]:
-    """Extract railway line names from station heading parentheticals.
-    e.g. '八王子駅（JR中央・横浜・八高線）／ 京王八王子駅（京王線）' → ['JR中央・横浜・八高線', '京王線']
+# ---- 路線タクソノミ（鉄道会社 → 路線）----
+# 駅見出しの括弧内テキストから正準ラベルへマッピングする。
+# 表記揺れ・圧縮形（例「JR中央・横浜・八高線」「有楽町・副都心線」）は
+# expand_lines_text() で各路線名に展開してからキーワード照合する。
+# 各要素: (鉄道会社, 正準ラベル, 照合キーワード)
+TAXONOMY = [
+    ("JR東日本", "JR山手線", ["山手線"]),
+    ("JR東日本", "JR京浜東北線", ["京浜東北"]),
+    ("JR東日本", "JR中央線", ["中央線", "中央本線", "中央快速"]),
+    ("JR東日本", "JR総武線", ["総武線", "総武本線"]),
+    ("JR東日本", "JR埼京線", ["埼京"]),
+    ("JR東日本", "JR湘南新宿ライン", ["湘南新宿"]),
+    ("JR東日本", "JR横須賀線", ["横須賀"]),
+    ("JR東日本", "JR東海道線", ["東海道"]),
+    ("JR東日本", "JR常磐線", ["常磐"]),
+    ("JR東日本", "JR京葉線", ["京葉"]),
+    ("JR東日本", "JR武蔵野線", ["武蔵野"]),
+    ("JR東日本", "JR南武線", ["南武"]),
+    ("JR東日本", "JR横浜線", ["横浜線"]),
+    ("JR東日本", "JR根岸線", ["根岸"]),
+    ("JR東日本", "JR八高線", ["八高"]),
+    ("JR東日本", "JR川越線", ["川越線"]),
+    ("JR東日本", "JR高崎線", ["高崎線"]),
+    ("JR東日本", "JR宇都宮線", ["宇都宮線", "東北本線"]),
+    ("JR東日本", "JR青梅線", ["青梅"]),
+    ("JR東日本", "JR五日市線", ["五日市"]),
+    ("JR東日本", "JR相模線", ["相模線"]),
+    ("JR東日本", "JR鶴見線", ["鶴見線"]),
+    ("JR東日本", "JR内房線", ["内房"]),
+    ("JR東日本", "JR外房線", ["外房"]),
+    ("JR東日本", "JR成田線", ["成田線"]),
+    ("JR東日本", "JR久留里線", ["久留里"]),
+    ("JR東日本", "JR各線（大ターミナル）", ["JR各線"]),
+    ("東京メトロ", "銀座線", ["銀座線"]),
+    ("東京メトロ", "丸ノ内線", ["丸ノ内"]),
+    ("東京メトロ", "日比谷線", ["日比谷"]),
+    ("東京メトロ", "東西線", ["東西線"]),
+    ("東京メトロ", "千代田線", ["千代田"]),
+    ("東京メトロ", "有楽町線", ["有楽町線"]),
+    ("東京メトロ", "半蔵門線", ["半蔵門"]),
+    ("東京メトロ", "南北線", ["南北線"]),
+    ("東京メトロ", "副都心線", ["副都心"]),
+    ("都営地下鉄", "都営浅草線", ["浅草線"]),
+    ("都営地下鉄", "都営三田線", ["三田線"]),
+    ("都営地下鉄", "都営新宿線", ["都営新宿"]),
+    ("都営地下鉄", "都営大江戸線", ["大江戸"]),
+    ("東急", "東急東横線", ["東横"]),
+    ("東急", "東急目黒線", ["目黒線"]),
+    ("東急", "東急田園都市線", ["田園都市"]),
+    ("東急", "東急大井町線", ["大井町"]),
+    ("東急", "東急池上線", ["池上"]),
+    ("東急", "東急多摩川線", ["東急多摩川"]),
+    ("東急", "東急世田谷線", ["世田谷線"]),
+    ("東急", "東急こどもの国線", ["こどもの国"]),
+    ("京王", "京王線", ["京王線"]),
+    ("京王", "京王新線", ["京王新線"]),
+    ("京王", "京王井の頭線", ["井の頭"]),
+    ("京王", "京王相模原線", ["相模原線"]),
+    ("京王", "京王高尾線", ["高尾線"]),
+    ("小田急", "小田急小田原線", ["小田原線", "小田急小田原"]),
+    ("小田急", "小田急江ノ島線", ["江ノ島線", "江の島線"]),
+    ("小田急", "小田急多摩線", ["小田急多摩"]),
+    ("京急", "京急本線", ["京急本線"]),
+    ("京急", "京急空港線", ["京急空港", "空港線"]),
+    ("京急", "京急逗子線", ["逗子線"]),
+    ("京急", "京急久里浜線", ["久里浜"]),
+    ("京急", "京急大師線", ["京急大師"]),
+    ("京成", "京成本線", ["京成本線"]),
+    ("京成", "京成押上線", ["押上"]),
+    ("京成", "京成千葉線", ["京成千葉", "千葉線"]),
+    ("京成", "京成金町線", ["金町"]),
+    ("京成", "京成千原線", ["千原"]),
+    ("京成", "成田スカイアクセス線", ["スカイアクセス", "成田空港線"]),
+    ("東武", "東武スカイツリーライン(伊勢崎線)", ["スカイツリー", "伊勢崎線"]),
+    ("東武", "東武東上線", ["東上"]),
+    ("東武", "東武アーバンパークライン(野田線)", ["アーバンパーク", "野田線"]),
+    ("東武", "東武亀戸線", ["亀戸線"]),
+    ("東武", "東武大師線", ["東武大師"]),
+    ("西武", "西武池袋線", ["西武池袋", "池袋線"]),
+    ("西武", "西武新宿線", ["西武新宿"]),
+    ("西武", "西武拝島線", ["拝島"]),
+    ("西武", "西武多摩湖線", ["多摩湖"]),
+    ("西武", "西武国分寺線", ["国分寺線"]),
+    ("西武", "西武園線", ["西武園"]),
+    ("西武", "西武豊島線", ["豊島線"]),
+    ("西武", "西武有楽町線", ["西武有楽町"]),
+    ("西武", "西武多摩川線", ["西武多摩川", "是政"]),
+    ("相鉄", "相鉄本線", ["相鉄本線"]),
+    ("相鉄", "相鉄いずみ野線", ["いずみ野"]),
+    ("相鉄", "相鉄新横浜線", ["相鉄新横浜"]),
+    ("横浜市交・MM", "横浜市営ブルーライン", ["ブルーライン"]),
+    ("横浜市交・MM", "横浜市営グリーンライン", ["グリーンライン"]),
+    ("横浜市交・MM", "みなとみらい線", ["みなとみらい"]),
+    ("モノレール・新交通", "多摩都市モノレール", ["多摩都市モノレール", "多摩モノレール"]),
+    ("モノレール・新交通", "千葉都市モノレール", ["千葉都市モノレール", "千葉モノレール"]),
+    ("モノレール・新交通", "湘南モノレール", ["湘南モノレール"]),
+    ("モノレール・新交通", "日暮里・舎人ライナー", ["舎人"]),
+    ("モノレール・新交通", "ゆりかもめ", ["ゆりかもめ"]),
+    ("モノレール・新交通", "ニューシャトル", ["ニューシャトル", "埼玉新都市"]),
+    ("その他私鉄", "つくばエクスプレス", ["つくば", "ＴＸ", "TX"]),
+    ("その他私鉄", "りんかい線", ["りんかい"]),
+    ("その他私鉄", "新京成線", ["新京成"]),
+    ("その他私鉄", "北総線", ["北総"]),
+    ("その他私鉄", "東葉高速線", ["東葉"]),
+    ("その他私鉄", "埼玉高速鉄道", ["埼玉高速", "埼玉スタジアム"]),
+    ("その他私鉄", "流鉄流山線", ["流鉄", "流山線"]),
+    ("その他私鉄", "山万ユーカリが丘線", ["山万", "ユーカリが丘線"]),
+    ("その他私鉄", "伊豆箱根鉄道大雄山線", ["大雄山", "伊豆箱根"]),
+    ("その他私鉄", "秩父鉄道", ["秩父鉄道", "秩父線"]),
+    ("その他私鉄", "江ノ電", ["江ノ電", "江ノ島電鉄"]),
+    ("都電", "都電荒川線(さくらトラム)", ["荒川線", "さくらトラム", "都電"]),
+]
+LABEL_ORDER = [label for _, label, _ in TAXONOMY]
+LABEL_RANK = {label: i for i, label in enumerate(LABEL_ORDER)}
+LINE_SUFFIXES = ("エクスプレス", "モノレール", "ライナー", "トラム", "ライン", "線")
+
+
+def expand_lines_text(paren: str) -> str:
+    """圧縮された路線表記を各路線名へ展開する。
+    例「JR中央・横浜・八高線」→「JR中央線・横浜線・八高線」
+       「有楽町・副都心線」→「有楽町線・副都心線」
+    末尾トークンが持つ接尾辞(線/ライン等)を、接尾辞のない先行トークンに補う。
     """
-    parts = re.findall(r'[（(]([^)）\n]+)[）)]', heading)
-    result = []
-    for part in parts:
-        for seg in re.split(r'\s*/\s*|／', part):
-            seg = seg.strip()
-            if seg:
-                result.append(seg)
-    return result
+    out = []
+    for chunk in re.split(r"[/／]", paren):
+        toks = chunk.split("・")
+        suf = ""
+        for t in reversed(toks):
+            for s in LINE_SUFFIXES:
+                if t.endswith(s):
+                    suf = s
+                    break
+            if suf:
+                break
+        rebuilt = []
+        for t in toks:
+            t = t.strip()
+            if not t:
+                continue
+            if any(t.endswith(s) for s in LINE_SUFFIXES) or not suf:
+                rebuilt.append(t)
+            else:
+                rebuilt.append(t + suf)
+        out.append("・".join(rebuilt))
+    return "／".join(out)
+
+
+def extract_lines(heading: str) -> list[str]:
+    """駅見出しの括弧内から正準路線ラベルのリストを返す（タクソノミ順）。"""
+    parens = re.findall(r"[（(]([^)）\n]+)[）)]", heading)
+    if not parens:
+        return []
+    raw = "／".join(parens)
+    expanded = expand_lines_text(raw)
+    found = set()
+    for _, label, kws in TAXONOMY:
+        if any(k in expanded for k in kws):
+            found.add(label)
+
+    def has(*xs):
+        return any(x in expanded for x in xs)
+
+    def has_company(prefix):
+        return any(l.startswith(prefix) for l in found)
+
+    # 会社名のみの表記（例「（小田急）」「（京急）」「（東武）」）は各社の本線/主要線へ寄せる
+    if "小田急" in expanded and not has("江ノ島", "小田急多摩"):
+        found.add("小田急小田原線")
+    if "京急" in expanded and not has("空港", "逗子", "久里浜", "大師"):
+        found.add("京急本線")
+    if "京成" in expanded and not has("押上", "千葉線", "京成千葉", "金町", "スカイアクセス", "千原"):
+        found.add("京成本線")
+    if "相鉄" in expanded and not has_company("相鉄"):
+        found.add("相鉄本線")
+    if "東急" in expanded and not has_company("東急"):
+        found.add("東急東横線")
+    if "東武" in expanded and not has_company("東武"):
+        found.add("東武スカイツリーライン(伊勢崎線)")
+    # 横浜市営地下鉄: 線名なしの「市営地下鉄」は中心部＝ブルーライン
+    if "市営地下鉄" in expanded and "グリーンライン" not in expanded:
+        found.add("横浜市営ブルーライン")
+    # 「JR各線」やバールの「JR」のみ（大ターミナル）
+    tokens = re.split(r"[／/・,、\s]+", raw)
+    if "JR各線" in raw or any(t in ("JR", "ＪＲ", "JR線", "JR各線") for t in tokens):
+        found.add("JR各線（大ターミナル）")
+
+    return sorted(found, key=lambda l: LABEL_RANK.get(l, 999))
+
+
+# ---- 新店（2026年オープン）判定 ----
+_OPEN_KW = ("開店", "開業", "オープン", "新規", "新店", "進出")
+_REOPEN_KW = ("再開", "リニューアル", "移転", "復活")
+_AWARD_KW = ("百名店", "百", "TRY", "EAST", "WEST", "大賞", "グランプリ", "オブ", "受賞", "ミシュラン", "ビブ")
+
+
+_LATE_KW = ("深夜", "翌1", "翌2", "翌3", "翌4", "24時間", "〜24", "1時まで", "2時まで",
+            "夜営業", "朝まで", "23時", "〜23")
+
+
+def is_late_night(feat: str) -> bool:
+    """夜遅く（深夜帯）まで営業している手がかりが特徴テキストにあるか。"""
+    return any(k in feat for k in _LATE_KW)
+
+
+def is_new_2026(feat: str) -> bool:
+    """特徴テキストから「2026年オープンの新店」を判定する。
+    受賞年（例「EAST百名店2026」）や再開・移転・リニューアルは除外する。
+    """
+    for m in re.finditer(r"2026", feat):
+        s, e = m.start(), m.end()
+        before = feat[max(0, s - 6):s]
+        if any(a in before for a in _AWARD_KW):
+            continue  # 「百名店2026」等の受賞年
+        window = feat[max(0, s - 8):e + 12]
+        if not any(k in window for k in _OPEN_KW):
+            continue  # 開店系の語が近くにない
+        if any(k in window for k in _REOPEN_KW):
+            continue  # 再開・移転・リニューアルは新店扱いしない
+        return True
+    return False
 
 
 def parse_closed_days(feat: str) -> list[str]:
@@ -192,11 +409,16 @@ def parse_records() -> list[dict]:
                     for rline in current_lines:
                         if rline not in rec["lines"]:
                             rec["lines"].append(rline)
+                    rec["lines"].sort(key=lambda l: LABEL_RANK.get(l, 999))
+                    rec["new_shop"] = rec["new_shop"] or is_new_2026(feat)
+                    rec["late_night"] = rec["late_night"] or is_late_night(feat)
                     continue
                 bykey[key] = dict(pref=pref, ward=ward, station=station, shop=shop,
                                   genre=genre, feat=feat, ev=ev, src=src, url=url, locs=[loc],
                                   lines=list(current_lines),
-                                  closed_days=parse_closed_days(feat))
+                                  closed_days=parse_closed_days(feat),
+                                  new_shop=is_new_2026(feat),
+                                  late_night=is_late_night(feat))
     return list(bykey.values())
 
 
@@ -278,7 +500,7 @@ def write_awards(records):
 
 
 def write_practical(records):
-    late = [r for r in records if any(k in r["feat"] for k in ("深夜", "翌1", "翌2", "翌3", "翌4", "24時間", "〜24", "1時まで", "2時まで"))]
+    late = [r for r in records if r.get("late_night")]
     morning = [r for r in records if any(k in r["feat"] for k in ("朝ラー", "朝6", "朝5", "朝7", "早朝", "朝営業", "6:30", "7:00から", "朝〜"))]
     reserve = [r for r in records if any(k in r["feat"] for k in ("予約", "整理券", "オンライン順番", "電子チケット"))]
     queue = [r for r in records if any(k in r["feat"] for k in ("行列", "連日行列", "売切", "売り切れ", "スープ切れ", "仕舞い", "終了"))]
@@ -360,7 +582,7 @@ def write_data(records):
     os.makedirs(os.path.join(DOCS, "data"), exist_ok=True)
     rows = sorted(records, key=lambda r: (-score(r["ev"]), r["pref"], r["ward"]))
     cols = ["shop", "pref", "ward", "stations", "genre", "genres", "tabelog_score",
-            "awards", "feature", "source_url", "closed_days", "lines"]
+            "awards", "feature", "source_url", "closed_days", "lines", "new_2026", "late_night"]
     with open(os.path.join(DATA, "ramen.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
@@ -369,12 +591,16 @@ def write_data(records):
                         "/".join(classify(r["genre"])), score(r["ev"]) or "",
                         ";".join(awards_of(r)), r["feat"], r["url"],
                         ";".join(r.get("closed_days", [])),
-                        " / ".join(r.get("lines", []))])
+                        " / ".join(r.get("lines", [])),
+                        "1" if r.get("new_shop") else "",
+                        "1" if r.get("late_night") else ""])
     arr = [dict(shop=r["shop"], pref=r["pref"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
                genres=classify(r["genre"]), tabelog_score=(score(r["ev"]) or None),
                awards=awards_of(r), feature=r["feat"], source_url=r["url"],
                closed_days=r.get("closed_days", []),
-               lines=r.get("lines", [])) for r in rows]
+               lines=r.get("lines", []),
+               new_shop=bool(r.get("new_shop")),
+               late_night=bool(r.get("late_night"))) for r in rows]
     payload = json.dumps(arr, ensure_ascii=False, indent=2)
     with open(os.path.join(DATA, "ramen.json"), "w", encoding="utf-8") as f:
         f.write(payload)
@@ -382,6 +608,28 @@ def write_data(records):
     with open(os.path.join(DOCS, "data", "ramen.json"), "w", encoding="utf-8") as f:
         f.write(payload)
     return len(rows)
+
+
+def write_lines(records):
+    """ビューアの路線プルダウン用に、データ中に実在する路線を
+    鉄道会社ごと(タクソノミ順)にグループ化して lines.json に出力する。"""
+    counts = defaultdict(int)
+    for r in records:
+        for l in r.get("lines", []):
+            counts[l] += 1
+    groups = []
+    for company, label, _ in TAXONOMY:
+        if not counts.get(label):
+            continue
+        if not groups or groups[-1]["company"] != company:
+            groups.append(dict(company=company, lines=[]))
+        groups[-1]["lines"].append(dict(label=label, count=counts[label]))
+    payload = json.dumps(groups, ensure_ascii=False, indent=2)
+    for d in (DATA, os.path.join(DOCS, "data")):
+        os.makedirs(d, exist_ok=True)
+        with open(os.path.join(d, "lines.json"), "w", encoding="utf-8") as f:
+            f.write(payload)
+    return sum(len(g["lines"]) for g in groups)
 
 
 def main() -> None:
@@ -392,9 +640,15 @@ def main() -> None:
     late, morning, reserve, queue, hall = write_practical(records)
     fams = write_lineage(records)
     n = write_data(records)
+    nlines = write_lines(records)
+    n_new = sum(1 for r in records if r.get("new_shop"))
+    n_sun = sum(1 for r in records if "Sun" not in r.get("closed_days", []))
+    n_night = sum(1 for r in records if r.get("late_night"))
     print(f"records={len(records)} csv/json={n}")
     print(f"awards: star={len(star)} bib={len(bib)} hyaku={len(hyaku)}")
     print(f"practical: late={len(late)} morning={len(morning)} reserve={len(reserve)} queue={len(queue)} hall={len(hall)}")
+    print(f"lines in dropdown={nlines}  new_2026={n_new}  open_sunday={n_sun}  late_night={n_night}")
+    print("new_2026 shops:", [r["shop"] for r in records if r.get("new_shop")])
     print("lineage families:")
     for name, uniq in fams:
         print(f"  {name}: {len(uniq)}")

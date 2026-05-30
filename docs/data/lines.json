@@ -1,0 +1,449 @@
+[
+  {
+    "company": "JR東日本",
+    "lines": [
+      {
+        "label": "JR山手線",
+        "count": 22
+      },
+      {
+        "label": "JR京浜東北線",
+        "count": 61
+      },
+      {
+        "label": "JR中央線",
+        "count": 58
+      },
+      {
+        "label": "JR総武線",
+        "count": 109
+      },
+      {
+        "label": "JR埼京線",
+        "count": 26
+      },
+      {
+        "label": "JR湘南新宿ライン",
+        "count": 21
+      },
+      {
+        "label": "JR横須賀線",
+        "count": 20
+      },
+      {
+        "label": "JR東海道線",
+        "count": 25
+      },
+      {
+        "label": "JR常磐線",
+        "count": 37
+      },
+      {
+        "label": "JR京葉線",
+        "count": 19
+      },
+      {
+        "label": "JR武蔵野線",
+        "count": 40
+      },
+      {
+        "label": "JR南武線",
+        "count": 33
+      },
+      {
+        "label": "JR横浜線",
+        "count": 26
+      },
+      {
+        "label": "JR根岸線",
+        "count": 9
+      },
+      {
+        "label": "JR八高線",
+        "count": 8
+      },
+      {
+        "label": "JR川越線",
+        "count": 8
+      },
+      {
+        "label": "JR高崎線",
+        "count": 16
+      },
+      {
+        "label": "JR宇都宮線",
+        "count": 3
+      },
+      {
+        "label": "JR青梅線",
+        "count": 10
+      },
+      {
+        "label": "JR相模線",
+        "count": 9
+      },
+      {
+        "label": "JR内房線",
+        "count": 6
+      },
+      {
+        "label": "JR外房線",
+        "count": 3
+      },
+      {
+        "label": "JR成田線",
+        "count": 8
+      },
+      {
+        "label": "JR久留里線",
+        "count": 3
+      },
+      {
+        "label": "JR各線（大ターミナル）",
+        "count": 55
+      }
+    ]
+  },
+  {
+    "company": "東京メトロ",
+    "lines": [
+      {
+        "label": "銀座線",
+        "count": 51
+      },
+      {
+        "label": "丸ノ内線",
+        "count": 67
+      },
+      {
+        "label": "日比谷線",
+        "count": 58
+      },
+      {
+        "label": "東西線",
+        "count": 44
+      },
+      {
+        "label": "千代田線",
+        "count": 50
+      },
+      {
+        "label": "有楽町線",
+        "count": 47
+      },
+      {
+        "label": "半蔵門線",
+        "count": 38
+      },
+      {
+        "label": "南北線",
+        "count": 42
+      },
+      {
+        "label": "副都心線",
+        "count": 34
+      }
+    ]
+  },
+  {
+    "company": "都営地下鉄",
+    "lines": [
+      {
+        "label": "都営浅草線",
+        "count": 53
+      },
+      {
+        "label": "都営三田線",
+        "count": 50
+      },
+      {
+        "label": "都営新宿線",
+        "count": 48
+      },
+      {
+        "label": "都営大江戸線",
+        "count": 80
+      }
+    ]
+  },
+  {
+    "company": "東急",
+    "lines": [
+      {
+        "label": "東急東横線",
+        "count": 37
+      },
+      {
+        "label": "東急目黒線",
+        "count": 16
+      },
+      {
+        "label": "東急田園都市線",
+        "count": 36
+      },
+      {
+        "label": "東急大井町線",
+        "count": 14
+      },
+      {
+        "label": "東急池上線",
+        "count": 13
+      },
+      {
+        "label": "東急多摩川線",
+        "count": 4
+      },
+      {
+        "label": "東急世田谷線",
+        "count": 8
+      },
+      {
+        "label": "東急こどもの国線",
+        "count": 1
+      }
+    ]
+  },
+  {
+    "company": "京王",
+    "lines": [
+      {
+        "label": "京王線",
+        "count": 25
+      },
+      {
+        "label": "京王新線",
+        "count": 8
+      },
+      {
+        "label": "京王井の頭線",
+        "count": 22
+      },
+      {
+        "label": "京王相模原線",
+        "count": 8
+      },
+      {
+        "label": "京王高尾線",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "company": "小田急",
+    "lines": [
+      {
+        "label": "小田急小田原線",
+        "count": 46
+      },
+      {
+        "label": "小田急江ノ島線",
+        "count": 14
+      },
+      {
+        "label": "小田急多摩線",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "company": "京急",
+    "lines": [
+      {
+        "label": "京急本線",
+        "count": 41
+      },
+      {
+        "label": "京急空港線",
+        "count": 7
+      },
+      {
+        "label": "京急大師線",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "company": "京成",
+    "lines": [
+      {
+        "label": "京成本線",
+        "count": 52
+      },
+      {
+        "label": "京成押上線",
+        "count": 7
+      },
+      {
+        "label": "京成千葉線",
+        "count": 4
+      },
+      {
+        "label": "京成金町線",
+        "count": 6
+      }
+    ]
+  },
+  {
+    "company": "東武",
+    "lines": [
+      {
+        "label": "東武スカイツリーライン(伊勢崎線)",
+        "count": 33
+      },
+      {
+        "label": "東武東上線",
+        "count": 32
+      },
+      {
+        "label": "東武アーバンパークライン(野田線)",
+        "count": 27
+      },
+      {
+        "label": "東武亀戸線",
+        "count": 7
+      },
+      {
+        "label": "東武大師線",
+        "count": 2
+      }
+    ]
+  },
+  {
+    "company": "西武",
+    "lines": [
+      {
+        "label": "西武池袋線",
+        "count": 32
+      },
+      {
+        "label": "西武新宿線",
+        "count": 45
+      },
+      {
+        "label": "西武拝島線",
+        "count": 4
+      },
+      {
+        "label": "西武多摩湖線",
+        "count": 4
+      },
+      {
+        "label": "西武多摩川線",
+        "count": 3
+      }
+    ]
+  },
+  {
+    "company": "相鉄",
+    "lines": [
+      {
+        "label": "相鉄本線",
+        "count": 21
+      },
+      {
+        "label": "相鉄いずみ野線",
+        "count": 7
+      }
+    ]
+  },
+  {
+    "company": "横浜市交・MM",
+    "lines": [
+      {
+        "label": "横浜市営ブルーライン",
+        "count": 35
+      },
+      {
+        "label": "横浜市営グリーンライン",
+        "count": 9
+      },
+      {
+        "label": "みなとみらい線",
+        "count": 7
+      }
+    ]
+  },
+  {
+    "company": "モノレール・新交通",
+    "lines": [
+      {
+        "label": "多摩都市モノレール",
+        "count": 8
+      },
+      {
+        "label": "千葉都市モノレール",
+        "count": 4
+      },
+      {
+        "label": "湘南モノレール",
+        "count": 3
+      },
+      {
+        "label": "日暮里・舎人ライナー",
+        "count": 7
+      },
+      {
+        "label": "ゆりかもめ",
+        "count": 5
+      },
+      {
+        "label": "ニューシャトル",
+        "count": 7
+      }
+    ]
+  },
+  {
+    "company": "その他私鉄",
+    "lines": [
+      {
+        "label": "つくばエクスプレス",
+        "count": 14
+      },
+      {
+        "label": "りんかい線",
+        "count": 7
+      },
+      {
+        "label": "新京成線",
+        "count": 10
+      },
+      {
+        "label": "北総線",
+        "count": 4
+      },
+      {
+        "label": "東葉高速線",
+        "count": 6
+      },
+      {
+        "label": "埼玉高速鉄道",
+        "count": 7
+      },
+      {
+        "label": "山万ユーカリが丘線",
+        "count": 2
+      },
+      {
+        "label": "伊豆箱根鉄道大雄山線",
+        "count": 3
+      },
+      {
+        "label": "秩父鉄道",
+        "count": 4
+      },
+      {
+        "label": "江ノ電",
+        "count": 5
+      }
+    ]
+  },
+  {
+    "company": "都電",
+    "lines": [
+      {
+        "label": "都電荒川線(さくらトラム)",
+        "count": 10
+      }
+    ]
+  }
+]
