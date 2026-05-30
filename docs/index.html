@@ -67,6 +67,7 @@
   .b-new{background:#c0392b;color:#fff;}
   .b-night{background:#2c3e6b;color:#fff;}
   .b-lunch{background:#fff3cd;color:#8a6d00;}
+  .b-try{background:#f3c000;color:#4a3500;}
   .tband{display:inline-block;border-radius:6px;padding:1px 7px;margin-top:3px;
     font-size:11px;font-weight:600;white-space:nowrap;}
   .tb1{background:#e3f4e1;color:#2e7d32;}
@@ -153,6 +154,7 @@
         <label><input type="checkbox" id="c-star"> ⭐ ミシュラン星</label>
         <label><input type="checkbox" id="c-bib"> 🅱️ ビブグルマン</label>
         <label><input type="checkbox" id="c-hyaku"> 💯 百名店</label>
+        <label><input type="checkbox" id="c-try"> 🏆 TRY大賞</label>
         <span class="sep">|</span>
         <!-- Feature 1(既存): 今日開いてる -->
         <label class="open-lbl"
@@ -218,6 +220,7 @@
     全店「実在・営業中」確認済。営業日・定休日は変更があり得るため訪問前に最新情報を確認ください。
     🚊 所要時間は<strong>西新宿</strong>からの目安（路線・距離からの推定で実経路ではありません）。
     🌙 深夜＝23時以降まで／🍜 夜も営業＝「昼のみ」店を除いた夜営業見込み（個別の営業時間は未検証）。
+    🏆 TRY＝講談社「TRYラーメン大賞」の大賞・新店大賞・殿堂入り（年度表記2025-2026＝第26回）。
     曜日/日曜/深夜フィルタは特徴テキストに手がかりのある店のみ反映。スタンプはブラウザのローカルに保存されます。
   </footer>
 </div>
@@ -240,7 +243,7 @@ const $ = s => document.querySelector(s);
 const els = {
   q:$("#q"), pref:$("#pref"), ward:$("#ward"), line:$("#line"), travel:$("#travel"), genre:$("#genre"),
   min:$("#minscore"), sort:$("#sort"),
-  star:$("#c-star"), bib:$("#c-bib"), hyaku:$("#c-hyaku"),
+  star:$("#c-star"), bib:$("#c-bib"), hyaku:$("#c-hyaku"), try:$("#c-try"),
   today:$("#c-today"), sunday:$("#c-sunday"), night:$("#c-night"), evening:$("#c-evening"), newshop:$("#c-new"),
   unvisited:$("#c-unvisited"), want:$("#c-want"),
   rows:$("#rows"), n:$("#n"), total:$("#total"), reset:$("#reset"),
@@ -262,6 +265,7 @@ function badges(aw){
 }
 function markers(r){
   let m = "";
+  (r.try_awards||[]).forEach(t=> m += '<span class="badge b-try">🏆'+esc(t.label)+'</span>');
   if(r.new_shop)   m += '<span class="badge b-new">🆕新店</span>';
   if(r.late_night) m += '<span class="badge b-night">🌙深夜</span>';
   if(r.lunch_only) m += '<span class="badge b-lunch">☀️昼のみ</span>';
@@ -290,6 +294,7 @@ function passes(r){
   if(els.star.checked  && !(r.awards||[]).includes("ミシュラン星")) return false;
   if(els.bib.checked   && !(r.awards||[]).includes("ビブグルマン")) return false;
   if(els.hyaku.checked && !(r.awards||[]).includes("百名店")) return false;
+  if(els.try.checked   && !((r.try_awards||[]).length)) return false;
   // 営業日
   if(els.today.checked  && (r.closed_days||[]).includes(TODAY_ENG)) return false;
   if(els.sunday.checked && (r.closed_days||[]).includes("Sun")) return false;
@@ -408,7 +413,7 @@ function initFilters(){
 function bind(){
   els.pref.addEventListener("change", ()=>{ fillWards(); render(); });
   for(const el of [els.q,els.ward,els.line,els.travel,els.genre,els.min,els.sort,
-                   els.star,els.bib,els.hyaku,els.today,els.sunday,els.night,els.evening,els.newshop,
+                   els.star,els.bib,els.hyaku,els.try,els.today,els.sunday,els.night,els.evening,els.newshop,
                    els.unvisited,els.want]){
     el.addEventListener("input", render);
   }
@@ -422,7 +427,7 @@ function bind(){
   els.reset.addEventListener("click", ()=>{
     els.q.value=""; els.pref.value=""; els.ward.value=""; els.line.value=""; els.travel.value="";
     els.genre.value=""; els.min.value="0"; els.sort.value="score";
-    els.star.checked=els.bib.checked=els.hyaku.checked=false;
+    els.star.checked=els.bib.checked=els.hyaku.checked=els.try.checked=false;
     els.today.checked=els.sunday.checked=els.night.checked=els.evening.checked=els.newshop.checked=false;
     els.unvisited.checked=els.want.checked=false;
     fillWards(); render();

@@ -436,6 +436,45 @@
     "try_awards": []
   },
   {
+    "shop": "桜上水 船越",
+    "pref": "東京都",
+    "ward": "世田谷区",
+    "stations": [
+      "世田谷区・桜上水駅"
+    ],
+    "genre": "中華そば（醤油・塩）・ワンタンメン",
+    "genres": [
+      "ワンタン麺",
+      "塩",
+      "醤油・中華そば",
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.86,
+    "awards": [],
+    "feature": "西早稲田「渡なべ」出身、TRY新店大賞2023-2024・Tabelog100 2025／北口4分（店は杉並区下高井戸）・水日休",
+    "source_url": "https://tabelog.com/tokyo/A1318/A131809/13281101",
+    "closed_days": [
+      "Wed",
+      "Sun"
+    ],
+    "lines": [
+      "京王線"
+    ],
+    "new_shop": false,
+    "late_night": false,
+    "evening": true,
+    "lunch_only": false,
+    "travel_min": 13,
+    "travel_band": 1,
+    "try_awards": [
+      {
+        "cat": "新店大賞",
+        "edition": "2023-2024",
+        "label": "TRY新店大賞 23-24"
+      }
+    ]
+  },
+  {
     "shop": "燦燦斗（さんさんと）",
     "pref": "東京都",
     "ward": "北区",
