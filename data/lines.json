@@ -4,27 +4,27 @@
     "lines": [
       {
         "label": "JR山手線",
-        "count": 22
+        "count": 24
       },
       {
         "label": "JR京浜東北線",
-        "count": 61
+        "count": 70
       },
       {
         "label": "JR中央線",
-        "count": 58
+        "count": 64
       },
       {
         "label": "JR総武線",
-        "count": 109
+        "count": 117
       },
       {
         "label": "JR埼京線",
-        "count": 26
+        "count": 30
       },
       {
         "label": "JR湘南新宿ライン",
-        "count": 21
+        "count": 25
       },
       {
         "label": "JR横須賀線",
@@ -100,7 +100,7 @@
       },
       {
         "label": "JR各線（大ターミナル）",
-        "count": 55
+        "count": 59
       }
     ]
   },
@@ -109,39 +109,39 @@
     "lines": [
       {
         "label": "銀座線",
-        "count": 51
+        "count": 60
       },
       {
         "label": "丸ノ内線",
-        "count": 67
+        "count": 73
       },
       {
         "label": "日比谷線",
-        "count": 58
+        "count": 62
       },
       {
         "label": "東西線",
-        "count": 44
+        "count": 46
       },
       {
         "label": "千代田線",
-        "count": 50
+        "count": 54
       },
       {
         "label": "有楽町線",
-        "count": 47
+        "count": 51
       },
       {
         "label": "半蔵門線",
-        "count": 38
+        "count": 44
       },
       {
         "label": "南北線",
-        "count": 42
+        "count": 44
       },
       {
         "label": "副都心線",
-        "count": 34
+        "count": 39
       }
     ]
   },
@@ -150,19 +150,19 @@
     "lines": [
       {
         "label": "都営浅草線",
-        "count": 53
+        "count": 58
       },
       {
         "label": "都営三田線",
-        "count": 50
+        "count": 51
       },
       {
         "label": "都営新宿線",
-        "count": 48
+        "count": 52
       },
       {
         "label": "都営大江戸線",
-        "count": 80
+        "count": 88
       }
     ]
   },
@@ -171,19 +171,19 @@
     "lines": [
       {
         "label": "東急東横線",
-        "count": 37
+        "count": 39
       },
       {
         "label": "東急目黒線",
-        "count": 16
+        "count": 17
       },
       {
         "label": "東急田園都市線",
-        "count": 36
+        "count": 37
       },
       {
         "label": "東急大井町線",
-        "count": 14
+        "count": 15
       },
       {
         "label": "東急池上線",
@@ -195,7 +195,7 @@
       },
       {
         "label": "東急世田谷線",
-        "count": 8
+        "count": 9
       },
       {
         "label": "東急こどもの国線",
@@ -208,15 +208,15 @@
     "lines": [
       {
         "label": "京王線",
-        "count": 25
+        "count": 27
       },
       {
         "label": "京王新線",
-        "count": 8
+        "count": 10
       },
       {
         "label": "京王井の頭線",
-        "count": 22
+        "count": 24
       },
       {
         "label": "京王相模原線",
@@ -233,7 +233,7 @@
     "lines": [
       {
         "label": "小田急小田原線",
-        "count": 46
+        "count": 48
       },
       {
         "label": "小田急江ノ島線",
@@ -250,11 +250,11 @@
     "lines": [
       {
         "label": "京急本線",
-        "count": 41
+        "count": 45
       },
       {
         "label": "京急空港線",
-        "count": 7
+        "count": 8
       },
       {
         "label": "京急大師線",
@@ -288,11 +288,11 @@
     "lines": [
       {
         "label": "東武スカイツリーライン(伊勢崎線)",
-        "count": 33
+        "count": 35
       },
       {
         "label": "東武東上線",
-        "count": 32
+        "count": 35
       },
       {
         "label": "東武アーバンパークライン(野田線)",
@@ -313,7 +313,7 @@
     "lines": [
       {
         "label": "西武池袋線",
-        "count": 32
+        "count": 33
       },
       {
         "label": "西武新宿線",
@@ -380,7 +380,7 @@
       },
       {
         "label": "日暮里・舎人ライナー",
-        "count": 7
+        "count": 8
       },
       {
         "label": "ゆりかもめ",
@@ -397,11 +397,11 @@
     "lines": [
       {
         "label": "つくばエクスプレス",
-        "count": 14
+        "count": 15
       },
       {
         "label": "りんかい線",
-        "count": 7
+        "count": 9
       },
       {
         "label": "新京成線",

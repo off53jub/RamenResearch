@@ -14290,6 +14290,29 @@
     "late_night": false
   },
   {
+    "shop": "RAMEN 紫苑",
+    "pref": "東京都",
+    "ward": "新宿区",
+    "stations": [
+      "新宿区・高田馬場駅"
+    ],
+    "genre": "塩ラーメン（無化調・地鶏コンソメ）",
+    "genres": [
+      "塩"
+    ],
+    "tabelog_score": 3.61,
+    "awards": [],
+    "feature": "長州黒かしわ等地鶏使用、L字8席QR注文、昼のみ行列、2026年3月開店",
+    "source_url": "https://tabelog.com/tokyo/A1305/A130503/13319655",
+    "closed_days": [],
+    "lines": [
+      "JR山手線",
+      "東西線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "メルシー",
     "pref": "東京都",
     "ward": "新宿区",
@@ -19669,6 +19692,29 @@
     "late_night": false
   },
   {
+    "shop": "中華そば くおん",
+    "pref": "東京都",
+    "ward": "文京区",
+    "stations": [
+      "文京区・江戸川橋駅"
+    ],
+    "genre": "煮干し中華そば",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.51,
+    "awards": [],
+    "feature": "飯能「flour works」公認、煮干100%「香澄」と動物系「TOKYO CLASSIC」2種、水曜定休、2026年2月開店",
+    "source_url": "https://tabelog.com/tokyo/A1309/A130905/13319106",
+    "closed_days": [],
+    "lines": [
+      "有楽町線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "麺庵大和",
     "pref": "東京都",
     "ward": "新宿区",
@@ -22496,6 +22542,30 @@
     "late_night": false
   },
   {
+    "shop": "なぎちゃんラーメン 錦糸町店",
+    "pref": "東京都",
+    "ward": "墨田区",
+    "stations": [
+      "墨田区・錦糸町駅"
+    ],
+    "genre": "ちゃん系ラーメン（煮干し）",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.42,
+    "awards": [],
+    "feature": "「凪」グループのちゃん系ブランド、赤看板に白抜き文字、2026年1月開店",
+    "source_url": "https://sumida.goguynet.jp/2025/12/14/nagichan-open",
+    "closed_days": [],
+    "lines": [
+      "JR総武線",
+      "半蔵門線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "ど・みそ ららぽーと豊洲店",
     "pref": "東京都",
     "ward": "江東区",
@@ -22517,6 +22587,32 @@
     ],
     "new_shop": false,
     "late_night": false
+  },
+  {
+    "shop": "中華そば 喜長",
+    "pref": "東京都",
+    "ward": "港区",
+    "stations": [
+      "港区・新橋駅"
+    ],
+    "genre": "つけ麺・中華そば（丸長系）",
+    "genres": [
+      "つけ麺",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.42,
+    "awards": [],
+    "feature": "神田「ラーメンわいず」系列、荻窪丸長インスパイア・黒甘辛酸つけ汁、深夜行列、2026年3月開店",
+    "source_url": "https://tabelog.com/tokyo/A1301/A130103/13320108",
+    "closed_days": [],
+    "lines": [
+      "JR各線（大ターミナル）",
+      "銀座線",
+      "都営浅草線",
+      "都営大江戸線"
+    ],
+    "new_shop": true,
+    "late_night": true
   },
   {
     "shop": "中国料理 桂林",
@@ -22720,6 +22816,29 @@
       "JR京浜東北線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "なぎちゃんラーメン 青物横丁店",
+    "pref": "東京都",
+    "ward": "品川区",
+    "stations": [
+      "品川区・青物横丁駅"
+    ],
+    "genre": "ちゃん系（煮干し）ラーメン",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.41,
+    "awards": [],
+    "feature": "「凪」グループのちゃん系ブランド、駅至近、2026年1月開店",
+    "source_url": "https://tabelog.com/tokyo/A1315/A131501/13317715",
+    "closed_days": [],
+    "lines": [
+      "京急本線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -23372,6 +23491,52 @@
     "late_night": false
   },
   {
+    "shop": "なぎちゃんラーメン 武蔵小山店",
+    "pref": "東京都",
+    "ward": "品川区",
+    "stations": [
+      "品川区・武蔵小山駅"
+    ],
+    "genre": "ちゃん系（煮干し）ラーメン",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.37,
+    "awards": [],
+    "feature": "「凪」グループのちゃん系ブランド、パルム商店街「パンの田島」跡地、2026年2月開店",
+    "source_url": "https://shinagawa.goguynet.jp/2026/02/20/nagichannra-mennmusashikoyamatenn-2",
+    "closed_days": [],
+    "lines": [
+      "東急目黒線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "麦と手",
+    "pref": "東京都",
+    "ward": "杉並区",
+    "stations": [
+      "杉並区・阿佐ケ谷駅"
+    ],
+    "genre": "台湾まぜそば（手打ち極太麺）",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.37,
+    "awards": [],
+    "feature": "高円寺「混ぜそば みなみ」2号店、ゴワゴワ手打ち自家製麺、2026年1月開店",
+    "source_url": "https://tabelog.com/tokyo/A1319/A131905/13318205",
+    "closed_days": [],
+    "lines": [
+      "JR中央線",
+      "JR総武線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "ラーメン 三原色（RAMEN RGB.）",
     "pref": "東京都",
     "ward": "豊島区",
@@ -23488,6 +23653,32 @@
       "東武東上線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "麺処 にぼし香 赤羽店",
+    "pref": "東京都",
+    "ward": "北区",
+    "stations": [
+      "北区・赤羽駅"
+    ],
+    "genre": "濃厚煮干蕎麦・つけ麺",
+    "genres": [
+      "煮干し",
+      "つけ麺"
+    ],
+    "tabelog_score": 3.36,
+    "awards": [],
+    "feature": "「丿貫(へちかん)」出身、煮干蕎麦＋あさりガリバタ和え玉、2026年2月開店",
+    "source_url": "https://akabane-shinbun.com/archives/235159",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "JR埼京線",
+      "JR湘南新宿ライン",
+      "南北線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -24080,6 +24271,31 @@
     "late_night": false
   },
   {
+    "shop": "みそきん 池袋店",
+    "pref": "東京都",
+    "ward": "豊島区",
+    "stations": [
+      "豊島区・池袋駅"
+    ],
+    "genre": "味噌ラーメン（完全予約制）",
+    "genres": [
+      "味噌"
+    ],
+    "tabelog_score": 3.32,
+    "awards": [],
+    "feature": "HIKAKIN監修・東京ラーメンストリート店閉店後の新店舗、完全予約制、2026年3月開店",
+    "source_url": "https://tabelog.com/tokyo/A1305/A130501/13319902",
+    "closed_days": [],
+    "lines": [
+      "JR各線（大ターミナル）",
+      "丸ノ内線",
+      "有楽町線",
+      "副都心線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "越後屋（Echigoya）",
     "pref": "埼玉県",
     "ward": "さいたま市北部",
@@ -24171,6 +24387,29 @@
       "副都心線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "麺屋 旭 錦糸町店",
+    "pref": "東京都",
+    "ward": "墨田区",
+    "stations": [
+      "墨田区・錦糸町駅"
+    ],
+    "genre": "横浜家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.3,
+    "awards": [],
+    "feature": "大輝家直系の2号店、開店記念で味玉食べ放題、2026年3月開店",
+    "source_url": "https://sumida.goguynet.jp/2026/03/21/menyaasahi-open",
+    "closed_days": [],
+    "lines": [
+      "JR総武線",
+      "半蔵門線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -24679,6 +24918,28 @@
     "late_night": false
   },
   {
+    "shop": "山喜多製麺所",
+    "pref": "東京都",
+    "ward": "中野区",
+    "stations": [
+      "中野区・東中野駅"
+    ],
+    "genre": "味噌ラーメン（鉄鍋焼みそ）",
+    "genres": [
+      "味噌"
+    ],
+    "tabelog_score": 3.24,
+    "awards": [],
+    "feature": "居酒屋「日本橋やまきた」系の初ラーメン業態、蔵元伝承みそ「鉄鍋焼みそ」が看板、2026年1月開店",
+    "source_url": "https://tabelog.com/tokyo/A1319/A131901/13318587",
+    "closed_days": [],
+    "lines": [
+      "都営大江戸線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "麺屋 敬 京成小岩店",
     "pref": "東京都",
     "ward": "江戸川区",
@@ -24836,6 +25097,31 @@
     "late_night": false
   },
   {
+    "shop": "深だし煮干し中華そば ばつぐん",
+    "pref": "東京都",
+    "ward": "荒川区",
+    "stations": [
+      "荒川区・西日暮里駅"
+    ],
+    "genre": "煮干し中華そば・つけそば",
+    "genres": [
+      "煮干し",
+      "つけ麺",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.2,
+    "awards": [],
+    "feature": "「深だしとろろメシ」が評判・前店「伊蔵八本店」から業態変更、2026年4月開店",
+    "source_url": "https://arakawa-story.com/?p=19299",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "千代田線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "鯛そば・茶漬 磯LABO 六町店",
     "pref": "東京都",
     "ward": "足立区",
@@ -24926,6 +25212,76 @@
     "late_night": false
   },
   {
+    "shop": "焼きあご塩らー麺たかはし 五反田店",
+    "pref": "東京都",
+    "ward": "品川区",
+    "stations": [
+      "品川区・五反田駅"
+    ],
+    "genre": "焼きあご塩ラーメン",
+    "genres": [
+      "塩"
+    ],
+    "tabelog_score": 3.18,
+    "awards": [],
+    "feature": "トビウオ出汁の中濃塩スープ、深夜28時まで、都内7店目、2026年3月開店",
+    "source_url": "https://shinagawa.keizai.biz/headline/4987",
+    "closed_days": [],
+    "lines": [
+      "都営浅草線"
+    ],
+    "new_shop": true,
+    "late_night": true
+  },
+  {
+    "shop": "阿佐ヶ谷 わんたん亭",
+    "pref": "東京都",
+    "ward": "杉並区",
+    "stations": [
+      "杉並区・阿佐ケ谷駅"
+    ],
+    "genre": "ラーメン（わんたん麺）",
+    "genres": [
+      "ワンタン麺"
+    ],
+    "tabelog_score": 3.18,
+    "awards": [],
+    "feature": "阿佐ヶ谷のわんたん麺新店、2026年1月開店",
+    "source_url": "https://tabelog.com/tokyo/A1319/A131905/13318248",
+    "closed_days": [],
+    "lines": [
+      "JR中央線",
+      "JR総武線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "神田煮干中華蕎麦 まいまい",
+    "pref": "東京都",
+    "ward": "千代田区",
+    "stations": [
+      "千代田区・神田駅"
+    ],
+    "genre": "煮干し中華そば",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.16,
+    "awards": [],
+    "feature": "亀戸「つきひ」系列3号店、煮干主役の清湯・濃厚2種、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1310/A131002/13319835",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "JR中央線",
+      "銀座線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "麺屋 幸虎",
     "pref": "東京都",
     "ward": "品川区",
@@ -24946,6 +25302,29 @@
       "JR横須賀線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "鶏之諺 TOKYO01",
+    "pref": "東京都",
+    "ward": "練馬区",
+    "stations": [
+      "練馬区・練馬駅"
+    ],
+    "genre": "鶏白湯ラーメン・つけ麺",
+    "genres": [
+      "つけ麺",
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.15,
+    "awards": [],
+    "feature": "大阪・梅田の人気店の関東初進出、濃厚クリーミー鶏白湯・トリュフ香る特製も、2026年3月開店",
+    "source_url": "https://tabelog.com/tokyo/A1321/A132102/13319354",
+    "closed_days": [],
+    "lines": [
+      "都営大江戸線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -25017,6 +25396,78 @@
     "late_night": false
   },
   {
+    "shop": "玉（GYOKU） 大井町トラックス店",
+    "pref": "東京都",
+    "ward": "品川区",
+    "stations": [
+      "品川区・大井町駅"
+    ],
+    "genre": "濃厚魚介つけ麺・ラーメン",
+    "genres": [
+      "つけ麺",
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.13,
+    "awards": [],
+    "feature": "新商業施設「OIMACHI TRACKS」3F、2026年3月開店",
+    "source_url": "https://www.gyoku.co.jp/contents/category/oimachi-tracks",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "りんかい線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "横浜家系ラーメン みどり 笹塚店",
+    "pref": "東京都",
+    "ward": "渋谷区",
+    "stations": [
+      "渋谷区・笹塚駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.13,
+    "awards": [],
+    "feature": "らぁ麺はやし田グループ㈱INGSの2号店、開店2日間500円、11〜23時、2026年3月開店",
+    "source_url": "https://tabelog.com/tokyo/A1318/A131808/13319786",
+    "closed_days": [],
+    "lines": [
+      "京王線",
+      "京王新線"
+    ],
+    "new_shop": true,
+    "late_night": true
+  },
+  {
+    "shop": "ラーメンステーション蒲田",
+    "pref": "東京都",
+    "ward": "大田区",
+    "stations": [
+      "大田区・蒲田駅"
+    ],
+    "genre": "鶏塩/海老塩ラーメン（豚肉不使用）",
+    "genres": [
+      "貝・魚介系",
+      "塩"
+    ],
+    "tabelog_score": 3.12,
+    "awards": [],
+    "feature": "大阪「らーめん香澄」監修、ハラール対応・定休日なし、2026年4月開店",
+    "source_url": "https://prtimes.jp/main/html/rd/p/000000062.000073406.html",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "京急本線",
+      "京急空港線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "らーめん殿",
     "pref": "東京都",
     "ward": "江戸川区",
@@ -25037,6 +25488,29 @@
       "京成本線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "タンメン トナリ 住吉店",
+    "pref": "東京都",
+    "ward": "江東区",
+    "stations": [
+      "江東区・住吉駅"
+    ],
+    "genre": "タンメン専門",
+    "genres": [
+      "ご当地・地域系"
+    ],
+    "tabelog_score": 3.1,
+    "awards": [],
+    "feature": "「トナリ」が創業の地・江東区に出した新店、10:30〜22:00、2026年4月開店",
+    "source_url": "https://prtimes.jp/main/html/rd/p/000000074.000087198.html",
+    "closed_days": [],
+    "lines": [
+      "半蔵門線",
+      "都営新宿線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -25108,6 +25582,29 @@
     "late_night": false
   },
   {
+    "shop": "中華そば 千波",
+    "pref": "東京都",
+    "ward": "中野区",
+    "stations": [
+      "中野区・中野坂上駅"
+    ],
+    "genre": "背脂中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.09,
+    "awards": [],
+    "feature": "「らぁ麺 なとり」跡地、焼きあご香る背脂中華そば・量調整可、2026年3月開店",
+    "source_url": "https://tabelog.com/tokyo/A1319/A131903/13320103",
+    "closed_days": [],
+    "lines": [
+      "丸ノ内線",
+      "都営大江戸線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "麺々（めんめん）",
     "pref": "東京都",
     "ward": "中野区",
@@ -25128,6 +25625,31 @@
     ],
     "new_shop": false,
     "late_night": false
+  },
+  {
+    "shop": "一匠",
+    "pref": "東京都",
+    "ward": "新宿区",
+    "stations": [
+      "新宿区・新大久保駅"
+    ],
+    "genre": "豚骨ラーメン（ワンタン）",
+    "genres": [
+      "豚骨・博多",
+      "ワンタン麺"
+    ],
+    "tabelog_score": 3.09,
+    "awards": [],
+    "feature": "野中家プロデュース、深夜3時まで、ライス食べ放題、2026年3月開店",
+    "source_url": "https://tabelog.com/tokyo/A1304/A130404/13319796",
+    "closed_days": [],
+    "lines": [
+      "JR山手線",
+      "JR中央線",
+      "JR総武線"
+    ],
+    "new_shop": true,
+    "late_night": true
   },
   {
     "shop": "横浜家系 中井家",
@@ -25153,6 +25675,28 @@
     "late_night": false
   },
   {
+    "shop": "油そばBEEF-MEN Noodle&Rice",
+    "pref": "東京都",
+    "ward": "板橋区",
+    "stations": [
+      "板橋区・東武練馬駅"
+    ],
+    "genre": "油そば・まぜそば（牛系）",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.09,
+    "awards": [],
+    "feature": "牛系油そばの新店、2026年1月開店",
+    "source_url": "https://tabelog.com/tokyo/A1320/A132001/13317914",
+    "closed_days": [],
+    "lines": [
+      "東武東上線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "麺屋ばらお 南砂店",
     "pref": "東京都",
     "ward": "江東区",
@@ -25173,6 +25717,32 @@
       "東西線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "ご縁",
+    "pref": "東京都",
+    "ward": "渋谷区",
+    "stations": [
+      "渋谷区・渋谷駅"
+    ],
+    "genre": "油そば（松阪豚×ブランド卵）",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.09,
+    "awards": [],
+    "feature": "会員制高級寿司「鮨逅」姉妹店、「油そば 結」980円・朝10時開店、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1303/A130301/13321380",
+    "closed_days": [],
+    "lines": [
+      "JR埼京線",
+      "JR湘南新宿ライン",
+      "銀座線",
+      "半蔵門線",
+      "副都心線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -25225,6 +25795,118 @@
     "late_night": false
   },
   {
+    "shop": "らぁめん4区",
+    "pref": "東京都",
+    "ward": "中野区",
+    "stations": [
+      "中野区・東中野駅"
+    ],
+    "genre": "つけ麺",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": 3.08,
+    "awards": [],
+    "feature": "東中野のつけ麺専門店、2026年2月開店",
+    "source_url": "https://tabelog.com/tokyo/A1319/A131901/13319386",
+    "closed_days": [],
+    "lines": [
+      "都営大江戸線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "背脂煮干新潟中華そば 我武者羅",
+    "pref": "東京都",
+    "ward": "中野区",
+    "stations": [
+      "中野区・中野新橋駅"
+    ],
+    "genre": "ラーメン（新潟系・背脂煮干）",
+    "genres": [
+      "煮干し"
+    ],
+    "tabelog_score": 3.08,
+    "awards": [],
+    "feature": "背脂煮干しの新潟系中華そば、2026年2月開店",
+    "source_url": "https://tabelog.com/tokyo/A1319/A131903/13319482",
+    "closed_days": [],
+    "lines": [
+      "丸ノ内線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "三代目 らーめん谷瀬家",
+    "pref": "東京都",
+    "ward": "大田区",
+    "stations": [
+      "大田区・大森駅"
+    ],
+    "genre": "家系ラーメン",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": 3.08,
+    "awards": [],
+    "feature": "新橋本店・神田に次ぐ3号店、日曜定休、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1315/A131502/13319602",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "京急本線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "麺屋FLOW",
+    "pref": "東京都",
+    "ward": "大田区",
+    "stations": [
+      "大田区・梅屋敷駅・大森町駅"
+    ],
+    "genre": "醤油・塩ラーメン（黒トリュフ系）",
+    "genres": [
+      "塩",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.08,
+    "awards": [],
+    "feature": "黒トリュフ薫醤油・柚子薫塩、1日100食限定スープ切れ終了、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1315/A131503/13320166",
+    "closed_days": [],
+    "lines": [
+      "京急本線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "らーめん 鴨to葱 新宿西口店",
+    "pref": "東京都",
+    "ward": "新宿区",
+    "stations": [
+      "新宿区・都庁前駅"
+    ],
+    "genre": "鴨ラーメン",
+    "genres": [
+      "鴨"
+    ],
+    "tabelog_score": 3.08,
+    "awards": [],
+    "feature": "上野「鴨to葱」系列、合鴨と葱・水のみで炊いた澄んだ鴨だし、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1304/A130401/13321726",
+    "closed_days": [],
+    "lines": [
+      "都営大江戸線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "神むら",
     "pref": "東京都",
     "ward": "板橋区",
@@ -25244,6 +25926,176 @@
       "都営三田線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "麺屋 さか元",
+    "pref": "東京都",
+    "ward": "渋谷区",
+    "stations": [
+      "渋谷区・渋谷駅"
+    ],
+    "genre": "まぜそば（ホルモン台湾まぜそば）",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.08,
+    "awards": [],
+    "feature": "焼肉「元家別邸」の平日昼限定ブランド、土日祝休、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1303/A130301/13320736",
+    "closed_days": [
+      "Sat",
+      "Sun"
+    ],
+    "lines": [
+      "JR埼京線",
+      "JR湘南新宿ライン",
+      "銀座線",
+      "半蔵門線",
+      "副都心線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "CRAFT NOODLES はしづめ",
+    "pref": "東京都",
+    "ward": "港区",
+    "stations": [
+      "港区・広尾駅"
+    ],
+    "genre": "創作麺（選べる麺×和食材出汁）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.08,
+    "awards": [
+      "ミシュラン星"
+    ],
+    "feature": "ミシュラン一つ星シェフ監修、8種の麺×8種メニュー、日曜定休、2026年4月開店",
+    "source_url": "https://prtimes.jp/main/html/rd/p/000000004.000101505.html",
+    "closed_days": [],
+    "lines": [
+      "日比谷線",
+      "南北線",
+      "都営三田線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "中華たかまる",
+    "pref": "東京都",
+    "ward": "目黒区",
+    "stations": [
+      "目黒区・中目黒駅"
+    ],
+    "genre": "町中華系ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.08,
+    "awards": [],
+    "feature": "西葛西「ラーメンの王様」出身、スタミナ系の看板メニュー、2026年2月開店",
+    "source_url": "https://tabelog.com/tokyo/A1317/A131701/13318562",
+    "closed_days": [],
+    "lines": [
+      "日比谷線",
+      "東急東横線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "Gion Duck Noodles Asakusa",
+    "pref": "東京都",
+    "ward": "台東区",
+    "stations": [
+      "台東区・浅草駅"
+    ],
+    "genre": "鴨出汁ラーメン（清湯/白湯）",
+    "genres": [
+      "鴨",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.07,
+    "awards": [],
+    "feature": "京都祇園の人気鴨そば店東京初進出、ドイツ産ライ麦麺、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1311/A131102/13321294",
+    "closed_days": [],
+    "lines": [
+      "銀座線",
+      "都営浅草線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "中華そば なみ汐",
+    "pref": "東京都",
+    "ward": "板橋区",
+    "stations": [
+      "板橋区・ときわ台駅"
+    ],
+    "genre": "中華そば",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.07,
+    "awards": [],
+    "feature": "ときわ台の中華そば新店、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1320/A132001/13321183",
+    "closed_days": [],
+    "lines": [
+      "東武東上線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "RAMEN MUROHOUSE",
+    "pref": "東京都",
+    "ward": "江東区",
+    "stations": [
+      "江東区・南砂町駅"
+    ],
+    "genre": "こく醤油ラーメン",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.07,
+    "awards": [
+      "百名店"
+    ],
+    "feature": "八王子百名店「鴨福」出身、初日大行列カウンター6席、月・金定休、2026年4月開店",
+    "source_url": "https://ore-ramen.com/murohouse",
+    "closed_days": [],
+    "lines": [
+      "東西線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "麺彩RASEN",
+    "pref": "東京都",
+    "ward": "豊島区",
+    "stations": [
+      "豊島区・東長崎駅"
+    ],
+    "genre": "ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.07,
+    "awards": [],
+    "feature": "東長崎の新店、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1316/A131606/13321248",
+    "closed_days": [],
+    "lines": [
+      "西武池袋線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -25269,6 +26121,217 @@
     "late_night": false
   },
   {
+    "shop": "博多らーめん 一心堂 三ノ輪店",
+    "pref": "東京都",
+    "ward": "台東区",
+    "stations": [
+      "台東区・三ノ輪駅"
+    ],
+    "genre": "博多豚骨（黒・白・赤）",
+    "genres": [
+      "豚骨・博多"
+    ],
+    "tabelog_score": 3.06,
+    "awards": [],
+    "feature": "十条の創業13年店の2号店、つけ麺・担々麺・油そばも、2026年1月開店",
+    "source_url": "https://taito.goguynet.jp/2026/02/09/hakata",
+    "closed_days": [],
+    "lines": [
+      "日比谷線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "中華そば 五郎 浅草店",
+    "pref": "東京都",
+    "ward": "台東区",
+    "stations": [
+      "台東区・浅草駅"
+    ],
+    "genre": "中華そば（動物系あっさり）",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.06,
+    "awards": [],
+    "feature": "共立メンテナンス運営、塩・味噌・あさり等多種、年中無休11〜21時、2026年2月開店",
+    "source_url": "https://prtimes.jp/main/html/rd/p/000000442.000030012.html",
+    "closed_days": [],
+    "lines": [
+      "東武スカイツリーライン(伊勢崎線)",
+      "つくばエクスプレス"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "鶏のとりこ 自由が丘店",
+    "pref": "東京都",
+    "ward": "目黒区",
+    "stations": [
+      "目黒区・自由が丘駅"
+    ],
+    "genre": "濃厚魚介鶏白湯",
+    "genres": [
+      "鶏白湯",
+      "貝・魚介系"
+    ],
+    "tabelog_score": 3.06,
+    "awards": [],
+    "feature": "新橋「麺屋 周郷」直伝、「塩そば 一榮」からの業態変更リニューアル、2026年4月開店",
+    "source_url": "https://meguro.goguynet.jp/2026/04/30/torinotoriko_jiyugaoka",
+    "closed_days": [],
+    "lines": [
+      "東急東横線",
+      "東急大井町線"
+    ],
+    "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "まぜまぜ怪獣 町屋店",
+    "pref": "東京都",
+    "ward": "荒川区",
+    "stations": [
+      "荒川区・町屋駅"
+    ],
+    "genre": "油そば専門",
+    "genres": [
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.06,
+    "awards": [],
+    "feature": "「餃子工房ゆうき屋」跡地、2026年5月開店",
+    "source_url": "https://arakawa102.com/category/%E9%96%8B%E5%BA%97%E9%96%89%E5%BA%97",
+    "closed_days": [],
+    "lines": [
+      "千代田線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "中華そば つぼ",
+    "pref": "東京都",
+    "ward": "世田谷区",
+    "stations": [
+      "世田谷区・三軒茶屋駅"
+    ],
+    "genre": "背脂煮干し中華そば",
+    "genres": [
+      "煮干し",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.05,
+    "awards": [],
+    "feature": "茶沢通り沿い、木曜定休・昼営業中心、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1317/A131706/13321151",
+    "closed_days": [],
+    "lines": [
+      "東急田園都市線",
+      "東急世田谷線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "拘り麺屋 へご",
+    "pref": "東京都",
+    "ward": "台東区",
+    "stations": [
+      "台東区・上野広小路駅"
+    ],
+    "genre": "鶏淡麗醤油ラーメン",
+    "genres": [
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.05,
+    "awards": [],
+    "feature": "愛媛・四国中央市「みしまや」東京初進出、土日祝定休、仲御徒町至近、2026年4月開店",
+    "source_url": "https://kumin.news/taito/articles/1266847",
+    "closed_days": [],
+    "lines": [
+      "銀座線",
+      "日比谷線",
+      "都営大江戸線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "元祖まぐろラーメン 大山店",
+    "pref": "東京都",
+    "ward": "板橋区",
+    "stations": [
+      "板橋区・大山駅"
+    ],
+    "genre": "油そば・まぜそば（まぐろ出汁）",
+    "genres": [
+      "貝・魚介系",
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.05,
+    "awards": [],
+    "feature": "1993年創業・環七名店の2号店、まぐろ出汁の油そばが看板、初日40%引き、2026年4月開店",
+    "source_url": "https://itabashi-times.com/archives/maguro-ramen20260427.html",
+    "closed_days": [],
+    "lines": [
+      "東武東上線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "SHOJIN RAMEN 菜（さい）",
+    "pref": "東京都",
+    "ward": "渋谷区",
+    "stations": [
+      "渋谷区・渋谷駅"
+    ],
+    "genre": "ヴィーガンラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.05,
+    "awards": [],
+    "feature": "女性店主の完全植物性専門店、柚子塩・豚骨風ヴィーガン等、深夜3時まで、2026年4月開店",
+    "source_url": "https://tabelog.com/tokyo/A1303/A130301/13321462",
+    "closed_days": [],
+    "lines": [
+      "JR埼京線",
+      "JR湘南新宿ライン",
+      "銀座線",
+      "半蔵門線",
+      "副都心線"
+    ],
+    "new_shop": true,
+    "late_night": true
+  },
+  {
+    "shop": "白鶏舎 笹塚店",
+    "pref": "東京都",
+    "ward": "渋谷区",
+    "stations": [
+      "渋谷区・笹塚駅"
+    ],
+    "genre": "鶏白湯",
+    "genres": [
+      "鶏白湯"
+    ],
+    "tabelog_score": 3.05,
+    "awards": [],
+    "feature": "札幌㈱イーストンの東京初進出、昼は白鶏舎・夜は焼手羽「トリノイロ」の二毛作、2026年4月開店",
+    "source_url": "https://prtimes.jp/main/html/rd/p/000000194.000078678.html",
+    "closed_days": [],
+    "lines": [
+      "京王線",
+      "京王新線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "竜の家",
     "pref": "東京都",
     "ward": "葛飾区",
@@ -25290,6 +26353,122 @@
       "北総線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "ジョニーヌードル 大島店",
+    "pref": "東京都",
+    "ward": "江東区",
+    "stations": [
+      "江東区・大島駅・西大島駅・東大島駅"
+    ],
+    "genre": "中華そば・担々麺",
+    "genres": [
+      "担々麺・四川・麻婆",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": 3.04,
+    "awards": [],
+    "feature": "麹町・半蔵門「ジョニーヌードル」系列、「純手打ち麺きらく」跡地、2026年5月開店",
+    "source_url": "https://koto.goguynet.jp/2026/04/11/johnny_noodle_ojima",
+    "closed_days": [],
+    "lines": [
+      "都営新宿線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "ビーフヌードル 丑の上にも三年",
+    "pref": "東京都",
+    "ward": "荒川区",
+    "stations": [
+      "荒川区・西日暮里駅"
+    ],
+    "genre": "ビーフヌードル（特製テール塩そば）",
+    "genres": [
+      "塩"
+    ],
+    "tabelog_score": 3.04,
+    "awards": [],
+    "feature": "「今日の1番」3rdブランドの東京初進出、月曜定休、2026年5月開店",
+    "source_url": "https://arakawa102.com/food/ushinouenimo3year",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "千代田線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "あはれ",
+    "pref": "東京都",
+    "ward": "世田谷区",
+    "stations": [
+      "世田谷区・下北沢駅"
+    ],
+    "genre": "まぜそば・仙台辛味噌まぜそば",
+    "genres": [
+      "味噌",
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": 3.03,
+    "awards": [],
+    "feature": "仙台ラーメンWalkerグランプリ金賞の凱旋店、仙台辛味噌まぜそばが看板、2026年5月開店",
+    "source_url": "https://prtimes.jp/main/html/rd/p/000000028.000045707.html",
+    "closed_days": [],
+    "lines": [
+      "京王井の頭線",
+      "小田急小田原線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "どうとんぼり神座 OIMACHI TRACKS店",
+    "pref": "東京都",
+    "ward": "品川区",
+    "stations": [
+      "品川区・大井町駅"
+    ],
+    "genre": "ラーメン（おいしいラーメン）",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.03,
+    "awards": [],
+    "feature": "「OIMACHI TRACKS」2F、2026年3月開店",
+    "source_url": "https://kamukura.co.jp/shop/10553",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "りんかい線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "背脂ラーメンチャッチャ亭 下北沢店",
+    "pref": "東京都",
+    "ward": "世田谷区",
+    "stations": [
+      "世田谷区・下北沢駅"
+    ],
+    "genre": "背脂ラーメン",
+    "genres": [
+      "その他・創作"
+    ],
+    "tabelog_score": 3.01,
+    "awards": [],
+    "feature": "下北沢駅至近の背脂系新店舗、2026年5月開店",
+    "source_url": "https://tabelog.com/tokyo/A1318/A131802/13322...",
+    "closed_days": [],
+    "lines": [
+      "京王井の頭線",
+      "小田急小田原線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -25523,6 +26702,55 @@
       "日比谷線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "一天門 神田店",
+    "pref": "東京都",
+    "ward": "千代田区",
+    "stations": [
+      "千代田区・神田駅"
+    ],
+    "genre": "和風豚骨（博多系）",
+    "genres": [
+      "豚骨・博多"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "博多中洲川端の行列店東京初進出、青唐辛子「青ダレ」入り、2026年5月開店",
+    "source_url": "https://tabelog.com/tokyo/A1310/A131002/13322359",
+    "closed_days": [],
+    "lines": [
+      "JR京浜東北線",
+      "JR中央線",
+      "銀座線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "伊達商店 淡路町店",
+    "pref": "東京都",
+    "ward": "千代田区",
+    "stations": [
+      "千代田区・淡路町駅"
+    ],
+    "genre": "発酵調味料・味噌/醤油中華そば",
+    "genres": [
+      "味噌",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "鹿児島創業200年「伊達醸造」東京初の路面常設店、麦味噌「核威味噌」など、2026年5月開店",
+    "source_url": "https://tabelog.com/tokyo/A1310/A131002/13322616",
+    "closed_days": [],
+    "lines": [
+      "丸ノ内線",
+      "千代田線",
+      "都営新宿線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -26164,6 +27392,54 @@
     "late_night": false
   },
   {
+    "shop": "ラーメン ニクノイロ",
+    "pref": "東京都",
+    "ward": "台東区",
+    "stations": [
+      "台東区・浅草駅"
+    ],
+    "genre": "肉系ラーメン（醤油・塩）",
+    "genres": [
+      "塩",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "浅草地下街の肉特化新店、チャーシュー大盛り、2026年5月開店",
+    "source_url": "https://taito.goguynet.jp/2026/05/14/nikunoiro",
+    "closed_days": [],
+    "lines": [
+      "銀座線",
+      "都営浅草線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "麺家 笑の道",
+    "pref": "東京都",
+    "ward": "台東区",
+    "stations": [
+      "台東区・浅草橋駅"
+    ],
+    "genre": "横浜家系（鶏×醤油）",
+    "genres": [
+      "家系",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "「麺家たいせい」系列3号店、初日419人の大行列、2026年5月開店",
+    "source_url": "https://tabelog.com/tokyo/A1311/A131103/13321733",
+    "closed_days": [],
+    "lines": [
+      "JR総武線",
+      "都営浅草線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "むかん 戸越銀座店",
     "pref": "東京都",
     "ward": "品川区",
@@ -26373,6 +27649,28 @@
     "late_night": false
   },
   {
+    "shop": "大関家",
+    "pref": "東京都",
+    "ward": "文京区",
+    "stations": [
+      "文京区・江戸川橋駅"
+    ],
+    "genre": "家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "大輝家グループの新店、元・春樹跡地、2026年5月開店",
+    "source_url": "https://tabelog.com/tokyo/A1309/A130905/13322667",
+    "closed_days": [],
+    "lines": [
+      "有楽町線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "すごい煮干ラーメン凪 新宿ゴールデン街店本館",
     "pref": "東京都",
     "ward": "新宿区",
@@ -26397,6 +27695,31 @@
       "都営大江戸線"
     ],
     "new_shop": false,
+    "late_night": true
+  },
+  {
+    "shop": "萬馬軒 新宿西口本店",
+    "pref": "東京都",
+    "ward": "新宿区",
+    "stations": [
+      "新宿区・新宿駅"
+    ],
+    "genre": "濃厚味噌ラーメン",
+    "genres": [
+      "味噌"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "「萬馬軒」旗艦店・西口徒歩5分、開店日は味噌600円、11〜23時、2026年2月開店",
+    "source_url": "https://prtimes.jp/main/html/rd/p/000000234.000027681.html",
+    "closed_days": [],
+    "lines": [
+      "JR各線（大ターミナル）",
+      "丸ノ内線",
+      "都営新宿線",
+      "都営大江戸線"
+    ],
+    "new_shop": true,
     "late_night": true
   },
   {
@@ -26626,6 +27949,31 @@
     "late_night": false
   },
   {
+    "shop": "花木流味噌 高円寺店",
+    "pref": "東京都",
+    "ward": "杉並区",
+    "stations": [
+      "杉並区・高円寺駅"
+    ],
+    "genre": "ラーメン・つけ麺・油そば（味噌）",
+    "genres": [
+      "つけ麺",
+      "味噌",
+      "油そば・まぜそば・汁なし"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "味噌専門の新店舗、2026年5月開店",
+    "source_url": "https://tabelog.com/tokyo/A1319/A131905/13322813",
+    "closed_days": [],
+    "lines": [
+      "JR中央線",
+      "JR総武線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "あいはらや",
     "pref": "東京都",
     "ward": "杉並区",
@@ -26714,6 +28062,28 @@
       "都営三田線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "十六代目 野中家 亀戸店",
+    "pref": "東京都",
+    "ward": "江東区",
+    "stations": [
+      "江東区・亀戸駅"
+    ],
+    "genre": "横浜家系",
+    "genres": [
+      "家系"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "野中家グループの新店、開店2日間初日500円、2026年5月開店",
+    "source_url": "https://x.com/Nonakaya_G/status/2045892286253535541",
+    "closed_days": [],
+    "lines": [
+      "JR総武線"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
@@ -27136,6 +28506,33 @@
     "late_night": false
   },
   {
+    "shop": "わいず一門 池袋ラーメン 梟",
+    "pref": "東京都",
+    "ward": "豊島区",
+    "stations": [
+      "豊島区・池袋駅"
+    ],
+    "genre": "家系ラーメン（濃厚豚骨醤油）",
+    "genres": [
+      "家系",
+      "豚骨・博多",
+      "醤油・中華そば"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "神田「ラーメンわいず」プロデュース、吊るし焼きチャーシュー・連日行列、2026年2月開店",
+    "source_url": "https://ikebukuro-times.com/archives/fukuro-ramen20260227.html",
+    "closed_days": [],
+    "lines": [
+      "JR各線（大ターミナル）",
+      "丸ノ内線",
+      "有楽町線",
+      "副都心線"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
     "shop": "東池袋 大勝軒 本店",
     "pref": "東京都",
     "ward": "豊島区",
@@ -27178,6 +28575,50 @@
       "副都心線"
     ],
     "new_shop": false,
+    "late_night": false
+  },
+  {
+    "shop": "ラーメン 山太郎",
+    "pref": "東京都",
+    "ward": "足立区",
+    "stations": [
+      "足立区・梅島駅・五反野駅"
+    ],
+    "genre": "二郎系（ヤサイ盛・自家製麺）",
+    "genres": [
+      "二郎・二郎系"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "「花木流味噌 五反野店」跡地、2026年5月開店",
+    "source_url": "https://volumey.hatenablog.com/entry/2026/05/11/222736",
+    "closed_days": [],
+    "lines": [
+      "東武スカイツリーライン(伊勢崎線)"
+    ],
+    "new_shop": true,
+    "late_night": false
+  },
+  {
+    "shop": "麺舗十六 足立江北店",
+    "pref": "東京都",
+    "ward": "足立区",
+    "stations": [
+      "足立区・江北駅"
+    ],
+    "genre": "つけ麺・ラーメン",
+    "genres": [
+      "つけ麺"
+    ],
+    "tabelog_score": null,
+    "awards": [],
+    "feature": "要町の名店（TRYつけ麺部門常連）の2号店、「美楽中華軒」跡地、2026年5月開店",
+    "source_url": "https://ikemen3.blog.jp/archives/1083531763.html",
+    "closed_days": [],
+    "lines": [
+      "日暮里・舎人ライナー"
+    ],
+    "new_shop": true,
     "late_night": false
   },
   {
