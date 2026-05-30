@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首都圏 駅別ラーメンDB ビューア 🍜</title>
+<style>
+  :root{
+    --bg:#faf7f2; --card:#fff; --ink:#26201a; --sub:#7a6f63; --line:#e7ddd0;
+    --accent:#c0392b; --accent2:#e67e22; --chip:#f1e8da; --hit:#fff7ed;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",Meiryo,sans-serif;
+    line-height:1.5;}
+  header{background:linear-gradient(135deg,#c0392b,#e67e22);color:#fff;padding:18px 16px;}
+  header h1{margin:0;font-size:20px;}
+  header p{margin:4px 0 0;font-size:12px;opacity:.92;}
+  .wrap{max-width:1100px;margin:0 auto;padding:14px 12px 60px;}
+  .controls{background:var(--card);border:1px solid var(--line);border-radius:12px;
+    padding:12px;margin:14px 0;display:grid;gap:10px;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));align-items:end;}
+  .controls .full{grid-column:1/-1;}
+  label{font-size:12px;color:var(--sub);display:block;margin-bottom:3px;font-weight:600;}
+  input[type=search],select{width:100%;padding:8px 9px;font-size:14px;
+    border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--ink);}
+  .checks{display:flex;gap:9px;flex-wrap:wrap;align-items:center;}
+  .checks label{display:inline-flex;gap:5px;align-items:center;margin:0;font-size:13px;
+    color:var(--ink);font-weight:500;cursor:pointer;}
+  .checks .sep{color:var(--line);padding:0 1px;font-size:15px;user-select:none;}
+  .open-lbl{background:#e8f5e9;border-radius:6px;padding:2px 8px;color:#2e7d32 !important;font-weight:600 !important;}
+  .new-lbl{background:#fdecea;border-radius:6px;padding:2px 8px;color:#c0392b !important;font-weight:700 !important;}
+  .want-lbl{background:#fff8e1;border-radius:6px;padding:2px 8px;color:#795548 !important;}
+  #now-time{font-size:11px;font-weight:400;opacity:.65;}
+  .bar{display:flex;justify-content:space-between;align-items:flex-start;
+    gap:10px;flex-wrap:wrap;margin:6px 2px;}
+  .bar-left{display:flex;flex-direction:column;gap:2px;}
+  .bar-right{display:flex;gap:6px;align-items:center;flex-wrap:wrap;}
+  .count{font-size:13px;color:var(--sub);}
+  .count b{color:var(--accent);font-size:16px;}
+  .stamp-count{font-size:11.5px;color:var(--sub);}
+  .btn-sm{font-size:12px;background:none;border:1px solid var(--line);border-radius:8px;
+    padding:5px 10px;cursor:pointer;color:var(--sub);}
+  .btn-sm:hover{background:var(--chip);}
+  table{width:100%;border-collapse:collapse;background:var(--card);
+    border:1px solid var(--line);border-radius:12px;overflow:hidden;font-size:13.5px;}
+  thead th{background:#f3ece0;text-align:left;padding:9px 10px;font-size:12px;color:var(--sub);
+    cursor:pointer;white-space:nowrap;user-select:none;position:sticky;top:0;}
+  thead th:hover{color:var(--accent);}
+  thead th.no-sort{cursor:default;}
+  thead th.no-sort:hover{color:var(--sub);}
+  tbody td{padding:8px 10px;border-top:1px solid var(--line);vertical-align:top;}
+  tbody tr:hover{background:var(--hit);}
+  tbody tr.visited td:not(.td-stamp){opacity:.38;}
+  .shop a{color:var(--accent);text-decoration:none;font-weight:600;}
+  .shop a:hover{text-decoration:underline;}
+  .shop .nourl{font-weight:600;}
+  .score{font-variant-numeric:tabular-nums;font-weight:700;}
+  .loc,.feat{color:var(--sub);}
+  .feat{font-size:12px;}
+  .lines{font-size:11px;color:#5b7fa6;margin-top:2px;}
+  .chips{display:flex;gap:4px;flex-wrap:wrap;}
+  .chip{background:var(--chip);border-radius:999px;padding:1px 8px;font-size:11px;color:#6b5d4b;white-space:nowrap;}
+  .badge{display:inline-block;border-radius:999px;padding:1px 7px;font-size:11px;font-weight:700;margin-right:3px;}
+  .b-star{background:#fde2e0;color:#b03227;}
+  .b-bib{background:#fdebd6;color:#a85b12;}
+  .b-hyaku{background:#e6efe0;color:#3f6b2f;}
+  .b-new{background:#c0392b;color:#fff;}
+  .b-night{background:#2c3e6b;color:#fff;}
+  .b-lunch{background:#fff3cd;color:#8a6d00;}
+  .b-try{background:#f3c000;color:#4a3500;}
+  .tband{display:inline-block;border-radius:6px;padding:1px 7px;margin-top:3px;
+    font-size:11px;font-weight:600;white-space:nowrap;}
+  .tb1{background:#e3f4e1;color:#2e7d32;}
+  .tb2{background:#e3eefb;color:#2c5aa0;}
+  .tb3{background:#fdecdb;color:#b3650f;}
+  .tb4{background:#f2e4e2;color:#a23b2c;}
+  .hours-today{display:inline-block;border-radius:6px;padding:1px 7px;margin-top:3px;
+    font-size:11px;font-weight:600;white-space:nowrap;margin-left:3px;}
+  .hours-open{background:#e8f5e9;color:#2e7d32;}
+  .hours-closed{background:#fdecea;color:#c0392b;}
+  .empty{padding:30px;text-align:center;color:var(--sub);}
+  .td-stamp{white-space:nowrap;padding:6px 7px;}
+  .s-btn{border:none;cursor:pointer;border-radius:6px;padding:2px 7px;
+    font-size:13px;background:var(--chip);color:var(--sub);line-height:1.5;transition:background .1s;}
+  .s-btn:hover{opacity:.75;}
+  .s-btn.sv{background:#c8e6c9;color:#1b5e20;}
+  .s-btn.sw{background:#fff3cd;color:#7c4b00;}
+  footer{color:var(--sub);font-size:11.5px;margin-top:18px;text-align:center;}
+  footer a{color:var(--sub);}
+  @media(max-width:680px){
+    .hide-sp{display:none;}
+    .wrap{padding:10px 8px 50px;}
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>🍜 首都圏 駅別ラーメンDB ビューア</h1>
+  <p>東京・神奈川・埼玉・千葉 ／ 都県・区・ジャンル・路線・所要時間・営業日・スタンプで絞り込み（食べログ点数は掲載時点の目安）</p>
+</header>
+
+<div class="wrap">
+  <div class="controls">
+    <div class="full">
+      <label for="q">キーワード（店名・駅名・特徴）</label>
+      <input type="search" id="q" placeholder="例: 煮干し / 二郎 / 高田馬場 / 鳴龍">
+    </div>
+    <div>
+      <label for="pref">都県</label>
+      <select id="pref"><option value="">すべての都県</option></select>
+    </div>
+    <div>
+      <label for="ward">区・市</label>
+      <select id="ward"><option value="">すべての区・市</option></select>
+    </div>
+    <!-- Feature 4: 路線プルダウン（鉄道会社→路線） -->
+    <div>
+      <label for="line">🚃 路線</label>
+      <select id="line"><option value="">すべての路線</option></select>
+    </div>
+    <!-- 出発駅 -->
+    <div>
+      <label for="depart">🚉 出発駅</label>
+      <select id="depart">
+        <option value="shinjuku">西新宿（丸ノ内線）</option>
+        <option value="toranomon">虎ノ門ヒルズ（日比谷線）</option>
+      </select>
+    </div>
+    <!-- 所要時間バンド -->
+    <div>
+      <label for="travel" id="travel-lbl">🚊 西新宿から（目安）</label>
+      <select id="travel">
+        <option value="">指定なし</option>
+        <option value="1">〜20分</option>
+        <option value="2">〜40分</option>
+        <option value="3">〜60分</option>
+      </select>
+    </div>
+    <div>
+      <label for="genre">ジャンル</label>
+      <select id="genre"><option value="">すべてのジャンル</option></select>
+    </div>
+    <div>
+      <label for="minscore">食べログ点数（以上）</label>
+      <select id="minscore">
+        <option value="0">指定なし</option>
+        <option value="3.5">3.5+</option>
+        <option value="3.6">3.6+</option>
+        <option value="3.7">3.7+</option>
+        <option value="3.75">3.75+</option>
+        <option value="3.8">3.8+</option>
+      </select>
+    </div>
+    <div>
+      <label for="sort">並び替え</label>
+      <select id="sort">
+        <option value="score">点数が高い順</option>
+        <option value="travel" id="sort-travel">近い順（西新宿）</option>
+        <option value="ward">区順</option>
+        <option value="shop">店名順</option>
+      </select>
+    </div>
+    <div class="full">
+      <label>絞り込みオプション</label>
+      <div class="checks">
+        <label><input type="checkbox" id="c-star"> ⭐ ミシュラン星</label>
+        <label><input type="checkbox" id="c-bib"> 🅱️ ビブグルマン</label>
+        <label><input type="checkbox" id="c-hyaku"> 💯 百名店</label>
+        <label><input type="checkbox" id="c-try"> 🏆 TRY大賞</label>
+        <span class="sep">|</span>
+        <!-- Feature 1(既存): 今日開いてる -->
+        <label class="open-lbl"
+          title="定休日が判明している店のうち、今日定休の店を除外します。定休日データがない店は表示します。">
+          <input type="checkbox" id="c-today">📅 <span id="today-day">?</span>曜に営業
+        </label>
+        <!-- 追加: 日曜営業 -->
+        <label class="open-lbl"
+          title="日曜が定休と判明している店を除外します。定休日データがない店は表示します。">
+          <input type="checkbox" id="c-sunday">🗓️ 日曜営業
+        </label>
+        <!-- 深夜営業（夜遅くまで／旧「夜営業」） -->
+        <label class="open-lbl"
+          title="深夜（おおむね23時以降）まで営業の手がかりがある店だけを表示します。">
+          <input type="checkbox" id="c-night">🌙 深夜営業
+        </label>
+        <!-- 追加: 夜も営業（18〜21時台／昼のみ店を除外） -->
+        <label class="open-lbl"
+          title="「昼のみ・早仕舞い」と明記された店を除外し、夜（18〜21時台）も営業している可能性が高い店を表示します。個別の営業時間は未検証です。">
+          <input type="checkbox" id="c-evening">🍜 夜も営業
+        </label>
+        <!-- 今すぐ行ける（時間帯フィルタ） -->
+        <label class="open-lbl" title="現在時刻に合わせて開いている可能性が高い店だけ表示（定休日チェック＋時間帯で絞り込み・目安）。22時以降は深夜営業店のみ、17〜22時は夜も営業の店、10〜17時は全店。">
+          <input type="checkbox" id="c-now">⏰ 今すぐ行ける<span id="now-time"></span>
+        </label>
+        <span class="sep">|</span>
+        <!-- 追加: 新店（2026年オープン） -->
+        <label class="new-lbl" title="2026年オープンの新店だけを表示します。">
+          <input type="checkbox" id="c-new">🆕 新店(2026)
+        </label>
+        <span class="sep">|</span>
+        <!-- Feature 2: スタンプ -->
+        <label><input type="checkbox" id="c-unvisited"> ✓ 未訪問のみ</label>
+        <label class="want-lbl"><input type="checkbox" id="c-want"> ★ 気になるのみ</label>
+      </div>
+    </div>
+  </div>
+
+  <div class="bar">
+    <div class="bar-left">
+      <div class="count"><b id="n">–</b> 店 / 全 <span id="total">–</span> 店</div>
+      <div class="stamp-count" id="stamp-count">✓ 訪問済: 0店 ／ ★ 気になる: 0店</div>
+    </div>
+    <div class="bar-right">
+      <button class="btn-sm" id="clear-stamps">スタンプをリセット</button>
+      <button class="btn-sm" id="reset">条件をクリア</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th data-k="shop">店名</th>
+        <th data-k="ward">区・最寄駅・路線</th>
+        <th data-k="genre" class="hide-sp">ジャンル</th>
+        <th data-k="score">点数</th>
+        <th data-k="awards" class="hide-sp">認定</th>
+        <th class="hide-sp">特徴</th>
+        <th class="no-sort" title="訪問スタンプ">📌</th>
+      </tr>
+    </thead>
+    <tbody id="rows"><tr><td colspan="7" class="empty">読み込み中…</td></tr></tbody>
+  </table>
+
+  <footer>
+    データ: <a href="data/ramen.json">ramen.json</a> / <a href="data/lines.json">lines.json</a>（<code>scripts/build_indexes.py</code> 自動生成） /
+    全店「実在・営業中」確認済。営業日・定休日は変更があり得るため訪問前に最新情報を確認ください。
+    🚊 所要時間は<strong>西新宿</strong>または<strong>虎ノ門ヒルズ</strong>からの目安（路線・距離からの推定で実経路ではありません）。⏰ 営業時間マスタ（食べログ取得）がある店は正確な時刻で判定。マスタ未収録の店は時間帯目安（10〜17時：昼・17〜22時：夜・22時〜：深夜）で判定。今日の営業時間が緑チップで表示されます。
+    🌙 深夜＝23時以降まで／🍜 夜も営業＝「昼のみ」店を除いた夜営業見込み（個別の営業時間は未検証）。
+    🏆 TRY＝講談社「TRYラーメン大賞」の大賞・新店大賞・殿堂入り（年度表記2025-2026＝第26回）。
+    曜日/日曜/深夜フィルタは特徴テキストに手がかりのある店のみ反映。スタンプはブラウザのローカルに保存されます。
+  </footer>
+</div>
+
+<script>
+const PREF_ORDER = ["東京都","東京都(多摩)","神奈川県","埼玉県","千葉県"];
+const DAY_ENG  = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+const WEEK_JP  = ["日","月","火","水","木","金","土"];
+const TODAY_IDX = new Date().getDay();
+const TODAY_ENG = DAY_ENG[TODAY_IDX];
+const NOW_HOUR = new Date().getHours();
+const NOW_MIN_OF_DAY = NOW_HOUR * 60 + new Date().getMinutes();
+
+document.getElementById("today-day").textContent = WEEK_JP[TODAY_IDX];
+const _nb = NOW_HOUR>=22?"深夜":NOW_HOUR>=17?"夜時間":NOW_HOUR>=10?"昼〜夕":"早朝";
+(document.getElementById("now-time")||{}).textContent = ` (${_nb})`;
+
+let DATA = [];
+let LINES = [];
+let STAMPS = {};
+try { STAMPS = JSON.parse(localStorage.getItem("ramen_stamps") || "{}"); } catch(e) {}
+
+const $ = s => document.querySelector(s);
+const els = {
+  q:$("#q"), pref:$("#pref"), ward:$("#ward"), line:$("#line"), travel:$("#travel"), genre:$("#genre"),
+  min:$("#minscore"), sort:$("#sort"), depart:$("#depart"),
+  star:$("#c-star"), bib:$("#c-bib"), hyaku:$("#c-hyaku"), try:$("#c-try"),
+  today:$("#c-today"), sunday:$("#c-sunday"), night:$("#c-night"), evening:$("#c-evening"),
+  now:$("#c-now"), newshop:$("#c-new"),
+  unvisited:$("#c-unvisited"), want:$("#c-want"),
+  rows:$("#rows"), n:$("#n"), total:$("#total"), reset:$("#reset"),
+  stampCount:$("#stamp-count"), clearStamps:$("#clear-stamps"),
+};
+const TBAND = {1:"〜20分", 2:"20〜40分", 3:"40〜60分", 4:"60分〜"};
+
+function departKey(){ return els.depart && els.depart.value==="toranomon" ? "toranomon" : "shinjuku"; }
+function departLabel(){ return departKey()==="toranomon" ? "虎ノ門ヒルズ" : "西新宿"; }
+function travelBandOf(r){ return departKey()==="toranomon" ? (r.travel_band_toranomon||r.travel_band||0) : (r.travel_band||0); }
+function travelMinOf(r){ return departKey()==="toranomon" ? (r.travel_min_toranomon!=null?r.travel_min_toranomon:999) : (r.travel_min!=null?r.travel_min:999); }
+function _parseMin(s){const[h,m]=s.split(':').map(Number);return h*60+m;}
+function _inSession(sess,t){return(sess||[]).some(s=>{const[a,b]=s.split('-');return t>=_parseMin(a)&&t<_parseMin(b);});}
+function _heuristic(r){
+  if((r.closed_days||[]).includes(TODAY_ENG)) return false;
+  if(NOW_HOUR>=22) return r.late_night;
+  if(NOW_HOUR>=17) return !!r.evening;
+  if(NOW_HOUR>=10) return true;
+  return false;
+}
+function isOpenNow(r){
+  const hi=r.hours_info;
+  if(hi&&TODAY_ENG in hi){
+    const s=hi[TODAY_ENG];
+    if(s===null) return _heuristic(r);  // その日は未確認 → ヒューリスティック
+    if(!s||s.length===0) return false;  // 定休確定
+    return _inSession(s,NOW_MIN_OF_DAY);
+  }
+  return _heuristic(r);
+}
+function updateDepartLabels(){
+  const lbl = departLabel();
+  const tl = document.getElementById("travel-lbl");
+  const st = document.getElementById("sort-travel");
+  if(tl) tl.textContent = `🚊 ${lbl}から（目安）`;
+  if(st) st.textContent = `近い順（${lbl}）`;
+}
+
+function stampKey(r){ return r.source_url || (r.shop + "||" + r.pref + "||" + r.ward); }
+function saveStamps(){ localStorage.setItem("ramen_stamps", JSON.stringify(STAMPS)); }
+function esc(s){ return (s||"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c])); }
+
+function badges(aw){
+  return (aw||[]).map(a=>{
+    if(a==="ミシュラン星") return '<span class="badge b-star">⭐星</span>';
+    if(a==="ビブグルマン") return '<span class="badge b-bib">🅱️ビブ</span>';
+    if(a==="百名店")      return '<span class="badge b-hyaku">💯百</span>';
+    return "";
+  }).join("");
+}
+function markers(r){
+  let m = "";
+  (r.try_awards||[]).forEach(t=> m += '<span class="badge b-try">🏆'+esc(t.label)+'</span>');
+  if(r.new_shop)   m += '<span class="badge b-new">🆕新店</span>';
+  if(r.late_night) m += '<span class="badge b-night">🌙深夜</span>';
+  if(r.lunch_only) m += '<span class="badge b-lunch">☀️昼のみ</span>';
+  return m;
+}
+function travelChip(r){
+  const band = travelBandOf(r);
+  if(!band) return "";
+  const lbl = departLabel();
+  return `<span class="tband tb${band}" title="${lbl}からの目安所要時間（路線・距離からの推定）">`
+       + `🚊${lbl} ${TBAND[band]}</span>`;
+}
+function todayHoursChip(r){
+  const hi=r.hours_info;
+  if(!hi||!(TODAY_ENG in hi)) return "";
+  const s=hi[TODAY_ENG];
+  if(s===null) return "";
+  if(!s||s.length===0) return '<span class="hours-today hours-closed">本日休</span>';
+  return `<span class="hours-today hours-open">⏰${s.map(x=>x.replace('-','〜')).join(' / ')}</span>`;
+}
+
+function passes(r){
+  const q = els.q.value.trim().toLowerCase();
+  if(q){
+    const hay = (r.shop+" "+(r.stations||[]).join(" ")+" "+r.ward+" "+r.genre+" "+
+                 (r.feature||"")+" "+(r.lines||[]).join(" ")).toLowerCase();
+    if(!hay.includes(q)) return false;
+  }
+  if(els.pref.value  && r.pref !== els.pref.value) return false;
+  if(els.ward.value  && r.ward !== els.ward.value) return false;
+  if(els.line.value  && !(r.lines||[]).includes(els.line.value)) return false;
+  if(els.now.checked && !isOpenNow(r)) return false;
+  if(els.travel.value && (travelBandOf(r)||9) > +els.travel.value) return false;
+  if(els.genre.value && !(r.genres||[]).includes(els.genre.value)) return false;
+  const min = parseFloat(els.min.value);
+  if(min>0 && !(r.tabelog_score && r.tabelog_score>=min)) return false;
+  if(els.star.checked  && !(r.awards||[]).includes("ミシュラン星")) return false;
+  if(els.bib.checked   && !(r.awards||[]).includes("ビブグルマン")) return false;
+  if(els.hyaku.checked && !(r.awards||[]).includes("百名店")) return false;
+  if(els.try.checked   && !((r.try_awards||[]).length)) return false;
+  // 営業日
+  if(els.today.checked  && (r.closed_days||[]).includes(TODAY_ENG)) return false;
+  if(els.sunday.checked && (r.closed_days||[]).includes("Sun")) return false;
+  if(els.night.checked   && !r.late_night) return false;
+  if(els.evening.checked && !r.evening) return false;
+  if(els.newshop.checked && !r.new_shop) return false;
+  // スタンプ
+  const stamp = STAMPS[stampKey(r)];
+  if(els.unvisited.checked && stamp === "visited") return false;
+  if(els.want.checked      && stamp !== "want")    return false;
+  return true;
+}
+
+function sortRows(rows){
+  const k = els.sort.value;
+  const sc = r => (r.tabelog_score||0);
+  const tv = r => travelMinOf(r);
+  const pi = r => { const i = PREF_ORDER.indexOf(r.pref); return i<0?99:i; };
+  if(k==="score") rows.sort((a,b)=>sc(b)-sc(a) || a.shop.localeCompare(b.shop,"ja"));
+  else if(k==="travel") rows.sort((a,b)=>tv(a)-tv(b) || sc(b)-sc(a));
+  else if(k==="shop") rows.sort((a,b)=>a.shop.localeCompare(b.shop,"ja"));
+  else if(k==="ward") rows.sort((a,b)=>(pi(a)-pi(b)) || a.ward.localeCompare(b.ward,"ja") || sc(b)-sc(a));
+  return rows;
+}
+
+function updateStampCount(){
+  const v = Object.values(STAMPS).filter(s=>s==="visited").length;
+  const w = Object.values(STAMPS).filter(s=>s==="want").length;
+  els.stampCount.textContent = `✓ 訪問済: ${v}店 ／ ★ 気になる: ${w}店`;
+}
+
+function render(){
+  const rows = sortRows(DATA.filter(passes));
+  els.n.textContent = rows.length;
+  updateStampCount();
+  if(!rows.length){
+    els.rows.innerHTML = '<tr><td colspan="7" class="empty">条件に合う店が見つかりませんでした。</td></tr>';
+    return;
+  }
+  const html = rows.map(r=>{
+    const key = stampKey(r), stamp = STAMPS[key], sv = stamp==="visited", sw = stamp==="want";
+    const name = r.source_url
+      ? `<a href="${esc(r.source_url)}" target="_blank" rel="noopener">${esc(r.shop)}</a>`
+      : `<span class="nourl">${esc(r.shop)}</span>`;
+    const mk = markers(r);
+    const aw = badges(r.awards);
+    const sub = (aw+mk) ? ("<br>"+aw+mk) : "";
+    const linesTxt = (r.lines||[]).length ? `<div class="lines">🚃 ${esc(r.lines.join(" / "))}</div>` : "";
+    const loc = `${esc(r.pref||"")} ${esc(r.ward)}<br><span class="loc">${esc((r.stations||[]).join(" / "))}</span>${linesTxt}<div>${travelChip(r)}${todayHoursChip(r)}</div>`;
+    const score = r.tabelog_score ? r.tabelog_score.toFixed(2) : "–";
+    const chips = `<div class="chips">${(r.genres||[]).map(g=>`<span class="chip">${esc(g)}</span>`).join("")}</div>`;
+    const vBtn = `<button class="s-btn${sv?" sv":""}" data-action="visited" data-key="${esc(key)}" title="行った">✓</button>`;
+    const wBtn = `<button class="s-btn${sw?" sw":""}" data-action="want"    data-key="${esc(key)}" title="気になる">★</button>`;
+    return `<tr${sv?' class="visited"':''}>
+      <td class="shop">${name}${sub}</td>
+      <td>${loc}</td>
+      <td class="hide-sp">${chips}</td>
+      <td class="score">${score}</td>
+      <td class="hide-sp">${aw||"–"}</td>
+      <td class="feat hide-sp">${esc(r.feature||"")}</td>
+      <td class="td-stamp">${vBtn}${wBtn}</td>
+    </tr>`;
+  }).join("");
+  els.rows.innerHTML = html;
+}
+
+function initStampHandlers(){
+  els.rows.addEventListener("click", e=>{
+    const btn = e.target.closest(".s-btn");
+    if(!btn) return;
+    const key = btn.dataset.key, action = btn.dataset.action;
+    STAMPS[key] = STAMPS[key]===action ? null : action;
+    saveStamps(); render();
+  });
+}
+
+function fillWards(){
+  els.ward.innerHTML = '<option value="">すべての区・市</option>';
+  const pref = els.pref.value, seen = [];
+  for(const r of DATA){
+    if(pref && r.pref !== pref) continue;
+    if(!seen.includes(r.ward)) seen.push(r.ward);
+  }
+  seen.sort((a,b)=>a.localeCompare(b,"ja"));
+  for(const w of seen){ const o=document.createElement("option"); o.value=w; o.textContent=w; els.ward.appendChild(o); }
+}
+
+function fillLines(){
+  // lines.json（鉄道会社→路線）から optgroup 付きで構築
+  for(const g of LINES){
+    const og = document.createElement("optgroup");
+    og.label = g.company;
+    for(const l of g.lines){
+      const o = document.createElement("option");
+      o.value = l.label; o.textContent = `${l.label}（${l.count}）`;
+      og.appendChild(o);
+    }
+    els.line.appendChild(og);
+  }
+}
+
+function initFilters(){
+  for(const p of PREF_ORDER.filter(p=>DATA.some(r=>r.pref===p))){
+    const o=document.createElement("option"); o.value=p;
+    o.textContent=`${p}（${DATA.filter(r=>r.pref===p).length}）`; els.pref.appendChild(o);
+  }
+  fillWards();
+  fillLines();
+  const gc = {};
+  for(const r of DATA) for(const g of (r.genres||[])) gc[g]=(gc[g]||0)+1;
+  for(const g of Object.keys(gc).sort((a,b)=>gc[b]-gc[a])){
+    const o=document.createElement("option"); o.value=g; o.textContent=`${g}（${gc[g]}）`; els.genre.appendChild(o);
+  }
+}
+
+function bind(){
+  els.pref.addEventListener("change", ()=>{ fillWards(); render(); });
+  els.depart.addEventListener("change", ()=>{ updateDepartLabels(); render(); });
+  for(const el of [els.q,els.ward,els.line,els.travel,els.genre,els.min,els.sort,
+                   els.star,els.bib,els.hyaku,els.try,els.today,els.sunday,els.night,els.evening,
+                   els.now,els.newshop,els.unvisited,els.want]){
+    el.addEventListener("input", render);
+  }
+  document.querySelectorAll("thead th[data-k]").forEach(th=>{
+    th.addEventListener("click", ()=>{
+      const k = th.dataset.k;
+      els.sort.value = (k==="score"||k==="ward"||k==="shop") ? k : "score";
+      render();
+    });
+  });
+  els.reset.addEventListener("click", ()=>{
+    els.q.value=""; els.pref.value=""; els.ward.value=""; els.line.value=""; els.travel.value="";
+    els.genre.value=""; els.min.value="0"; els.sort.value="score"; els.depart.value="shinjuku";
+    els.star.checked=els.bib.checked=els.hyaku.checked=els.try.checked=false;
+    els.today.checked=els.sunday.checked=els.night.checked=els.evening.checked=false;
+    els.now.checked=els.newshop.checked=false;
+    els.unvisited.checked=els.want.checked=false;
+    updateDepartLabels(); fillWards(); render();
+  });
+  els.clearStamps.addEventListener("click", ()=>{
+    if(!confirm("訪問済・気になるのスタンプをすべて消去しますか？")) return;
+    STAMPS = {}; saveStamps(); render();
+  });
+}
+
+Promise.all([
+  fetch("data/ramen.json").then(r=>{ if(!r.ok) throw new Error(r.status); return r.json(); }),
+  fetch("data/lines.json").then(r=>r.ok ? r.json() : []).catch(()=>[]),
+])
+  .then(([d, lines])=>{
+    DATA=d; LINES=lines||[];
+    els.total.textContent=d.length;
+    initFilters(); bind(); initStampHandlers(); updateDepartLabels(); render();
+  })
+  .catch(e=>{ els.rows.innerHTML = `<tr><td colspan="7" class="empty">データの読み込みに失敗しました（${esc(String(e))}）。<br>GitHub Pages 上では正しく表示されます。</td></tr>`; });
+</script>
+</body>
+</html>
