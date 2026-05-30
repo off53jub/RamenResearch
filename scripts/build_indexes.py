@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""wards/*.md を解析して横断インデックス・データ出力を生成する。
+"""regions/<都県>/*.md を解析して横断インデックス・データ出力を生成する。
 
 生成物:
   indexes/by-genre.md             … ジャンル別の店一覧
@@ -22,11 +22,15 @@ import os
 from collections import defaultdict
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-WARDS = os.path.join(ROOT, "wards")
+REGIONS = os.path.join(ROOT, "regions")
 OUT = os.path.join(ROOT, "indexes")
 DATA = os.path.join(ROOT, "data")
 DOCS = os.path.join(ROOT, "docs")
 UPDATED = "2026-05-29"
+
+# 都県ディレクトリ → 表示名(出力順)
+PREFS = [("tokyo", "東京都"), ("kanagawa", "神奈川県"), ("saitama", "埼玉県")]
+PREF_LABEL = dict(PREFS)
 
 NON_STATION = ("🚉", "⭐", "🔎", "📝", "❌", "📂", "🧭", "✅", "⚠️", "🅱️", "💯", "🍜", "🗺️")
 
@@ -114,34 +118,35 @@ LINEAGE = [
 
 def parse_records() -> list[dict]:
     bykey: dict = {}
-    for path in sorted(glob.glob(os.path.join(WARDS, "*.md"))):
-        with open(path, encoding="utf-8") as f:
-            lines = f.read().splitlines()
-        ward = lines[0].lstrip("#").strip().split()[0] if lines and lines[0].startswith("# ") else "?"
-        station = ""
-        for ln in lines:
-            s = ln.strip()
-            if s.startswith("#"):
-                station = short_station(s) if is_station_heading(s) else ""
-                continue
-            if not s.startswith("|"):
-                continue
-            cells = [c.strip() for c in s.strip("|").split("|")]
-            if len(cells) < 5:
-                continue
-            shop, genre, feat, ev, src = cells[:5]
-            if not shop or shop == "店名" or set(shop) <= set("-:"):
-                continue
-            url = url_of(src)
-            key = (shop, url) if url else (shop, ward, station)
-            loc = f"{ward}・{station}" if station else ward
-            rec = bykey.get(key)
-            if rec:
-                if loc not in rec["locs"]:
-                    rec["locs"].append(loc)
-                continue
-            bykey[key] = dict(ward=ward, station=station, shop=shop, genre=genre,
-                              feat=feat, ev=ev, src=src, url=url, locs=[loc])
+    for slug, pref in PREFS:
+        for path in sorted(glob.glob(os.path.join(REGIONS, slug, "*.md"))):
+            with open(path, encoding="utf-8") as f:
+                lines = f.read().splitlines()
+            ward = lines[0].lstrip("#").strip().split()[0] if lines and lines[0].startswith("# ") else "?"
+            station = ""
+            for ln in lines:
+                s = ln.strip()
+                if s.startswith("#"):
+                    station = short_station(s) if is_station_heading(s) else ""
+                    continue
+                if not s.startswith("|"):
+                    continue
+                cells = [c.strip() for c in s.strip("|").split("|")]
+                if len(cells) < 5:
+                    continue
+                shop, genre, feat, ev, src = cells[:5]
+                if not shop or shop == "店名" or set(shop) <= set("-:"):
+                    continue
+                url = url_of(src)
+                key = (shop, url) if url else (shop, pref, ward, station)
+                loc = f"{ward}・{station}" if station else ward
+                rec = bykey.get(key)
+                if rec:
+                    if loc not in rec["locs"]:
+                        rec["locs"].append(loc)
+                    continue
+                bykey[key] = dict(pref=pref, ward=ward, station=station, shop=shop,
+                                  genre=genre, feat=feat, ev=ev, src=src, url=url, locs=[loc])
     return list(bykey.values())
 
 
@@ -163,11 +168,14 @@ def awards_of(r: dict) -> list[str]:
 
 
 def loc_str(r: dict) -> str:
-    return " / ".join(r["locs"][:3])
+    # 例: 「東京都 千代田区・秋葉原駅」。複数駅は最大3つまで。
+    pref = r.get("pref", "")
+    locs = " / ".join(r["locs"][:3])
+    return f"{pref} {locs}".strip()
 
 
 def table(rows: list[dict]) -> str:
-    out = ["| 店名 | 区・最寄駅 | ジャンル | 評価の目安 | 出典 |", "|---|---|---|---|---|"]
+    out = ["| 店名 | 都県・区市・最寄駅 | ジャンル | 評価の目安 | 出典 |", "|---|---|---|---|---|"]
     for r in sorted(rows, key=lambda r: score(r["ev"]), reverse=True):
         out.append(f'| {r["shop"]} | {loc_str(r)} | {r["genre"]} | {r["ev"]} | {r["src"]} |')
     return "\n".join(out) + "\n"
@@ -185,7 +193,7 @@ def write_genre(records):
             by_genre[label].append(r)
     with open(os.path.join(OUT, "by-genre.md"), "w", encoding="utf-8") as f:
         f.write(header("ジャンル別 ラーメン横断インデックス"))
-        f.write(f"> `wards/*.md` から自動抽出した **全{len(records)}店**(同一店は出典URLで名寄せ)。1店が複数ジャンルに登場することがあります。評価の目安は食べログ点数等(掲載時点)。\n\n")
+        f.write(f"> `regions/**/*.md` から自動抽出した **全{len(records)}店**(同一店は出典URLで名寄せ)。1店が複数ジャンルに登場することがあります。評価の目安は食べログ点数等(掲載時点)。\n\n")
         f.write("## 目次\n")
         for label in GENRE_ORDER:
             if by_genre.get(label):
@@ -209,7 +217,7 @@ def write_awards(records):
     assert all("百名店" in awards_of(r) for r in hyaku)
     with open(os.path.join(OUT, "hyakumeiten-michelin.md"), "w", encoding="utf-8") as f:
         f.write(header("ラーメン百名店・ミシュラン 一覧"))
-        f.write("> `wards/*.md` の「評価の目安」「看板・特徴」に百名店/ミシュラン/ビブグルマンの記載がある店を抽出(出典URLで名寄せ)。同一店が複数カテゴリに入ることがあります。選出年は各区ファイル参照。\n\n")
+        f.write("> `regions/**/*.md` の「評価の目安」「看板・特徴」に百名店/ミシュラン/ビブグルマンの記載がある店を抽出(出典URLで名寄せ)。同一店が複数カテゴリに入ることがあります。選出年は各区ファイル参照。\n\n")
         f.write(f"## ⭐ ミシュラン 星（{len(star)}店）\n\n")
         f.write(table(star) if star else "（該当なし）\n")
         f.write(f"\n## 🅱️ ミシュラン ビブグルマン（{len(bib)}店）\n\n")
@@ -226,19 +234,15 @@ def write_practical(records):
     queue = [r for r in records if any(k in r["feat"] for k in ("行列", "連日行列", "売切", "売り切れ", "スープ切れ", "仕舞い", "終了"))]
     hall = [r for r in records if score(r["ev"]) >= 3.75]
 
-    # 区別TOP3(食べログ点数が取れた店のみ)
-    byward = defaultdict(list)
+    # 区・市別TOP3(食べログ点数が取れた店のみ)。都県→区/市でグループ化。
+    bypw = defaultdict(lambda: defaultdict(list))
     for r in records:
         if score(r["ev"]) > 0:
-            byward[r["ward"]].append(r)
-
-    def ward_no(w):
-        # 区コード順に並べるため wards ファイル名から番号を引く
-        return w
+            bypw[r["pref"]][r["ward"]].append(r)
 
     with open(os.path.join(OUT, "practical.md"), "w", encoding="utf-8") as f:
-        f.write(header("実用インデックス（深夜・朝 / 予約・行列 / 殿堂 / 区別TOP）"))
-        f.write("> `wards/*.md` の「看板・特徴」「評価の目安」から自動抽出。深夜/朝・予約/行列はメモに該当語がある店のみ(網羅ではない)。点数は掲載時点の目安。\n\n")
+        f.write(header("実用インデックス（深夜・朝 / 予約・行列 / 殿堂 / 区市別TOP）"))
+        f.write("> `regions/**/**.md` の「看板・特徴」「評価の目安」から自動抽出。深夜/朝・予約/行列はメモに該当語がある店のみ(網羅ではない)。点数は掲載時点の目安。\n\n")
 
         f.write(f"## 🌙 深夜まで営業（{len(late)}店）\n\n")
         f.write(table(late) if late else "（該当なし）\n")
@@ -251,11 +255,16 @@ def write_practical(records):
         f.write(f"\n## 🏆 殿堂（食べログ3.75以上 / {len(hall)}店）\n\n")
         f.write(table(hall) if hall else "（該当なし）\n")
 
-        f.write("\n## 📍 区別おすすめTOP3（食べログ点数順）\n\n")
-        for w in sorted(byward, key=ward_no):
-            rows = sorted(byward[w], key=lambda r: score(r["ev"]), reverse=True)[:3]
-            picks = "／".join(f'{r["shop"]}（{r["ev"].split("／")[0].replace("食べログ", "").strip()}）' for r in rows)
-            f.write(f"- **{w}**: {picks}\n")
+        f.write("\n## 📍 区市別おすすめTOP3（食べログ点数順）\n\n")
+        for _, pref in PREFS:
+            if pref not in bypw:
+                continue
+            f.write(f"### {pref}\n\n")
+            for w in sorted(bypw[pref], key=lambda w: -max(score(r["ev"]) for r in bypw[pref][w])):
+                rows = sorted(bypw[pref][w], key=lambda r: score(r["ev"]), reverse=True)[:3]
+                picks = "／".join(f'{r["shop"]}（{r["ev"].split("／")[0].replace("食べログ", "").replace("約", "").strip()}）' for r in rows)
+                f.write(f"- **{w}**: {picks}\n")
+            f.write("\n")
     return late, morning, reserve, queue, hall
 
 
@@ -282,7 +291,7 @@ def write_lineage(records):
 
     with open(os.path.join(OUT, "lineage.md"), "w", encoding="utf-8") as f:
         f.write(header("系譜マップ（出身店・のれん分け・系列）"))
-        f.write("> `wards/*.md` の「看板・特徴」テキストから系統キーワードで自動抽出。**根拠**列にDB内の記述を併記しています(各店の正確な師弟・資本関係は出典先で確認のこと)。同一店が複数系統に現れることがあります。\n\n")
+        f.write("> `regions/**/*.md` の「看板・特徴」テキストから系統キーワードで自動抽出。**根拠**列にDB内の記述を併記しています(各店の正確な師弟・資本関係は出典先で確認のこと)。同一店が複数系統に現れることがあります。\n\n")
         f.write("## 目次\n")
         for name, uniq in fams:
             f.write(f"- {name}（{len(uniq)}店）\n")
@@ -299,16 +308,16 @@ def write_lineage(records):
 def write_data(records):
     os.makedirs(DATA, exist_ok=True)
     os.makedirs(os.path.join(DOCS, "data"), exist_ok=True)
-    rows = sorted(records, key=lambda r: (-score(r["ev"]), r["ward"]))
-    cols = ["shop", "ward", "stations", "genre", "genres", "tabelog_score", "awards", "feature", "source_url"]
+    rows = sorted(records, key=lambda r: (-score(r["ev"]), r["pref"], r["ward"]))
+    cols = ["shop", "pref", "ward", "stations", "genre", "genres", "tabelog_score", "awards", "feature", "source_url"]
     with open(os.path.join(DATA, "ramen.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
         for r in rows:
-            w.writerow([r["shop"], r["ward"], " / ".join(r["locs"]), r["genre"],
+            w.writerow([r["shop"], r["pref"], r["ward"], " / ".join(r["locs"]), r["genre"],
                         "/".join(classify(r["genre"])), score(r["ev"]) or "",
                         ";".join(awards_of(r)), r["feat"], r["url"]])
-    arr = [dict(shop=r["shop"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
+    arr = [dict(shop=r["shop"], pref=r["pref"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
                genres=classify(r["genre"]), tabelog_score=(score(r["ev"]) or None),
                awards=awards_of(r), feature=r["feat"], source_url=r["url"]) for r in rows]
     payload = json.dumps(arr, ensure_ascii=False, indent=2)
