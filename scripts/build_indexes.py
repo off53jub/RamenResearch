@@ -4,6 +4,7 @@
 生成物:
   indexes/by-genre.md             … ジャンル別の店一覧
   indexes/hyakumeiten-michelin.md … 百名店・ミシュラン(星/ビブグルマン)
+  indexes/try-taisho.md           … TRYラーメン大賞(総合大賞/新店大賞/殿堂)エディション別
   indexes/practical.md            … 実用インデックス(深夜/朝・予約/行列・殿堂3.7+・区別TOP)
   indexes/lineage.md              … 系譜マップ(出身店・のれん分け・系列)
   data/ramen.csv / data/ramen.json … 全店の構造化データ
@@ -294,6 +295,8 @@ def is_new_2026(feat: str) -> bool:
         before = feat[max(0, s - 6):s]
         if any(a in before for a in _AWARD_KW):
             continue  # 「百名店2026」等の受賞年
+        if re.search(r"\d{4}[-–]$", before):
+            continue  # 「2025-2026」等の年度レンジ表記（TRY大賞等）は新店ではない
         window = feat[max(0, s - 8):e + 12]
         if not any(k in window for k in _OPEN_KW):
             continue  # 開店系の語が近くにない
@@ -489,6 +492,7 @@ def annotate(records: list[dict]) -> None:
         m = travel_minutes(r["ward"], r["locs"])
         r["travel_min"] = m
         r["travel_band"] = travel_band(m)
+        r["try_awards"] = try_awards_of(r)
 
 
 def parse_records() -> list[dict]:
@@ -560,6 +564,30 @@ def awards_of(r: dict) -> list[str]:
     return a
 
 
+# ---- TRYラーメン大賞（講談社・業界最高権威）----
+# 看板・特徴/評価テキスト中の「TRY{大賞|新店大賞|殿堂}YYYY-YYYY」を構造化抽出する。
+# 年度をまたぐエディション表記（例 2025-2026）をそのまま保持し、各年が見えるようにする。
+# ジャンル別部門賞（公開ソース無し）は対象外。総合大賞・新店大賞・殿堂入りのみを扱う。
+_TRY_RE = re.compile(r"TRY(新店大賞|大賞|殿堂)(\d{4})[-–](\d{4})")
+TRY_CAT_RANK = {"大賞": 0, "新店大賞": 1, "殿堂": 2}
+
+
+def try_awards_of(r: dict) -> list[dict]:
+    """TRY大賞の受賞(部門総合大賞/新店大賞/殿堂入り)を年度付きで返す。"""
+    t = tag(r)
+    out, seen = [], set()
+    for m in _TRY_RE.finditer(t):
+        cat, y1, y2 = m.group(1), m.group(2), m.group(3)
+        edition = f"{y1}-{y2}"
+        if (cat, edition) in seen:
+            continue
+        seen.add((cat, edition))
+        out.append(dict(cat=cat, edition=edition,
+                        label=f"TRY{cat} {y1[2:]}-{y2[2:]}"))
+    out.sort(key=lambda a: (a["edition"], TRY_CAT_RANK.get(a["cat"], 9)), reverse=True)
+    return out
+
+
 def loc_str(r: dict) -> str:
     # 例: 「東京都 千代田区・秋葉原駅」。複数駅は最大3つまで。
     pref = r.get("pref", "")
@@ -618,6 +646,32 @@ def write_awards(records):
         f.write(f"\n## 💯 食べログ ラーメン百名店（{len(hyaku)}店）\n\n")
         f.write(table(hyaku) if hyaku else "（該当なし）\n")
     return star, bib, hyaku
+
+
+def write_try(records):
+    """TRYラーメン大賞(総合大賞/新店大賞/殿堂入り)の受賞店をエディション別に出力。"""
+    winners = [r for r in records if r.get("try_awards")]
+    editions = sorted({a["edition"] for r in winners for a in r["try_awards"]}, reverse=True)
+    CAT_ORDER = ["大賞", "新店大賞", "殿堂"]
+    CAT_LABEL = {"大賞": "🏆 大賞（名店部門 総合）", "新店大賞": "🆕 新店大賞", "殿堂": "🎖 殿堂入り"}
+    with open(os.path.join(OUT, "try-taisho.md"), "w", encoding="utf-8") as f:
+        f.write(header("TRYラーメン大賞（業界最高権威）受賞店"))
+        f.write("> 講談社『TRYラーメン大賞』の **総合大賞・新店大賞・殿堂入り** をDB内の該当店から抽出"
+                "(出典URLで名寄せ)。エディションは年度をまたぐ表記(例 2025-2026 は2025年10月発表の第26回)。"
+                "ジャンル別部門賞は公開ソースが限られるため未収録。\n\n")
+        for ed in editions:
+            f.write(f"## {ed}\n\n")
+            for cat in CAT_ORDER:
+                rows = [r for r in winners
+                        if any(a["edition"] == ed and a["cat"] == cat for a in r["try_awards"])]
+                if not rows:
+                    continue
+                f.write(f"### {CAT_LABEL[cat]}\n\n")
+                f.write("| 店名 | 都県・区市・最寄駅 | ジャンル | 評価の目安 | 出典 |\n|---|---|---|---|---|\n")
+                for r in sorted(rows, key=lambda r: score(r["ev"]), reverse=True):
+                    f.write(f'| {r["shop"]} | {loc_str(r)} | {r["genre"]} | {r["ev"]} | {r["src"]} |\n')
+                f.write("\n")
+    return winners
 
 
 def write_practical(records):
@@ -704,7 +758,8 @@ def write_data(records):
     rows = sorted(records, key=lambda r: (-score(r["ev"]), r["pref"], r["ward"]))
     cols = ["shop", "pref", "ward", "stations", "genre", "genres", "tabelog_score",
             "awards", "feature", "source_url", "closed_days", "lines", "new_2026",
-            "late_night", "evening", "lunch_only", "travel_min", "travel_band"]
+            "late_night", "evening", "lunch_only", "travel_min", "travel_band",
+            "try_awards"]
     with open(os.path.join(DATA, "ramen.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
@@ -719,7 +774,8 @@ def write_data(records):
                         "1" if r.get("evening") else "",
                         "1" if r.get("lunch_only") else "",
                         r.get("travel_min", ""),
-                        r.get("travel_band", "")])
+                        r.get("travel_band", ""),
+                        ";".join(a["label"] for a in r.get("try_awards", []))])
     arr = [dict(shop=r["shop"], pref=r["pref"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
                genres=classify(r["genre"]), tabelog_score=(score(r["ev"]) or None),
                awards=awards_of(r), feature=r["feat"], source_url=r["url"],
@@ -730,7 +786,8 @@ def write_data(records):
                evening=bool(r.get("evening")),
                lunch_only=bool(r.get("lunch_only")),
                travel_min=r.get("travel_min"),
-               travel_band=r.get("travel_band")) for r in rows]
+               travel_band=r.get("travel_band"),
+               try_awards=r.get("try_awards", [])) for r in rows]
     payload = json.dumps(arr, ensure_ascii=False, indent=2)
     with open(os.path.join(DATA, "ramen.json"), "w", encoding="utf-8") as f:
         f.write(payload)
@@ -768,6 +825,7 @@ def main() -> None:
     os.makedirs(OUT, exist_ok=True)
     by_genre = write_genre(records)
     star, bib, hyaku = write_awards(records)
+    tryw = write_try(records)
     late, morning, reserve, queue, hall = write_practical(records)
     fams = write_lineage(records)
     n = write_data(records)
@@ -782,6 +840,9 @@ def main() -> None:
         bands[r.get("travel_band")] += 1
     print(f"records={len(records)} csv/json={n}")
     print(f"awards: star={len(star)} bib={len(bib)} hyaku={len(hyaku)}")
+    n_try_awards = sum(len(r["try_awards"]) for r in tryw)
+    print(f"TRY大賞: shops={len(tryw)} awards={n_try_awards}  "
+          + "  ".join(f'{r["shop"]}[{"/".join(a["label"] for a in r["try_awards"])}]' for r in tryw))
     print(f"practical: late={len(late)} morning={len(morning)} reserve={len(reserve)} queue={len(queue)} hall={len(hall)}")
     print(f"lines in dropdown={nlines}  new_2026={n_new}  open_sunday={n_sun}  late_night(深夜)={n_night}")
     print(f"evening(夜営業)={n_evening}  lunch_only(昼のみ)={n_lunch}")
