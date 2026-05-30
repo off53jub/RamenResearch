@@ -57,6 +57,39 @@ def short_station(text: str) -> str:
     return t.strip().strip("／/・")
 
 
+def extract_lines(heading: str) -> list[str]:
+    """Extract railway line names from station heading parentheticals.
+    e.g. '八王子駅（JR中央・横浜・八高線）／ 京王八王子駅（京王線）' → ['JR中央・横浜・八高線', '京王線']
+    """
+    parts = re.findall(r'[（(]([^)）\n]+)[）)]', heading)
+    result = []
+    for part in parts:
+        for seg in re.split(r'\s*/\s*|／', part):
+            seg = seg.strip()
+            if seg:
+                result.append(seg)
+    return result
+
+
+def parse_closed_days(feat: str) -> list[str]:
+    """Parse closed weekdays from feature text. Returns English day abbreviations.
+    Handles: 月休, 月火休, 土日祝休, 月曜休, 月曜日休, etc.
+    """
+    DAY_MAP = {"月": "Mon", "火": "Tue", "水": "Wed", "木": "Thu",
+               "金": "Fri", "土": "Sat", "日": "Sun"}
+    if "無休" in feat:
+        return []
+    # Normalise "X曜日?" → "X" so 月曜休/月曜日休 is treated same as 月休
+    text = re.sub(r'([月火水木金土日])曜日?', r'\1', feat)
+    result = set()
+    for m in re.finditer(r'([月火水木金土日]+(?:祝)?)休', text):
+        for c in m.group(1):
+            if c in DAY_MAP:
+                result.add(DAY_MAP[c])
+    ORDER = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    return sorted(result, key=lambda d: ORDER.index(d))
+
+
 def score(ev: str) -> float:
     m = re.search(r"(\d\.\d+)", ev)
     return float(m.group(1)) if m else 0.0
@@ -130,10 +163,16 @@ def parse_records() -> list[dict]:
                 lines = f.read().splitlines()
             ward = lines[0].lstrip("#").strip().split()[0] if lines and lines[0].startswith("# ") else "?"
             station = ""
+            current_lines: list[str] = []
             for ln in lines:
                 s = ln.strip()
                 if s.startswith("#"):
-                    station = short_station(s) if is_station_heading(s) else ""
+                    if is_station_heading(s):
+                        station = short_station(s)
+                        current_lines = extract_lines(s)
+                    else:
+                        station = ""
+                        current_lines = []
                     continue
                 if not s.startswith("|"):
                     continue
@@ -150,9 +189,14 @@ def parse_records() -> list[dict]:
                 if rec:
                     if loc not in rec["locs"]:
                         rec["locs"].append(loc)
+                    for rline in current_lines:
+                        if rline not in rec["lines"]:
+                            rec["lines"].append(rline)
                     continue
                 bykey[key] = dict(pref=pref, ward=ward, station=station, shop=shop,
-                                  genre=genre, feat=feat, ev=ev, src=src, url=url, locs=[loc])
+                                  genre=genre, feat=feat, ev=ev, src=src, url=url, locs=[loc],
+                                  lines=list(current_lines),
+                                  closed_days=parse_closed_days(feat))
     return list(bykey.values())
 
 
@@ -315,17 +359,22 @@ def write_data(records):
     os.makedirs(DATA, exist_ok=True)
     os.makedirs(os.path.join(DOCS, "data"), exist_ok=True)
     rows = sorted(records, key=lambda r: (-score(r["ev"]), r["pref"], r["ward"]))
-    cols = ["shop", "pref", "ward", "stations", "genre", "genres", "tabelog_score", "awards", "feature", "source_url"]
+    cols = ["shop", "pref", "ward", "stations", "genre", "genres", "tabelog_score",
+            "awards", "feature", "source_url", "closed_days", "lines"]
     with open(os.path.join(DATA, "ramen.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
         for r in rows:
             w.writerow([r["shop"], r["pref"], r["ward"], " / ".join(r["locs"]), r["genre"],
                         "/".join(classify(r["genre"])), score(r["ev"]) or "",
-                        ";".join(awards_of(r)), r["feat"], r["url"]])
+                        ";".join(awards_of(r)), r["feat"], r["url"],
+                        ";".join(r.get("closed_days", [])),
+                        " / ".join(r.get("lines", []))])
     arr = [dict(shop=r["shop"], pref=r["pref"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
                genres=classify(r["genre"]), tabelog_score=(score(r["ev"]) or None),
-               awards=awards_of(r), feature=r["feat"], source_url=r["url"]) for r in rows]
+               awards=awards_of(r), feature=r["feat"], source_url=r["url"],
+               closed_days=r.get("closed_days", []),
+               lines=r.get("lines", [])) for r in rows]
     payload = json.dumps(arr, ensure_ascii=False, indent=2)
     with open(os.path.join(DATA, "ramen.json"), "w", encoding="utf-8") as f:
         f.write(payload)
