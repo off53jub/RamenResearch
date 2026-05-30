@@ -73,8 +73,12 @@
       <input type="search" id="q" placeholder="例: 煮干し / 二郎 / 高田馬場 / 鳴龍">
     </div>
     <div>
-      <label for="ward">区</label>
-      <select id="ward"><option value="">すべての区</option></select>
+      <label for="pref">都県</label>
+      <select id="pref"><option value="">すべての都県</option></select>
+    </div>
+    <div>
+      <label for="ward">区・市</label>
+      <select id="ward"><option value="">すべての区・市</option></select>
     </div>
     <div>
       <label for="genre">ジャンル</label>
@@ -135,12 +139,12 @@
 </div>
 
 <script>
-const WARD_ORDER = ["千代田区","中央区","港区","新宿区","文京区","台東区","墨田区","江東区","品川区","目黒区","大田区","世田谷区","渋谷区","中野区","杉並区","豊島区","北区","荒川区","板橋区","練馬区","足立区","葛飾区","江戸川区"];
+const PREF_ORDER = ["東京都","神奈川県","埼玉県"];
 let DATA = [];
 
 const $ = s => document.querySelector(s);
 const els = {
-  q:$("#q"), ward:$("#ward"), genre:$("#genre"), min:$("#minscore"), sort:$("#sort"),
+  q:$("#q"), pref:$("#pref"), ward:$("#ward"), genre:$("#genre"), min:$("#minscore"), sort:$("#sort"),
   star:$("#c-star"), bib:$("#c-bib"), hyaku:$("#c-hyaku"),
   rows:$("#rows"), n:$("#n"), total:$("#total"), reset:$("#reset"),
 };
@@ -162,6 +166,7 @@ function passes(r){
     const hay = (r.shop+" "+(r.stations||[]).join(" ")+" "+r.ward+" "+r.genre+" "+(r.feature||"")).toLowerCase();
     if(!hay.includes(q)) return false;
   }
+  if(els.pref.value && r.pref !== els.pref.value) return false;
   if(els.ward.value && r.ward !== els.ward.value) return false;
   if(els.genre.value && !(r.genres||[]).includes(els.genre.value)) return false;
   const min = parseFloat(els.min.value);
@@ -175,9 +180,10 @@ function passes(r){
 function sortRows(rows){
   const k = els.sort.value;
   const sc = r => (r.tabelog_score||0);
+  const pi = r => { const i = PREF_ORDER.indexOf(r.pref); return i<0?99:i; };
   if(k==="score") rows.sort((a,b)=>sc(b)-sc(a) || a.shop.localeCompare(b.shop,"ja"));
   else if(k==="shop") rows.sort((a,b)=>a.shop.localeCompare(b.shop,"ja"));
-  else if(k==="ward") rows.sort((a,b)=>(WARD_ORDER.indexOf(a.ward)-WARD_ORDER.indexOf(b.ward)) || sc(b)-sc(a));
+  else if(k==="ward") rows.sort((a,b)=>(pi(a)-pi(b)) || a.ward.localeCompare(b.ward,"ja") || sc(b)-sc(a));
   return rows;
 }
 
@@ -192,7 +198,7 @@ function render(){
     const name = r.source_url
       ? `<a href="${esc(r.source_url)}" target="_blank" rel="noopener">${esc(r.shop)}</a>`
       : `<span class="nourl">${esc(r.shop)}</span>`;
-    const loc = `${esc(r.ward)}<br><span class="loc">${esc((r.stations||[]).join(" / "))}</span>`;
+    const loc = `${esc(r.pref||"")} ${esc(r.ward)}<br><span class="loc">${esc((r.stations||[]).join(" / "))}</span>`;
     const score = r.tabelog_score ? r.tabelog_score.toFixed(2) : "–";
     const chips = `<div class="chips">${(r.genres||[]).map(g=>`<span class="chip">${esc(g)}</span>`).join("")}</div>`;
     return `<tr>
@@ -207,10 +213,27 @@ function render(){
   els.rows.innerHTML = html;
 }
 
+function fillWards(){
+  // 選択中の都県に属する区・市のみ（都県順→区市名順）。pref未選択なら全件。
+  els.ward.innerHTML = '<option value="">すべての区・市</option>';
+  const pref = els.pref.value;
+  const seen = [];
+  for(const r of DATA){
+    if(pref && r.pref !== pref) continue;
+    const key = r.ward;
+    if(!seen.includes(key)) seen.push(key);
+  }
+  seen.sort((a,b)=>a.localeCompare(b,"ja"));
+  for(const w of seen){ const o=document.createElement("option"); o.value=w; o.textContent=w; els.ward.appendChild(o); }
+}
+
 function initFilters(){
-  // 区: 固定順
-  const wards = WARD_ORDER.filter(w=>DATA.some(r=>r.ward===w));
-  for(const w of wards){ const o=document.createElement("option"); o.value=w; o.textContent=w; els.ward.appendChild(o); }
+  // 都県: 固定順
+  for(const p of PREF_ORDER.filter(p=>DATA.some(r=>r.pref===p))){
+    const o=document.createElement("option"); o.value=p;
+    o.textContent=`${p}（${DATA.filter(r=>r.pref===p).length}）`; els.pref.appendChild(o);
+  }
+  fillWards();
   // ジャンル: データ内ラベルを出現頻度順
   const gc = {};
   for(const r of DATA) for(const g of (r.genres||[])) gc[g]=(gc[g]||0)+1;
@@ -220,6 +243,8 @@ function initFilters(){
 }
 
 function bind(){
+  // 都県を変えたら区・市リストを絞り直す
+  els.pref.addEventListener("change", ()=>{ fillWards(); render(); });
   for(const el of [els.q,els.ward,els.genre,els.min,els.sort,els.star,els.bib,els.hyaku]){
     el.addEventListener("input", render);
   }
@@ -232,8 +257,8 @@ function bind(){
     });
   });
   els.reset.addEventListener("click", ()=>{
-    els.q.value=""; els.ward.value=""; els.genre.value=""; els.min.value="0"; els.sort.value="score";
-    els.star.checked=els.bib.checked=els.hyaku.checked=false; render();
+    els.q.value=""; els.pref.value=""; els.genre.value=""; els.min.value="0"; els.sort.value="score";
+    els.star.checked=els.bib.checked=els.hyaku.checked=false; fillWards(); render();
   });
 }
 
