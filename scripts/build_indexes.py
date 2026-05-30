@@ -28,8 +28,14 @@ DATA = os.path.join(ROOT, "data")
 DOCS = os.path.join(ROOT, "docs")
 UPDATED = "2026-05-29"
 
-# 都県ディレクトリ → 表示名(出力順)
-PREFS = [("tokyo", "東京都"), ("kanagawa", "神奈川県"), ("saitama", "埼玉県")]
+# 地域ディレクトリ → 表示名(出力順)。多摩は東京都だが23区と区別するため別ラベル。
+PREFS = [
+    ("tokyo", "東京都"),
+    ("tokyo-tama", "東京都(多摩)"),
+    ("kanagawa", "神奈川県"),
+    ("saitama", "埼玉県"),
+    ("chiba", "千葉県"),
+]
 PREF_LABEL = dict(PREFS)
 
 NON_STATION = ("🚉", "⭐", "🔎", "📝", "❌", "📂", "🧭", "✅", "⚠️", "🅱️", "💯", "🍜", "🗺️")
