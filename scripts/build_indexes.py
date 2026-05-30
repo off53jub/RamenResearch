@@ -436,6 +436,54 @@ STATION_MIN = {
 }
 BAND_LABEL = {1: "〜20分", 2: "20〜40分", 3: "40〜60分", 4: "60分〜"}
 
+# ---- 虎ノ門ヒルズからの所要時間（目安）----
+# 東京メトロ日比谷線・虎ノ門ヒルズ駅（H06）を起点とする推定値。
+WARD_MIN_TORANOMON = {
+    # 東京23区
+    "新宿区": 22, "渋谷区": 18, "中野区": 28, "杉並区": 30, "豊島区": 28,
+    "千代田区": 10, "中央区": 12, "港区": 5, "文京区": 20, "品川区": 18,
+    "目黒区": 15, "世田谷区": 28, "台東区": 22, "墨田区": 28, "江東区": 28,
+    "荒川区": 30, "足立区": 35, "葛飾区": 42, "江戸川区": 38, "北区": 25,
+    "板橋区": 30, "練馬区": 30,
+    # 多摩
+    "吉祥寺・三鷹・小金井": 35, "立川・国立・国分寺・昭島": 45,
+    "八王子・日野・多摩": 55, "西東京・小平・東久留米・東村山・清瀬": 40,
+    "調布・府中・狛江": 35, "町田": 40,
+    # 神奈川
+    "横浜中心部": 38, "横浜北部": 40, "横浜南西部": 55,
+    "川崎市南部": 28, "川崎市北部": 38, "県央・相模原": 52, "湘南・県西": 70,
+    # 埼玉
+    "さいたま市": 42, "さいたま市北部": 45, "埼玉": 62,
+    "川口・蕨・戸田": 30, "越谷・草加・春日部": 48, "西武沿線エリア": 42,
+    "川越・東武東上線": 55,
+    # 千葉
+    "千葉市": 52, "千葉郊外": 55, "市川・浦安": 32, "松戸・柏": 42,
+    "船橋・習志野": 45, "流山・我孫子・野田・鎌ヶ谷": 55,
+}
+STATION_MIN_TORANOMON = {
+    "虎ノ門": 3, "神谷町": 2, "六本木": 4, "六本木一丁目": 5,
+    "広尾": 7, "恵比寿": 9, "中目黒": 11,
+    "麻布十番": 10, "青山一丁目": 12, "表参道": 14, "外苑前": 14,
+    "渋谷": 18, "代々木": 22, "代々木上原": 22, "高田馬場": 28, "池袋": 30,
+    "西新宿": 25, "新宿": 25, "西新宿五丁目": 26, "新宿三丁目": 24, "都庁前": 24,
+    "中野": 28, "東中野": 28, "中野坂上": 26, "新中野": 28,
+    "中野新橋": 28, "中野富士見町": 30, "落合": 26, "新江古田": 30,
+    "吉祥寺": 30, "国分寺": 38, "国立": 42, "立川": 42,
+    "昭島": 50, "拝島": 55, "八王子": 52, "高尾": 60, "町田": 40,
+    "品川": 15, "目黒": 15, "大崎": 18, "五反田": 20, "池尻大橋": 16,
+    "三軒茶屋": 22, "桜上水": 28,
+    "飯田橋": 12, "市ヶ谷": 10, "市ケ谷": 10, "九段下": 12,
+    "後楽園": 18, "春日": 18, "江戸川橋": 20, "茗荷谷": 20,
+    "大宮": 48, "浦和": 44, "北浦和": 46, "上尾": 55, "桶川": 58, "鴻巣": 60,
+    "熊谷": 68, "本庄": 78, "深谷": 74, "川越": 55, "本川越": 58,
+    "横浜": 38, "関内": 45, "桜木町": 42, "川崎": 27, "武蔵小杉": 24,
+    "新横浜": 32, "藤沢": 55, "茅ケ崎": 60, "平塚": 65, "小田原": 82,
+    "鎌倉": 60, "大船": 50, "西船橋": 35, "船橋": 40, "津田沼": 44,
+    "千葉": 50, "柏": 44, "松戸": 38, "浦安": 30,
+    "秋葉原": 17, "上野": 20, "南千住": 25, "北千住": 27,
+    "武蔵浦和": 40,
+}
+
 
 def _norm_station(name: str) -> str:
     name = re.sub(r"[（(].*?[）)]", "", name)
@@ -484,14 +532,29 @@ def travel_band(minutes: int) -> int:
     return 4
 
 
+def travel_minutes_toranomon(ward: str, locs: list[str]) -> int:
+    """虎ノ門ヒルズからの目安所要時間（分）。複数駅に該当する店は最短を採用。"""
+    base = WARD_MIN_TORANOMON.get(ward, min(WARD_MIN.get(ward, 45) + 15, 80))
+    best = base
+    found = False
+    for st in _stations_from_locs(ward, locs):
+        v = STATION_MIN_TORANOMON.get(_norm_station(st), base)
+        if not found or v < best:
+            best, found = v, True
+    return best
+
+
 def annotate(records: list[dict]) -> None:
-    """夜営業フラグと西新宿からの所要時間バンドを各レコードに付与する。"""
+    """夜営業フラグと各起点からの所要時間バンドを各レコードに付与する。"""
     for r in records:
         r["lunch_only"] = bool(r.get("lunch_only"))
         r["evening"] = not r["lunch_only"]
         m = travel_minutes(r["ward"], r["locs"])
         r["travel_min"] = m
         r["travel_band"] = travel_band(m)
+        mt = travel_minutes_toranomon(r["ward"], r["locs"])
+        r["travel_min_toranomon"] = mt
+        r["travel_band_toranomon"] = travel_band(mt)
         r["try_awards"] = try_awards_of(r)
 
 
@@ -759,6 +822,7 @@ def write_data(records):
     cols = ["shop", "pref", "ward", "stations", "genre", "genres", "tabelog_score",
             "awards", "feature", "source_url", "closed_days", "lines", "new_2026",
             "late_night", "evening", "lunch_only", "travel_min", "travel_band",
+            "travel_min_toranomon", "travel_band_toranomon",
             "try_awards"]
     with open(os.path.join(DATA, "ramen.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
@@ -775,6 +839,8 @@ def write_data(records):
                         "1" if r.get("lunch_only") else "",
                         r.get("travel_min", ""),
                         r.get("travel_band", ""),
+                        r.get("travel_min_toranomon", ""),
+                        r.get("travel_band_toranomon", ""),
                         ";".join(a["label"] for a in r.get("try_awards", []))])
     arr = [dict(shop=r["shop"], pref=r["pref"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
                genres=classify(r["genre"]), tabelog_score=(score(r["ev"]) or None),
@@ -787,6 +853,8 @@ def write_data(records):
                lunch_only=bool(r.get("lunch_only")),
                travel_min=r.get("travel_min"),
                travel_band=r.get("travel_band"),
+               travel_min_toranomon=r.get("travel_min_toranomon"),
+               travel_band_toranomon=r.get("travel_band_toranomon"),
                try_awards=r.get("try_awards", [])) for r in rows]
     payload = json.dumps(arr, ensure_ascii=False, indent=2)
     with open(os.path.join(DATA, "ramen.json"), "w", encoding="utf-8") as f:
