@@ -66,6 +66,13 @@
   .b-hyaku{background:#e6efe0;color:#3f6b2f;}
   .b-new{background:#c0392b;color:#fff;}
   .b-night{background:#2c3e6b;color:#fff;}
+  .b-lunch{background:#fff3cd;color:#8a6d00;}
+  .tband{display:inline-block;border-radius:6px;padding:1px 7px;margin-top:3px;
+    font-size:11px;font-weight:600;white-space:nowrap;}
+  .tb1{background:#e3f4e1;color:#2e7d32;}
+  .tb2{background:#e3eefb;color:#2c5aa0;}
+  .tb3{background:#fdecdb;color:#b3650f;}
+  .tb4{background:#f2e4e2;color:#a23b2c;}
   .empty{padding:30px;text-align:center;color:var(--sub);}
   .td-stamp{white-space:nowrap;padding:6px 7px;}
   .s-btn{border:none;cursor:pointer;border-radius:6px;padding:2px 7px;
@@ -84,7 +91,7 @@
 <body>
 <header>
   <h1>🍜 首都圏 駅別ラーメンDB ビューア</h1>
-  <p>東京・神奈川・埼玉・千葉 ／ 都県・区・ジャンル・路線・営業日・スタンプで絞り込み（食べログ点数は掲載時点の目安）</p>
+  <p>東京・神奈川・埼玉・千葉 ／ 都県・区・ジャンル・路線・所要時間・営業日・スタンプで絞り込み（食べログ点数は掲載時点の目安）</p>
 </header>
 
 <div class="wrap">
@@ -106,6 +113,16 @@
       <label for="line">🚃 路線</label>
       <select id="line"><option value="">すべての路線</option></select>
     </div>
+    <!-- 追加: 西新宿からの所要時間（目安バンド） -->
+    <div>
+      <label for="travel">🚊 西新宿から（目安）</label>
+      <select id="travel">
+        <option value="">指定なし</option>
+        <option value="1">〜20分</option>
+        <option value="2">〜40分</option>
+        <option value="3">〜60分</option>
+      </select>
+    </div>
     <div>
       <label for="genre">ジャンル</label>
       <select id="genre"><option value="">すべてのジャンル</option></select>
@@ -125,6 +142,7 @@
       <label for="sort">並び替え</label>
       <select id="sort">
         <option value="score">点数が高い順</option>
+        <option value="travel">近い順（西新宿）</option>
         <option value="ward">区順</option>
         <option value="shop">店名順</option>
       </select>
@@ -146,10 +164,15 @@
           title="日曜が定休と判明している店を除外します。定休日データがない店は表示します。">
           <input type="checkbox" id="c-sunday">🗓️ 日曜営業
         </label>
-        <!-- 追加: 夜営業 -->
+        <!-- 深夜営業（夜遅くまで／旧「夜営業」） -->
         <label class="open-lbl"
-          title="特徴に深夜・夜営業の記載がある店だけを表示します。">
-          <input type="checkbox" id="c-night">🌙 夜営業
+          title="深夜（おおむね23時以降）まで営業の手がかりがある店だけを表示します。">
+          <input type="checkbox" id="c-night">🌙 深夜営業
+        </label>
+        <!-- 追加: 夜も営業（18〜21時台／昼のみ店を除外） -->
+        <label class="open-lbl"
+          title="「昼のみ・早仕舞い」と明記された店を除外し、夜（18〜21時台）も営業している可能性が高い店を表示します。個別の営業時間は未検証です。">
+          <input type="checkbox" id="c-evening">🍜 夜も営業
         </label>
         <span class="sep">|</span>
         <!-- 追加: 新店（2026年オープン） -->
@@ -193,7 +216,9 @@
   <footer>
     データ: <a href="data/ramen.json">ramen.json</a> / <a href="data/lines.json">lines.json</a>（<code>scripts/build_indexes.py</code> 自動生成） /
     全店「実在・営業中」確認済。営業日・定休日は変更があり得るため訪問前に最新情報を確認ください。
-    曜日/日曜/夜営業フィルタは特徴テキストに手がかりのある店のみ反映。スタンプはブラウザのローカルに保存されます。
+    🚊 所要時間は<strong>西新宿</strong>からの目安（路線・距離からの推定で実経路ではありません）。
+    🌙 深夜＝23時以降まで／🍜 夜も営業＝「昼のみ」店を除いた夜営業見込み（個別の営業時間は未検証）。
+    曜日/日曜/深夜フィルタは特徴テキストに手がかりのある店のみ反映。スタンプはブラウザのローカルに保存されます。
   </footer>
 </div>
 
@@ -213,14 +238,15 @@ try { STAMPS = JSON.parse(localStorage.getItem("ramen_stamps") || "{}"); } catch
 
 const $ = s => document.querySelector(s);
 const els = {
-  q:$("#q"), pref:$("#pref"), ward:$("#ward"), line:$("#line"), genre:$("#genre"),
+  q:$("#q"), pref:$("#pref"), ward:$("#ward"), line:$("#line"), travel:$("#travel"), genre:$("#genre"),
   min:$("#minscore"), sort:$("#sort"),
   star:$("#c-star"), bib:$("#c-bib"), hyaku:$("#c-hyaku"),
-  today:$("#c-today"), sunday:$("#c-sunday"), night:$("#c-night"), newshop:$("#c-new"),
+  today:$("#c-today"), sunday:$("#c-sunday"), night:$("#c-night"), evening:$("#c-evening"), newshop:$("#c-new"),
   unvisited:$("#c-unvisited"), want:$("#c-want"),
   rows:$("#rows"), n:$("#n"), total:$("#total"), reset:$("#reset"),
   stampCount:$("#stamp-count"), clearStamps:$("#clear-stamps"),
 };
+const TBAND = {1:"〜20分", 2:"20〜40分", 3:"40〜60分", 4:"60分〜"};
 
 function stampKey(r){ return r.source_url || (r.shop + "||" + r.pref + "||" + r.ward); }
 function saveStamps(){ localStorage.setItem("ramen_stamps", JSON.stringify(STAMPS)); }
@@ -237,8 +263,14 @@ function badges(aw){
 function markers(r){
   let m = "";
   if(r.new_shop)   m += '<span class="badge b-new">🆕新店</span>';
-  if(r.late_night) m += '<span class="badge b-night">🌙夜</span>';
+  if(r.late_night) m += '<span class="badge b-night">🌙深夜</span>';
+  if(r.lunch_only) m += '<span class="badge b-lunch">☀️昼のみ</span>';
   return m;
+}
+function travelChip(r){
+  if(!r.travel_band) return "";
+  return `<span class="tband tb${r.travel_band}" title="西新宿からの目安所要時間（路線・距離からの推定）">`
+       + `🚊西新宿 ${TBAND[r.travel_band]}</span>`;
 }
 
 function passes(r){
@@ -251,6 +283,7 @@ function passes(r){
   if(els.pref.value  && r.pref !== els.pref.value) return false;
   if(els.ward.value  && r.ward !== els.ward.value) return false;
   if(els.line.value  && !(r.lines||[]).includes(els.line.value)) return false;
+  if(els.travel.value && (r.travel_band||9) > +els.travel.value) return false;
   if(els.genre.value && !(r.genres||[]).includes(els.genre.value)) return false;
   const min = parseFloat(els.min.value);
   if(min>0 && !(r.tabelog_score && r.tabelog_score>=min)) return false;
@@ -260,7 +293,8 @@ function passes(r){
   // 営業日
   if(els.today.checked  && (r.closed_days||[]).includes(TODAY_ENG)) return false;
   if(els.sunday.checked && (r.closed_days||[]).includes("Sun")) return false;
-  if(els.night.checked  && !r.late_night) return false;
+  if(els.night.checked   && !r.late_night) return false;
+  if(els.evening.checked && !r.evening) return false;
   if(els.newshop.checked && !r.new_shop) return false;
   // スタンプ
   const stamp = STAMPS[stampKey(r)];
@@ -272,8 +306,10 @@ function passes(r){
 function sortRows(rows){
   const k = els.sort.value;
   const sc = r => (r.tabelog_score||0);
+  const tv = r => (r.travel_min!=null ? r.travel_min : 999);
   const pi = r => { const i = PREF_ORDER.indexOf(r.pref); return i<0?99:i; };
   if(k==="score") rows.sort((a,b)=>sc(b)-sc(a) || a.shop.localeCompare(b.shop,"ja"));
+  else if(k==="travel") rows.sort((a,b)=>tv(a)-tv(b) || sc(b)-sc(a));
   else if(k==="shop") rows.sort((a,b)=>a.shop.localeCompare(b.shop,"ja"));
   else if(k==="ward") rows.sort((a,b)=>(pi(a)-pi(b)) || a.ward.localeCompare(b.ward,"ja") || sc(b)-sc(a));
   return rows;
@@ -302,7 +338,7 @@ function render(){
     const aw = badges(r.awards);
     const sub = (aw+mk) ? ("<br>"+aw+mk) : "";
     const linesTxt = (r.lines||[]).length ? `<div class="lines">🚃 ${esc(r.lines.join(" / "))}</div>` : "";
-    const loc = `${esc(r.pref||"")} ${esc(r.ward)}<br><span class="loc">${esc((r.stations||[]).join(" / "))}</span>${linesTxt}`;
+    const loc = `${esc(r.pref||"")} ${esc(r.ward)}<br><span class="loc">${esc((r.stations||[]).join(" / "))}</span>${linesTxt}<div>${travelChip(r)}</div>`;
     const score = r.tabelog_score ? r.tabelog_score.toFixed(2) : "–";
     const chips = `<div class="chips">${(r.genres||[]).map(g=>`<span class="chip">${esc(g)}</span>`).join("")}</div>`;
     const vBtn = `<button class="s-btn${sv?" sv":""}" data-action="visited" data-key="${esc(key)}" title="行った">✓</button>`;
@@ -371,8 +407,8 @@ function initFilters(){
 
 function bind(){
   els.pref.addEventListener("change", ()=>{ fillWards(); render(); });
-  for(const el of [els.q,els.ward,els.line,els.genre,els.min,els.sort,
-                   els.star,els.bib,els.hyaku,els.today,els.sunday,els.night,els.newshop,
+  for(const el of [els.q,els.ward,els.line,els.travel,els.genre,els.min,els.sort,
+                   els.star,els.bib,els.hyaku,els.today,els.sunday,els.night,els.evening,els.newshop,
                    els.unvisited,els.want]){
     el.addEventListener("input", render);
   }
@@ -384,10 +420,10 @@ function bind(){
     });
   });
   els.reset.addEventListener("click", ()=>{
-    els.q.value=""; els.pref.value=""; els.ward.value=""; els.line.value="";
+    els.q.value=""; els.pref.value=""; els.ward.value=""; els.line.value=""; els.travel.value="";
     els.genre.value=""; els.min.value="0"; els.sort.value="score";
     els.star.checked=els.bib.checked=els.hyaku.checked=false;
-    els.today.checked=els.sunday.checked=els.night.checked=els.newshop.checked=false;
+    els.today.checked=els.sunday.checked=els.night.checked=els.evening.checked=els.newshop.checked=false;
     els.unvisited.checked=els.want.checked=false;
     fillWards(); render();
   });

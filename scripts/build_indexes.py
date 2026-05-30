@@ -26,7 +26,7 @@ REGIONS = os.path.join(ROOT, "regions")
 OUT = os.path.join(ROOT, "indexes")
 DATA = os.path.join(ROOT, "data")
 DOCS = os.path.join(ROOT, "docs")
-UPDATED = "2026-05-29"
+UPDATED = "2026-05-30"
 
 # 地域ディレクトリ → 表示名(出力順)。多摩は東京都だが23区と区別するため別ラベル。
 PREFS = [
@@ -261,13 +261,28 @@ _REOPEN_KW = ("再開", "リニューアル", "移転", "復活")
 _AWARD_KW = ("百名店", "百", "TRY", "EAST", "WEST", "大賞", "グランプリ", "オブ", "受賞", "ミシュラン", "ビブ")
 
 
+# ---- 深夜営業（夜遅くまで）判定 ----
 _LATE_KW = ("深夜", "翌1", "翌2", "翌3", "翌4", "24時間", "〜24", "1時まで", "2時まで",
-            "夜営業", "朝まで", "23時", "〜23")
+            "朝まで", "23時", "〜23")
 
 
 def is_late_night(feat: str) -> bool:
     """夜遅く（深夜帯）まで営業している手がかりが特徴テキストにあるか。"""
     return any(k in feat for k in _LATE_KW)
+
+
+# ---- 夜営業（18〜21時台に営業）判定 ----
+# DBは営業時間の構造化データを持たないため、「昼のみ・早仕舞い」が明記された店を
+# 除外し、残りを“夜も営業している可能性が高い”店として扱う実用フィルタ。
+# （深夜営業店は当然 is_lunch_only に該当せず夜営業に含まれる。個別の営業時間は未検証。）
+_LUNCH_ONLY_KW = ("昼のみ", "昼営業のみ", "昼の部のみ", "昼限定", "昼だけ", "日中のみ",
+                  "朝のみ", "朝ラーのみ", "朝専門",
+                  "〜14時", "〜15時", "〜16時", "14時まで", "15時まで", "16時まで")
+
+
+def is_lunch_only(feat: str) -> bool:
+    """昼のみ・早仕舞い（夜は営業しない）と明記されているか。"""
+    return any(k in feat for k in _LUNCH_ONLY_KW)
 
 
 def is_new_2026(feat: str) -> bool:
@@ -372,6 +387,110 @@ LINEAGE = [
 ]
 
 
+# ---- 西新宿からの所要時間（目安）----
+# ユーザーの最寄り＝西新宿（丸ノ内線・新宿の1駅隣）を起点に、各店の最寄駅までの
+# おおよその所要時間（分）を、区/市の代表値＋主要駅の個別補正で推定する。
+# 実経路APIではなく路線・距離からの“目安”。表示は時間帯バンド（4段階）。
+WARD_MIN = {
+    # 東京23区
+    "新宿区": 8, "渋谷区": 12, "中野区": 12, "杉並区": 16, "豊島区": 13,
+    "千代田区": 20, "中央区": 24, "港区": 20, "文京区": 18, "品川区": 20,
+    "目黒区": 18, "世田谷区": 22, "台東区": 30, "墨田区": 30, "江東区": 33,
+    "荒川区": 28, "足立区": 35, "葛飾区": 42, "江戸川区": 40, "北区": 22,
+    "板橋区": 24, "練馬区": 22,
+    # 多摩
+    "吉祥寺・三鷹・小金井": 22, "立川・国立・国分寺・昭島": 30,
+    "八王子・日野・多摩": 45, "西東京・小平・東久留米・東村山・清瀬": 32,
+    "調布・府中・狛江": 26, "町田": 33,
+    # 神奈川
+    "横浜中心部": 36, "横浜北部": 35, "横浜南西部": 48,
+    "川崎市南部": 28, "川崎市北部": 32, "県央・相模原": 48, "湘南・県西": 65,
+    # 埼玉
+    "さいたま市": 32, "さいたま市北部": 33, "埼玉": 58,
+    "川口・蕨・戸田": 28, "越谷・草加・春日部": 45, "西武沿線エリア": 38,
+    "川越・東武東上線": 52,
+    # 千葉
+    "千葉市": 50, "千葉郊外": 52, "市川・浦安": 35, "松戸・柏": 42,
+    "船橋・習志野": 44, "流山・我孫子・野田・鎌ヶ谷": 52,
+}
+# 区/市の代表値と異なる主要駅の個別補正（駅名は「駅」「停留場」を除いた正規形）
+STATION_MIN = {
+    "西新宿": 2, "新宿": 4, "西新宿五丁目": 5, "新宿三丁目": 5, "都庁前": 6,
+    "渋谷": 6, "代々木": 6, "中野": 6, "東中野": 5, "中野坂上": 4,
+    "高田馬場": 8, "池袋": 8, "代々木上原": 9, "下北沢": 9, "中目黒": 13,
+    "恵比寿": 13, "大崎": 13, "五反田": 16, "目黒": 14, "池尻大橋": 14,
+    "三軒茶屋": 17, "飯田橋": 12, "市ヶ谷": 13, "市ケ谷": 13, "九段下": 15,
+    "後楽園": 12, "春日": 12, "江戸川橋": 13, "茗荷谷": 14,
+    "表参道": 12, "外苑前": 13, "青山一丁目": 13, "六本木": 14, "六本木一丁目": 15,
+    "麻布十番": 17, "吉祥寺": 16, "国分寺": 26, "国立": 30, "立川": 30,
+    "昭島": 40, "拝島": 45, "八王子": 45, "高尾": 52, "町田": 32,
+    "大宮": 30, "浦和": 28, "北浦和": 30, "上尾": 42, "桶川": 46, "鴻巣": 46,
+    "熊谷": 58, "本庄": 70, "深谷": 66, "川越": 52, "本川越": 55,
+    "横浜": 32, "関内": 42, "桜木町": 40, "川崎": 30, "武蔵小杉": 22,
+    "新横浜": 30, "藤沢": 52, "茅ケ崎": 58, "平塚": 62, "小田原": 80,
+    "鎌倉": 58, "大船": 48, "西船橋": 35, "船橋": 40, "津田沼": 44,
+    "千葉": 48, "柏": 46, "松戸": 36, "浦安": 32,
+}
+BAND_LABEL = {1: "〜20分", 2: "20〜40分", 3: "40〜60分", 4: "60分〜"}
+
+
+def _norm_station(name: str) -> str:
+    name = re.sub(r"[（(].*?[）)]", "", name)
+    for suf in ("停留場", "駅前", "駅"):
+        if name.endswith(suf):
+            return name[: -len(suf)].strip()
+    return name.strip()
+
+
+def _stations_from_locs(ward: str, locs: list[str]) -> list[str]:
+    """locs(['区・駅名', ...])から駅名トークンを取り出す。複数駅併記も分割。"""
+    out = []
+    for loc in locs:
+        if loc.startswith(ward + "・"):
+            sp = loc[len(ward) + 1:]
+        elif loc == ward:
+            continue
+        else:
+            sp = loc
+        for part in re.split(r"\s*/\s*|・", sp):
+            part = part.strip()
+            if part:
+                out.append(part)
+    return out
+
+
+def travel_minutes(ward: str, locs: list[str]) -> int:
+    """西新宿からの目安所要時間（分）。複数駅に該当する店は最短を採用。"""
+    base = WARD_MIN.get(ward, 40)
+    best = base
+    found = False
+    for st in _stations_from_locs(ward, locs):
+        v = STATION_MIN.get(_norm_station(st), base)
+        if not found or v < best:
+            best, found = v, True
+    return best
+
+
+def travel_band(minutes: int) -> int:
+    if minutes <= 20:
+        return 1
+    if minutes <= 40:
+        return 2
+    if minutes <= 60:
+        return 3
+    return 4
+
+
+def annotate(records: list[dict]) -> None:
+    """夜営業フラグと西新宿からの所要時間バンドを各レコードに付与する。"""
+    for r in records:
+        r["lunch_only"] = bool(r.get("lunch_only"))
+        r["evening"] = not r["lunch_only"]
+        m = travel_minutes(r["ward"], r["locs"])
+        r["travel_min"] = m
+        r["travel_band"] = travel_band(m)
+
+
 def parse_records() -> list[dict]:
     bykey: dict = {}
     for slug, pref in PREFS:
@@ -412,13 +531,15 @@ def parse_records() -> list[dict]:
                     rec["lines"].sort(key=lambda l: LABEL_RANK.get(l, 999))
                     rec["new_shop"] = rec["new_shop"] or is_new_2026(feat)
                     rec["late_night"] = rec["late_night"] or is_late_night(feat)
+                    rec["lunch_only"] = rec["lunch_only"] or is_lunch_only(feat)
                     continue
                 bykey[key] = dict(pref=pref, ward=ward, station=station, shop=shop,
                                   genre=genre, feat=feat, ev=ev, src=src, url=url, locs=[loc],
                                   lines=list(current_lines),
                                   closed_days=parse_closed_days(feat),
                                   new_shop=is_new_2026(feat),
-                                  late_night=is_late_night(feat))
+                                  late_night=is_late_night(feat),
+                                  lunch_only=is_lunch_only(feat))
     return list(bykey.values())
 
 
@@ -582,7 +703,8 @@ def write_data(records):
     os.makedirs(os.path.join(DOCS, "data"), exist_ok=True)
     rows = sorted(records, key=lambda r: (-score(r["ev"]), r["pref"], r["ward"]))
     cols = ["shop", "pref", "ward", "stations", "genre", "genres", "tabelog_score",
-            "awards", "feature", "source_url", "closed_days", "lines", "new_2026", "late_night"]
+            "awards", "feature", "source_url", "closed_days", "lines", "new_2026",
+            "late_night", "evening", "lunch_only", "travel_min", "travel_band"]
     with open(os.path.join(DATA, "ramen.csv"), "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
         w.writerow(cols)
@@ -593,14 +715,22 @@ def write_data(records):
                         ";".join(r.get("closed_days", [])),
                         " / ".join(r.get("lines", [])),
                         "1" if r.get("new_shop") else "",
-                        "1" if r.get("late_night") else ""])
+                        "1" if r.get("late_night") else "",
+                        "1" if r.get("evening") else "",
+                        "1" if r.get("lunch_only") else "",
+                        r.get("travel_min", ""),
+                        r.get("travel_band", "")])
     arr = [dict(shop=r["shop"], pref=r["pref"], ward=r["ward"], stations=r["locs"], genre=r["genre"],
                genres=classify(r["genre"]), tabelog_score=(score(r["ev"]) or None),
                awards=awards_of(r), feature=r["feat"], source_url=r["url"],
                closed_days=r.get("closed_days", []),
                lines=r.get("lines", []),
                new_shop=bool(r.get("new_shop")),
-               late_night=bool(r.get("late_night"))) for r in rows]
+               late_night=bool(r.get("late_night")),
+               evening=bool(r.get("evening")),
+               lunch_only=bool(r.get("lunch_only")),
+               travel_min=r.get("travel_min"),
+               travel_band=r.get("travel_band")) for r in rows]
     payload = json.dumps(arr, ensure_ascii=False, indent=2)
     with open(os.path.join(DATA, "ramen.json"), "w", encoding="utf-8") as f:
         f.write(payload)
@@ -634,6 +764,7 @@ def write_lines(records):
 
 def main() -> None:
     records = parse_records()
+    annotate(records)
     os.makedirs(OUT, exist_ok=True)
     by_genre = write_genre(records)
     star, bib, hyaku = write_awards(records)
@@ -644,10 +775,18 @@ def main() -> None:
     n_new = sum(1 for r in records if r.get("new_shop"))
     n_sun = sum(1 for r in records if "Sun" not in r.get("closed_days", []))
     n_night = sum(1 for r in records if r.get("late_night"))
+    n_evening = sum(1 for r in records if r.get("evening"))
+    n_lunch = sum(1 for r in records if r.get("lunch_only"))
+    bands = defaultdict(int)
+    for r in records:
+        bands[r.get("travel_band")] += 1
     print(f"records={len(records)} csv/json={n}")
     print(f"awards: star={len(star)} bib={len(bib)} hyaku={len(hyaku)}")
     print(f"practical: late={len(late)} morning={len(morning)} reserve={len(reserve)} queue={len(queue)} hall={len(hall)}")
-    print(f"lines in dropdown={nlines}  new_2026={n_new}  open_sunday={n_sun}  late_night={n_night}")
+    print(f"lines in dropdown={nlines}  new_2026={n_new}  open_sunday={n_sun}  late_night(深夜)={n_night}")
+    print(f"evening(夜営業)={n_evening}  lunch_only(昼のみ)={n_lunch}")
+    print(f"travel bands from 西新宿 (1:〜20/2:〜40/3:〜60/4:60+): "
+          + "  ".join(f"{b}={bands[b]}" for b in (1, 2, 3, 4)))
     print("new_2026 shops:", [r["shop"] for r in records if r.get("new_shop")])
     print("lineage families:")
     for name, uniq in fams:
